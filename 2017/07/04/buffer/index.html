@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png">
+  <link rel="mask-icon" href="/img/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.bitzo.cn","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="笔记部分内容摘自 《深入浅出 Node.JS》 —— 朴灵  背景与前端不同，前端常常只需要处理简单字符串操作及DOM操作，而后端需要处理相对复杂的文件、网络I&#x2F;O等，JS自由的字符串无法满足需求，于是有了buffer以满足后端的需求。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Buffer">
+<meta property="og:url" content="https://blog.bitzo.cn/2017/07/04/buffer/index.html">
+<meta property="og:site_name" content="_YuLong&#39;s Blog">
+<meta property="og:description" content="笔记部分内容摘自 《深入浅出 Node.JS》 —— 朴灵  背景与前端不同，前端常常只需要处理简单字符串操作及DOM操作，而后端需要处理相对复杂的文件、网络I&#x2F;O等，JS自由的字符串无法满足需求，于是有了buffer以满足后端的需求。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-07-04T01:10:01.000Z">
+<meta property="article:modified_time" content="2022-09-26T07:30:10.454Z">
+<meta property="article:author" content="_YuLong">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="nodejs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.bitzo.cn/2017/07/04/buffer/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.bitzo.cn/2017/07/04/buffer/","path":"2017/07/04/buffer/","title":"Buffer"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Buffer | _YuLong's Blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?44dbcc2ca1ba18ff5151aea0209f6730"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">_YuLong's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个假的程序猿👨🏻‍💻</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="nav-number">4.</span> <span class="nav-text">内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E9%85%8D%E5%B0%8F%E5%AF%B9%E8%B1%A1-%EF%BC%88-lt-8kb%E7%9A%84buffer%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">分配小对象 （&lt;&#x3D;8kb的buffer）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E9%85%8D%E5%A4%A7%E5%AF%B9%E8%B1%A1-%EF%BC%88-gt-8kb%E7%9A%84buffer%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">分配大对象 （&gt;8kb的buffer）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">4.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Buffer%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">5.</span> <span class="nav-text">Buffer的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%ACBuffer"><span class="nav-number">5.1.</span> <span class="nav-text">字符串转Buffer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Buffer%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">5.2.</span> <span class="nav-text">Buffer转字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E6%94%AF%E6%8C%81%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="nav-number">5.3.</span> <span class="nav-text">不支持编码类型的相互转换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Buffer%E6%8B%BC%E6%8E%A5"><span class="nav-number">6.</span> <span class="nav-text">Buffer拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E6%AD%A3%E7%A1%AE%EF%BC%88%E5%8D%B1%E9%99%A9%EF%BC%89%E7%9A%84Buffer%E6%8B%BC%E6%8E%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">6.1.</span> <span class="nav-text">不正确（危险）的Buffer拼接方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8B%BC%E6%8E%A5Buffer"><span class="nav-number">6.2.</span> <span class="nav-text">正确的拼接Buffer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8Buffer%E6%8F%90%E5%8D%87%E6%80%A7%E8%83%BD"><span class="nav-number">7.</span> <span class="nav-text">用Buffer提升性能</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="_YuLong"
+      src="/img/avatar.jpg">
+  <p class="site-author-name" itemprop="name">_YuLong</p>
+  <div class="site-description" itemprop="description">后端 | 一个假的程序猿</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:bitzo@qq.com" title="E-Mail → mailto:bitzo@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/bitzo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.bitzo.cn/2017/07/04/buffer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/avatar.jpg">
+      <meta itemprop="name" content="_YuLong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="_YuLong's Blog">
+      <meta itemprop="description" content="后端 | 一个假的程序猿">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Buffer | _YuLong's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Buffer
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-07-04 09:10:01" itemprop="dateCreated datePublished" datetime="2017-07-04T09:10:01+08:00">2017-07-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-26 15:30:10" itemprop="dateModified" datetime="2022-09-26T15:30:10+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>笔记部分内容摘自 《深入浅出 Node.JS》 —— 朴灵</p>
+</blockquote>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>与前端不同，前端常常只需要处理简单字符串操作及DOM操作，而后端需要处理相对复杂的文件、网络I/O等，JS自由的字符串无法满足需求，于是有了buffer以满足后端的需求。</p>
+<span id="more"></span>
+
+<h1 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h1><ul>
+<li>buffer是JS与C++结合的一个模块，性能相关以C++实现，非性能相关以JS实现。</li>
+<li>buffer由于是C++实现的内建模块，其在node项目进程启动时就已加载进内存，使用时无需require。</li>
+<li>buffer所使用的内存为堆外内存，非V8分配，而是node在C++层面申请，在使用时node再进行分配。</li>
+<li>buffer对象类似于Array，形如&lt;Buffer d3 e2 cd 67 2b 21 8c 9a e7 20 1f 2e 7c 6d 4a cf 3c&gt;，其元素皆为16进程两位数。</li>
+</ul>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf = <span class="keyword">new</span> <span class="title class_">Buffer</span>(<span class="number">100</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buf.<span class="property">length</span>); <span class="comment">//100</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h1><p><strong>采用slab分配机制</strong></p>
+<p>slab就是一块申请好的固定大小的内存区域</p>
+<p>具有三种状态：</p>
+<ul>
+<li>full：完全分配状态</li>
+<li>partial：部分分配状态</li>
+<li>empty：没有被分配状态</li>
+</ul>
+<p>slab以8k为界限，区分buffer是大对象还是小对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Buffer</span>.<span class="property">poolSize</span> = <span class="number">8</span> * <span class="number">1024</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="分配小对象-（-lt-8kb的buffer）"><a href="#分配小对象-（-lt-8kb的buffer）" class="headerlink" title="分配小对象 （&lt;=8kb的buffer）"></a>分配小对象 （&lt;=8kb的buffer）</h2><p>使用局部变量pool作为中间处理对象，处于分配状态的slab都指向该变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pool;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">allocPool</span>(<span class="params"></span>) &#123;</span><br><span class="line">  pool = <span class="keyword">new</span> <span class="title class_">SlowBuffer</span>(<span class="title class_">Buffer</span>.<span class="property">poolSize</span>);</span><br><span class="line">  pool.<span class="property">used</span> = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>分配buffer对象会先检查是否有pool对象，若没有，则通过创建新的slab对象单元，并指向它。</li>
+<li>然后记录下使用的大小used，及此slab使用的偏移量offset。</li>
+<li>再次创建buffer会判断此slab单元是否足够存放，够则继续存放，不够则重新创建新的slab单元以存储。</li>
+<li>当slab单元不够存放，重新创建单元时，旧的slab单元则会造成浪费。</li>
+</ul>
+<p><strong>一个slab单元内所有的buffer小对象全部都已经释放并可以回收时，才能释放此slab单元。<br>即若一个slab单元中只存放了1个字节的buffer对象，也会造成整个8kb的slab单元内存无法释放。</strong></p>
+<h2 id="分配大对象-（-gt-8kb的buffer）"><a href="#分配大对象-（-gt-8kb的buffer）" class="headerlink" title="分配大对象 （&gt;8kb的buffer）"></a>分配大对象 （&gt;8kb的buffer）</h2><p>直接分配一个指定大小(大对象大小)的内存空间：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">parent</span> = <span class="keyword">new</span> <span class="title class_">SlowBuffer</span>(<span class="variable language_">this</span>.<span class="property">length</span>);</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">offset</span> = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这里的slab分配机制，旨在于减少系统调用，以提升性能。不过对于平时的开发来说，我暂时没看出来有什么作用，算是顶多更加深入的了解了buffer。</p>
+<h1 id="Buffer的转换"><a href="#Buffer的转换" class="headerlink" title="Buffer的转换"></a>Buffer的转换</h1><p>支持的转换编码类型：</p>
+<ul>
+<li>ASCII</li>
+<li>UTF-8</li>
+<li>UTF-16LE/UCS-2</li>
+<li>Base64</li>
+<li>Binary</li>
+<li>Hex</li>
+</ul>
+<h2 id="字符串转Buffer"><a href="#字符串转Buffer" class="headerlink" title="字符串转Buffer"></a>字符串转Buffer</h2><p>** 方式： ** 通过<strong>构造函数</strong>转换。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf = <span class="keyword">new</span> <span class="title class_">Buffer</span>(str, [encoding]);</span><br></pre></td></tr></table></figure>
+
+<p><code>encoding</code>为可选参数，默认值为<code>UTF-8</code>。</p>
+<p><strong>一个</strong>Buffer对象即可以存储<strong>多种</strong>编码类型的字符串转码，通过<code>write()</code>方法实现。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">buf.<span class="title function_">write</span>(string, [offset], [length], [encoding]);</span><br></pre></td></tr></table></figure>
+
+<p><strong>这种存储多种编码类型转码的Buffer，由于每种编码所有的字节长度不同，再解码转回普通字符串时需要格外谨慎小心！</strong></p>
+<h2 id="Buffer转字符串"><a href="#Buffer转字符串" class="headerlink" title="Buffer转字符串"></a>Buffer转字符串</h2><p><strong>方式：</strong> <code>toString()</code>方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">buf.<span class="title function_">toString</span>([encoding], [start], [end]);</span><br></pre></td></tr></table></figure>
+
+<p><code>encoding</code>默认<code>UTF-8</code></p>
+<h2 id="不支持编码类型的相互转换"><a href="#不支持编码类型的相互转换" class="headerlink" title="不支持编码类型的相互转换"></a>不支持编码类型的相互转换</h2><p>由于Buffer对象支持的编码类型有限，所以借助其它具有相似功能的模块可以更好的完成Buffer的转换。</p>
+<ul>
+<li>iconv : <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/iconv">https://www.npmjs.com/package/iconv</a></li>
+<li>iconv-lite (推荐) :  <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/iconv-lite">https://www.npmjs.com/package/iconv-lite</a></li>
+</ul>
+<h1 id="Buffer拼接"><a href="#Buffer拼接" class="headerlink" title="Buffer拼接"></a>Buffer拼接</h1><h2 id="不正确（危险）的Buffer拼接方式"><a href="#不正确（危险）的Buffer拼接方式" class="headerlink" title="不正确（危险）的Buffer拼接方式"></a>不正确（危险）的Buffer拼接方式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rs = fs.<span class="title function_">createReadStream</span>(<span class="string">&#x27;test.txt&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> data = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">rs.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="params">chunk</span> =&gt;</span> &#123;</span><br><span class="line">    data += chunk;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">rs.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>注意点：</p>
+<ul>
+<li><code>data += chunk;</code> 隐含着buffer转换： <code>data = data.toString() +chunk.toString();</code></li>
+<li>当出现宽字节编码，可能会出现乱码问题。</li>
+<li>在处理UTF-8、Base64或UCS-2/UTF-16LE这三种编码时可以采用添加一条语句来解决此问题：<code>rs.setEncoding(encoding)</code></li>
+</ul>
+<h2 id="正确的拼接Buffer"><a href="#正确的拼接Buffer" class="headerlink" title="正确的拼接Buffer"></a>正确的拼接Buffer</h2><p><strong>思路：</strong> 拼接Buffer对象，再用iconv-lite等转换</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> chunks = [];</span><br><span class="line"><span class="keyword">let</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">rs.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="function">(<span class="params">chunk</span>) =&gt;</span> &#123;</span><br><span class="line">    chunks.<span class="title function_">push</span>(chunk);</span><br><span class="line">    size += chunk.<span class="property">length</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">rs.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> buf = <span class="title class_">Buffer</span>.<span class="title function_">concat</span>(chunks, size);</span><br><span class="line">    <span class="keyword">let</span> str = iconv.<span class="title function_">decode</span>(buf, <span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>其中值得一看的是<code>Buffer.concat()</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Buffer</span>.<span class="property">concat</span> = <span class="keyword">function</span>(<span class="params">list, length</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="title class_">Array</span>.<span class="title function_">isArray</span>(list)) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Usage: Buffer.concat(list, [length])&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (list.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Buffer</span>(<span class="number">0</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (list.<span class="property">length</span> === <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> list[<span class="number">0</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> length !== <span class="string">&#x27;number&#x27;</span>) &#123;</span><br><span class="line">      length = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; list.<span class="property">length</span>; ++i) &#123;</span><br><span class="line">          <span class="keyword">let</span> buf = list[i];</span><br><span class="line">          length += buf.<span class="property">length</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> buffer = <span class="keyword">new</span> <span class="title class_">Buffer</span>(length);</span><br><span class="line">  <span class="keyword">let</span> pos = <span class="number">0</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; list.<span class="property">length</span>; ++i) &#123;</span><br><span class="line">      <span class="keyword">let</span> buf = list[i];</span><br><span class="line">      buf.<span class="title function_">copy</span>(buffer, pos);</span><br><span class="line">      pos += buf.<span class="property">length</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> buffer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="用Buffer提升性能"><a href="#用Buffer提升性能" class="headerlink" title="用Buffer提升性能"></a>用Buffer提升性能</h1><ul>
+<li>在web应用中，逻辑代码的编写过程中，通常是在操作字符串，但一旦通过网络传输，都需要进行Buffer转换，以进行二进制数据传输。</li>
+<li>在不需要改动读取的文件内容的前提下，可以直接读取Buffer并进行传输，尽量减少转换。</li>
+</ul>
+<p></br></br></br></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>_YuLong
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blog.bitzo.cn/2017/07/04/buffer/" title="Buffer">https://blog.bitzo.cn/2017/07/04/buffer/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/06/07/Node-JS%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6/" rel="prev" title="Node.JS 内存控制">
+                  <i class="fa fa-chevron-left"></i> Node.JS 内存控制
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/07/08/nodejs-websocket%E5%AE%9E%E7%8E%B0%E9%9A%8F%E6%9C%BA%E8%81%8A%E5%A4%A9/" rel="next" title="nodejs+websocket实现随机聊天">
+                  nodejs+websocket实现随机聊天 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">苏ICP备17000035号-2 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">_YuLong</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

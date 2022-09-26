@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png">
+  <link rel="mask-icon" href="/img/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.bitzo.cn","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="笔记部分内容摘自 《深入浅出Node.JS》 —— 朴灵  解决方案 事件发布&#x2F;订阅模式 Promise&#x2F;Deferred模式 流程控制库  事件发布&#x2F;订阅模式 常常用来解耦业务逻辑  Node.js内的实现Node自身提供的events模块，是事件发布&#x2F;订阅模式的简单实现。通过模块提供的监听、触发等方法实现。 1234567&#x2F;&#x2F;订阅emitter.on(&quot;event1&quot;,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="异步编程（二）">
+<meta property="og:url" content="https://blog.bitzo.cn/2017/06/06/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
+<meta property="og:site_name" content="_YuLong&#39;s Blog">
+<meta property="og:description" content="笔记部分内容摘自 《深入浅出Node.JS》 —— 朴灵  解决方案 事件发布&#x2F;订阅模式 Promise&#x2F;Deferred模式 流程控制库  事件发布&#x2F;订阅模式 常常用来解耦业务逻辑  Node.js内的实现Node自身提供的events模块，是事件发布&#x2F;订阅模式的简单实现。通过模块提供的监听、触发等方法实现。 1234567&#x2F;&#x2F;订阅emitter.on(&quot;event1&quot;,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.bitzo.cn/img/Promise_Deferred_1.png">
+<meta property="article:published_time" content="2017-06-06T05:51:53.000Z">
+<meta property="article:modified_time" content="2022-09-26T07:30:10.456Z">
+<meta property="article:author" content="_YuLong">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="Nodejs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.bitzo.cn/img/Promise_Deferred_1.png">
+
+
+<link rel="canonical" href="https://blog.bitzo.cn/2017/06/06/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.bitzo.cn/2017/06/06/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/","path":"2017/06/06/异步编程（二）/","title":"异步编程（二）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>异步编程（二） | _YuLong's Blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?44dbcc2ca1ba18ff5151aea0209f6730"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">_YuLong's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个假的程序猿👨🏻‍💻</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">事件发布&#x2F;订阅模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js%E5%86%85%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.1.</span> <span class="nav-text">Node.js内的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%BC%82%E6%AD%A5%E4%BE%9D%E8%B5%96"><span class="nav-number">2.2.</span> <span class="nav-text">多异步依赖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Promise-Deferred-%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">Promise&#x2F;Deferred 模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">流程控制库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%BE%E8%A7%A6%E5%8F%91%E4%B8%8ENext"><span class="nav-number">4.1.</span> <span class="nav-text">尾触发与Next</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#async"><span class="nav-number">4.2.</span> <span class="nav-text">async</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E7%9A%84%E4%B8%B2%E8%A1%8C%E6%89%A7%E8%A1%8C"><span class="nav-number">4.2.1.</span> <span class="nav-text">异步的串行执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E7%9A%84%E5%B9%B6%E8%A1%8C%E6%89%A7%E8%A1%8C"><span class="nav-number">4.2.2.</span> <span class="nav-text">异步的并行执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8%E7%9A%84%E4%BE%9D%E8%B5%96%E5%A4%84%E7%90%86"><span class="nav-number">4.2.3.</span> <span class="nav-text">异步调用的依赖处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">4.2.4.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step"><span class="nav-number">4.3.</span> <span class="nav-text">step</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%B2%E8%A1%8C%E6%89%A7%E8%A1%8C"><span class="nav-number">4.3.1.</span> <span class="nav-text">串行执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C%E6%89%A7%E8%A1%8C"><span class="nav-number">4.3.2.</span> <span class="nav-text">并行执行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wind"><span class="nav-number">4.4.</span> <span class="nav-text">wind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generator"><span class="nav-number">4.5.</span> <span class="nav-text">generator</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="_YuLong"
+      src="/img/avatar.jpg">
+  <p class="site-author-name" itemprop="name">_YuLong</p>
+  <div class="site-description" itemprop="description">后端 | 一个假的程序猿</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:bitzo@qq.com" title="E-Mail → mailto:bitzo@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/bitzo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.bitzo.cn/2017/06/06/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/avatar.jpg">
+      <meta itemprop="name" content="_YuLong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="_YuLong's Blog">
+      <meta itemprop="description" content="后端 | 一个假的程序猿">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="异步编程（二） | _YuLong's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          异步编程（二）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-06-06 13:51:53" itemprop="dateCreated datePublished" datetime="2017-06-06T13:51:53+08:00">2017-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-26 15:30:10" itemprop="dateModified" datetime="2022-09-26T15:30:10+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>笔记部分内容摘自 《深入浅出Node.JS》 —— 朴灵</p>
+</blockquote>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ul>
+<li>事件发布/订阅模式</li>
+<li>Promise/Deferred模式</li>
+<li>流程控制库</li>
+</ul>
+<h1 id="事件发布-订阅模式"><a href="#事件发布-订阅模式" class="headerlink" title="事件发布/订阅模式"></a>事件发布/订阅模式</h1><blockquote>
+<p>常常用来解耦业务逻辑</p>
+</blockquote>
+<h2 id="Node-js内的实现"><a href="#Node-js内的实现" class="headerlink" title="Node.js内的实现"></a>Node.js内的实现</h2><p>Node自身提供的events模块，是事件发布/订阅模式的简单实现。<br>通过模块提供的监听、触发等方法实现。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//订阅</span></span><br><span class="line">emitter.<span class="title function_">on</span>(<span class="string">&quot;event1&quot;</span>, <span class="keyword">function</span> (<span class="params">message</span>) &#123;</span><br><span class="line">    <span class="comment">//TODO</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//发布</span></span><br><span class="line">emitter.<span class="title function_">emit</span>(<span class="string">&quot;event&quot;</span>, <span class="string">&quot;message&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>事件发布/订阅模式 可以将一个事件与多个回调关联起来。一个事件的发布，可以传递给所以正在侦听此事件的监听器(<em>数量设限，过多可能会导致内存泄漏</em>)执行。</p>
+<span id="more"></span>
+
+<h2 id="多异步依赖"><a href="#多异步依赖" class="headerlink" title="多异步依赖"></a>多异步依赖</h2><p>通过添加<strong>哨兵变量</strong>和<strong>偏函数</strong>的方式，来解决多异步协作的问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只有在times个异步都处理完后才能调用callback</span></span><br><span class="line"><span class="keyword">var</span> allDone = <span class="keyword">function</span> (<span class="params">times, callback</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span>,</span><br><span class="line">        results = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params">key, value</span>) &#123;</span><br><span class="line">        results[key] = value;</span><br><span class="line">        ++count;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (count === times) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(results);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> done = <span class="title function_">allDone</span>(times, callback);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可使用第三方模块 <code>EventProxy</code> 来解决事件订阅/发布模式的一些问题。<br><a target="_blank" rel="noopener" href="https://github.com/JacksonTian/eventproxy">github</a> or  <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/eventproxy">npm</a></p>
+</blockquote>
+<h1 id="Promise-Deferred-模式"><a href="#Promise-Deferred-模式" class="headerlink" title="Promise/Deferred 模式"></a>Promise/Deferred 模式</h1><blockquote>
+<p>Promise 是一种规范，Promise 都拥有一个叫做 then 的唯一接口，当 Promise 失败或成功时，它就会进行回调。<br>它代表了一种可能会长时间运行而且不一定必须完成的操作结果。这种模式不会阻塞和等待长时间的操作完成，而是返回一个代表了承诺的（promised）结果的对象。<br>Defferred 就是之后来处理回调的对象。二者紧密不可分割。</p>
+</blockquote>
+<p>Promise对象只要具备then()方法即可，对于then()方法，有以下几点要求：</p>
+<ul>
+<li>接受完成态、错误态的回调方法。</li>
+<li>可选的支持progress事件回调作为第三个方法。</li>
+<li>then()方法只接受function对象，其余对象直接被忽略。</li>
+<li>then()方法须继续返回Promise对象，以实现链式调用。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//then()方法的定义</span></span><br><span class="line"><span class="title function_">then</span>(fulfilledHandler, errorHandler, progressHandler)</span><br></pre></td></tr></table></figure>
+
+<p>Deferred对象（延迟对象）以用来实现触发执行被Promise.then()保存起来的回调函数的地方。</p>
+<p><img src="/img/Promise_Deferred_1.png" alt="Promise/Deferred模式 对象关系示意图"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">start</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Deffered</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title function_">offWork</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        d.<span class="title function_">resolve</span>(<span class="string">&#x27;done----offWork&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> d.<span class="property">promise</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">start</span>().<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Deffered</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title function_">backHome</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        d.<span class="title function_">resolve</span>(<span class="string">&#x27;done----backhome&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> d.<span class="property">promise</span>;</span><br><span class="line"></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Deffered</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title function_">eatFood</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        d.<span class="title function_">resolve</span>(<span class="string">&#x27;done----eatFood&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> d.<span class="property">promise</span>;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;eating&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="流程控制库"><a href="#流程控制库" class="headerlink" title="流程控制库"></a>流程控制库</h1><h2 id="尾触发与Next"><a href="#尾触发与Next" class="headerlink" title="尾触发与Next"></a>尾触发与Next</h2><blockquote>
+<p>除了事件和Promise外，还有一类方法需要手工调用才能持续执行的后续调用的，我们将此方法叫做尾触发。<br>常见的关键词是Next。</p>
+</blockquote>
+<p>这种方法常用在Connect中间件中使用。<br>通过对代码改造，在每个方法后面增加next参数，以连续调用下一个中间件，行成处理流。</p>
+<p>中间件机制使得在处理网络请求时，对请求进行过虑、验证、记录日志等功能，与具体业务代码解耦。</p>
+<p><em>使用尾触发会导致任务串行执行，将串行的逻辑扁平化，由此不能很好的发挥出异步的优势。</em></p>
+<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><h3 id="异步的串行执行"><a href="#异步的串行执行" class="headerlink" title="异步的串行执行"></a>异步的串行执行</h3><p>Sample：通过series()方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span>.<span class="title function_">series</span>([</span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file2.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file3.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;</span><br><span class="line">], <span class="keyword">function</span> (<span class="params">err, results</span>) &#123;</span><br><span class="line">    <span class="comment">//results =&gt; [file1, file2, file3]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>每个callback会在执行时将结果保存起来，然后执行下一个调用，当全部的调用结束，最后将全部的结果以数组的形式传递给最后的调用。过程中，有任何一个调用出现异常，就直接结束所有调用。</p>
+<h3 id="异步的并行执行"><a href="#异步的并行执行" class="headerlink" title="异步的并行执行"></a>异步的并行执行</h3><p>Sample：parallel()方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span>.<span class="title function_">parallel</span>([</span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file2.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file3.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;</span><br><span class="line">], <span class="keyword">function</span> (<span class="params">err, results</span>) &#123;</span><br><span class="line">    <span class="comment">//results =&gt; [file1, file2, file3]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>与series()类似，只是parallel()以并行方式执行。</p>
+<h3 id="异步调用的依赖处理"><a href="#异步调用的依赖处理" class="headerlink" title="异步调用的依赖处理"></a>异步调用的依赖处理</h3><p>Sample：waterfall()方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span>.<span class="title function_">parallel</span>([</span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, content</span>) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(err, content);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">         fs.<span class="title function_">readFile</span>(args, <span class="string">&#x27;UTF-8&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, content</span>) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(err, content);</span><br><span class="line">         &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">         fs.<span class="title function_">readFile</span>(args, <span class="string">&#x27;UTF-8&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, content</span>) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(err, content);</span><br><span class="line">         &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">], <span class="keyword">function</span> (<span class="params">err, results</span>) &#123;</span><br><span class="line">    <span class="comment">//results =&gt; results4</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>通过这种方法实现异步的依赖处理。异步函数依次执行，将异步方法得出的结果作为参数传递给下一个调用。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>详情用法见<a target="_blank" rel="noopener" href="http://caolan.github.io/async/">官方文档</a></p>
+<h2 id="step"><a href="#step" class="headerlink" title="step"></a>step</h2><h3 id="串行执行"><a href="#串行执行" class="headerlink" title="串行执行"></a>串行执行</h3><p>只有一个接口step，step接受任意数量的任务，所有任务一次串行执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Step</span>(</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">readFile1</span>(<span class="params"></span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">readFile2</span>(<span class="params">err, content</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file2&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">readFile3</span>(<span class="params">err, content</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file3&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">done</span>(<span class="params">err, results</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(results);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>在Step中用到了关键字this，他是Step内部的next()方法，将异步调用的结果传递给下一个任务作为参数并执行。</p>
+<h3 id="并行执行"><a href="#并行执行" class="headerlink" title="并行执行"></a>并行执行</h3><p>使用step中的parallel()方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Step</span>(</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">readFiles</span>(<span class="params"></span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>.<span class="title function_">parallel</span>());</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file2&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>.<span class="title function_">parallel</span>());</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">done</span>(<span class="params">err, res1, res2</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>并行执行，按异步调用结束的顺序，一次返回调用的结果。</p>
+<p><strong>值得注意的是，如果异步方法的结果传回的是多个参数，Step()将只会取前两个参数</strong></p>
+<h2 id="wind"><a href="#wind" class="headerlink" title="wind"></a>wind</h2><p>看了几个博客，都是一样的内容，目前还不太理解，暂时直接摘录的别人的博客内容。</p>
+<p>摘自：<a target="_blank" rel="noopener" href="http://purplebamboo.github.io/2014/04/08/nodejs-async/#wind-js">purplebamboo’s blog</a></p>
+<p>还有种比较知名的方式，是国内的程序员老赵的 wind.js, 它使用了一种完全不同的异步实现方式。前面的所有方式都要改变我们正常的编程习惯，但是 wind.js 不用。它提供了一些服务函数使得我们可以按照正常的思维去编程。</p>
+<p>下面是一个简单的冒泡排序的算法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> compare = <span class="keyword">function</span> (<span class="params">x, y</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x - y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> swap = <span class="keyword">function</span> (<span class="params">a, i, j</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> t = a[i]; a[i] = a[j]; a[j] = t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bubbleSort = <span class="keyword">function</span> (<span class="params">array</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; array.<span class="property">length</span> - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_">compare</span>(array[j], array[j + <span class="number">1</span>]) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="title function_">swap</span>(array, j, j + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>很简单就不讲解了，现在的问题是我们如果要做一个动画，一点点的展示这个过程呢。<br>于是我们需要给 compare 加个延时，并且 swap 后重绘数字展现。<br>可 javascript 是不支持 sleep 这样的休眠方法的。如果我们用 setTimeout 模拟，又不能保证比较的顺序的正确执行。</p>
+<p>可是有了 windjs 后我们就可以这么写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> compareAsync = <span class="built_in">eval</span>(<span class="title class_">Wind</span>.<span class="title function_">compile</span>(<span class="string">&quot;async&quot;</span>, <span class="keyword">function</span> (<span class="params">x, y</span>) &#123;</span><br><span class="line">    $await(<span class="title class_">Wind</span>.<span class="property">Async</span>.<span class="title function_">sleep</span>(<span class="number">10</span>)); <span class="comment">// 暂停10毫秒</span></span><br><span class="line">    <span class="keyword">return</span> x - y;</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> swapAsync = <span class="built_in">eval</span>(<span class="title class_">Wind</span>.<span class="title function_">compile</span>(<span class="string">&quot;async&quot;</span>, <span class="keyword">function</span> (<span class="params">a, i, j</span>) &#123;</span><br><span class="line">    $await(<span class="title class_">Wind</span>.<span class="property">Async</span>.<span class="title function_">sleep</span>(<span class="number">20</span>)); <span class="comment">// 暂停20毫秒</span></span><br><span class="line">    <span class="keyword">var</span> t = a[i]; a[i] = a[j]; a[j] = t;</span><br><span class="line">    <span class="title function_">paint</span>(a); <span class="comment">// 重绘数组</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bubbleSortAsync = <span class="built_in">eval</span>(<span class="title class_">Wind</span>.<span class="title function_">compile</span>(<span class="string">&quot;async&quot;</span>, <span class="keyword">function</span> (<span class="params">array</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; array.<span class="property">length</span> - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="comment">// 异步比较元素</span></span><br><span class="line">            <span class="keyword">var</span> r = $await(<span class="title function_">compareAsync</span>(array[j], array[j + <span class="number">1</span>]));</span><br><span class="line">            <span class="comment">// 异步交换元素</span></span><br><span class="line">            <span class="keyword">if</span> (r &gt; <span class="number">0</span>) $await(<span class="title function_">swapAsync</span>(array, j, j + <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+<p>注意其中最终要的几个辅助函数：</p>
+<ol>
+<li>eval(Wind.compile(“async”, func) 这个函数用来定义一个 “异步函数”。这样的函数定义方式是 “模板代码”，没有任何变化，可以认做是 “异步函数” 与 “普通函数” 的区别。</li>
+<li>Wind.Async.sleep() 这是 windjs 对于 settimeout 的一个封装，就是用上面的 eval(Wind.compile 来定义的。</li>
+<li>$await() 所有经过定义的异步函数，都可以使用这个方法 来等待异步函数的执行完毕。</li>
+</ol>
+<p>这样上面的代码就可以很容易的理解了。compare，swap 都被弄成了异步函数，然后使用 $await 等待他们的执行完毕。可以看到跟我们之前的写法比起来，实现思路几乎一样，只是多了些辅助函数。相当的创新。</p>
+<blockquote>
+<p>windjs 的实现原理，暂时没怎么看，这是一种预编译的思路。之后有空看看也来实现一个简单的 demo。</p>
+</blockquote>
+<br/>
+
+<p><strong>无聊小记</strong></p>
+<p>想起来以前看到别人写过的一个排序算法 —— sleepSort 挺搞笑的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">13</span>, <span class="number">12</span>, <span class="number">34</span>, <span class="number">11</span>, <span class="number">42</span>, <span class="number">23</span>, <span class="number">6</span>, <span class="number">32</span>, <span class="number">23</span>];</span><br><span class="line"></span><br><span class="line">arr.<span class="title function_">map</span>(<span class="function"><span class="params">num</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(num), num);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="generator"><a href="#generator" class="headerlink" title="generator"></a>generator</h2><p>直接看代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">fib</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">yield</span> a;</span><br><span class="line">        [a, b] = [b, a + b];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//one method</span></span><br><span class="line"><span class="keyword">let</span> [first, second, third, fourth, fifth, sixth] = <span class="title function_">fib</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(third); <span class="comment">//1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sixth); <span class="comment">//5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//the onther</span></span><br><span class="line"><span class="keyword">let</span> it = <span class="title function_">fib</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;0&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;1&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;1&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;2&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;3&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;5&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;8&#x27;, done: false&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>function* funcName(...params)&#123;...&#125;</code>    生成器函数 function generator</p>
+<p>不多说，详见<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Generator">MDN官方文档</a></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><blockquote>
+<p>异步编程，在性能问题上尤其是 io 处理上是它的优势，但是同时也是它的劣势，大部分人都无法很好的组织异步代码。于是就出现了一大堆的库，来给它擦屁股。</p>
+</blockquote>
+<br>
+
+<blockquote>
+<p>世界上本没有嵌套回调，写的人多了，也便有了。</p>
+</blockquote>
+<p></br></br></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>_YuLong
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blog.bitzo.cn/2017/06/06/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/" title="异步编程（二）">https://blog.bitzo.cn/2017/06/06/异步编程（二）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/Nodejs/" rel="tag"># Nodejs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/06/05/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" rel="prev" title="异步编程（一）">
+                  <i class="fa fa-chevron-left"></i> 异步编程（一）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/06/07/Node-JS%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6/" rel="next" title="Node.JS 内存控制">
+                  Node.JS 内存控制 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">苏ICP备17000035号-2 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">_YuLong</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
