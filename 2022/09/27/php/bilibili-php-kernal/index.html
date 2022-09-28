@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png">
+  <link rel="mask-icon" href="/img/favicon.png" color="#222">
+  <meta name="google-site-verification" content="q-nPu4JRSjk-bKvgq8PyiwApbY1AwsNQGgWmfA9gND4">
+  <meta name="baidu-site-verification" content="code-QiMbi74HEx">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.bitzo.cn","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":null,"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="BiliBili 深入 PHP 内核源码学习笔记   https:&#x2F;&#x2F;space.bilibili.com&#x2F;592837309&#x2F;channel&#x2F;collectiondetail?sid&#x3D;637954">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BiliBili 深入 PHP 内核源码学习笔记">
+<meta property="og:url" content="https://blog.bitzo.cn/2022/09/27/php/bilibili-php-kernal/index.html">
+<meta property="og:site_name" content="_YuLong&#39;s Blog">
+<meta property="og:description" content="BiliBili 深入 PHP 内核源码学习笔记   https:&#x2F;&#x2F;space.bilibili.com&#x2F;592837309&#x2F;channel&#x2F;collectiondetail?sid&#x3D;637954">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-27T02:53:28.000Z">
+<meta property="article:modified_time" content="2022-09-28T07:55:29.180Z">
+<meta property="article:author" content="_YuLong">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="PHP">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.bitzo.cn/2022/09/27/php/bilibili-php-kernal/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.bitzo.cn/2022/09/27/php/bilibili-php-kernal/","path":"2022/09/27/php/bilibili-php-kernal/","title":"BiliBili 深入 PHP 内核源码学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BiliBili 深入 PHP 内核源码学习笔记 | _YuLong's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQXM56KHR7"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-QQXM56KHR7","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?44dbcc2ca1ba18ff5151aea0209f6730"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">_YuLong's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个假的程序猿👨🏻‍💻</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">学习内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">2.</span> <span class="nav-text">PHP 生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E4%B8%AA%E6%89%A9%E5%B1%95%E6%84%9F%E5%8F%97%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-112-x68-x70-x40-x37-x2e-x31-php-cli"><span class="nav-number">2.1.</span> <span class="nav-text">编写个扩展感受生命周期 (php@7.1 php-cli)</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="_YuLong"
+      src="/img/avatar.jpg">
+  <p class="site-author-name" itemprop="name">_YuLong</p>
+  <div class="site-description" itemprop="description">后端 | 一个假的程序猿</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:bitzo@qq.com" title="E-Mail → mailto:bitzo@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/bitzo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.bitzo.cn/2022/09/27/php/bilibili-php-kernal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/avatar.jpg">
+      <meta itemprop="name" content="_YuLong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="_YuLong's Blog">
+      <meta itemprop="description" content="后端 | 一个假的程序猿">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BiliBili 深入 PHP 内核源码学习笔记 | _YuLong's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BiliBili 深入 PHP 内核源码学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-09-27 10:53:28" itemprop="dateCreated datePublished" datetime="2022-09-27T10:53:28+08:00">2022-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-28 15:55:29" itemprop="dateModified" datetime="2022-09-28T15:55:29+08:00">2022-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/09/27/php/bilibili-php-kernal/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/09/27/php/bilibili-php-kernal/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>BiliBili 深入 PHP 内核源码学习笔记 </p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://space.bilibili.com/592837309/channel/collectiondetail?sid=637954">https://space.bilibili.com/592837309/channel/collectiondetail?sid=637954</a></p>
+</blockquote>
+<span id="more"></span>
+<h1 id="学习内容"><a href="#学习内容" class="headerlink" title="学习内容"></a>学习内容</h1><ul>
+<li>0x01 变量<blockquote>
+<p>弱类型: 无需事先申明, 弱类型非无类型, 底层做了转换 -&gt; zval<br>强类型: 必须先申明后使用</p>
+</blockquote>
+</li>
+<li>0x02 函数<blockquote>
+<p>zend_function 结构: 用户函数/内部函数<br>模拟栈, 链表, call, ret</p>
+</blockquote>
+</li>
+<li>0x03 类及对象<blockquote>
+<p>成员属性 成员方法 类常量<br>对象创建, 复制, 销毁</p>
+</blockquote>
+</li>
+<li>0x04 字符串<blockquote>
+<p>C 字符串 -&gt; 字符数组<br>zend_string 核心结构 柔性数组</p>
+</blockquote>
+</li>
+<li>0x05 HashTable<blockquote>
+<p>PHP数组实现基础<br>镜面数据结构</p>
+</blockquote>
+</li>
+<li>0x06 GC<blockquote>
+<p>引用技术/写时复制<br>并不是所有的变量都会触发 GC</p>
+</blockquote>
+</li>
+<li>0x07 静态变量<blockquote>
+<p>非真正的静态变量, 而是指向静态变量的局部变量</p>
+</blockquote>
+</li>
+<li>0x08 全局变量<blockquote>
+<p>类似静态变量, 但略有不同</p>
+</blockquote>
+</li>
+<li>0x09 基础语法的实现<blockquote>
+<p>循环 判断(条件分支) jump系列 opcode 指令</p>
+</blockquote>
+</li>
+<li>0x10 扩展开发<blockquote>
+<p>PHP 模块, ZEND 扩展加载 运行原理<br>opcache 扩展源码</p>
+</blockquote>
+</li>
+<li>0x11 内存<blockquote>
+<p>内存池 线程安全</p>
+</blockquote>
+</li>
+<li>0x12 词法 语法<blockquote>
+<p>re2c yacc 状态机</p>
+</blockquote>
+</li>
+<li>0x13 ZVM 虚拟机<blockquote>
+<p>编译 执行</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="PHP-生命周期"><a href="#PHP-生命周期" class="headerlink" title="PHP 生命周期"></a>PHP 生命周期</h1><p>取决于具体的 SAPI 的实现: PHP-CLI 或 PHP-FPM<br>共同点: 都经历5个主要阶段<br>区别: 部分阶段执行次数不同</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">main()</span><br><span class="line">  -&gt; php_module_startup() </span><br><span class="line">  -&gt; php_request_startup() &lt;──┐</span><br><span class="line">  -&gt; php_execute_script()     │ fpm 多次循环 </span><br><span class="line">  -&gt; php_request_shutdown() ──┘ </span><br><span class="line">  -&gt; php_module_shutdown() </span><br></pre></td></tr></table></figure>
+
+<h2 id="编写个扩展感受生命周期-112-x68-x70-x40-x37-x2e-x31-php-cli"><a href="#编写个扩展感受生命周期-112-x68-x70-x40-x37-x2e-x31-php-cli" class="headerlink" title="编写个扩展感受生命周期 (&#112;&#x68;&#x70;&#x40;&#x37;&#x2e;&#x31; php-cli)"></a>编写个扩展感受生命周期 (<a href="mailto:&#112;&#x68;&#x70;&#x40;&#x37;&#x2e;&#x31;">&#112;&#x68;&#x70;&#x40;&#x37;&#x2e;&#x31;</a> php-cli)</h2><p><code>/path/to/php/ext</code> 源码的扩展目录: <code>ext_skel</code> 脚本, 可以初始化一个自定义扩展脚手架</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">./ext_skel --extname=EXT_NAME </span><br><span class="line"></span><br><span class="line">Creating directory EXT_NAME</span><br><span class="line">Creating basic files: config.m4 config.w32 .gitignore demo.c php_demo.h CREDITS EXPERIMENTAL tests/001.phpt demo.php [<span class="keyword">done</span>].</span><br><span class="line"></span><br><span class="line">To use your new extension, you will have to execute the following steps:</span><br><span class="line"></span><br><span class="line">1.  $ <span class="built_in">cd</span> ..</span><br><span class="line">2.  $ vi ext/demo/config.m4</span><br><span class="line">3.  $ ./buildconf</span><br><span class="line">4.  $ ./configure --[with|<span class="built_in">enable</span>]-demo</span><br><span class="line">5.  $ make</span><br><span class="line">6.  $ ./sapi/cli/php -f ext/demo/demo.php</span><br><span class="line">7.  $ vi ext/demo/demo.c</span><br><span class="line">8.  $ make</span><br><span class="line"></span><br><span class="line">Repeat steps 3-6 until you are satisfied with ext/demo/config.m4 and</span><br><span class="line">step 6 confirms that your module is compiled into PHP. Then, start writing</span><br><span class="line">code and repeat the last two steps as often as necessary.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PHP_MINIT(demo),</span><br><span class="line">PHP_MSHUTDOWN(demo),</span><br><span class="line">PHP_RINIT(demo),    <span class="comment">/* Replace with NULL if there&#x27;s nothing to do at request start */</span></span><br><span class="line">PHP_RSHUTDOWN(demo),    <span class="comment">/* Replace with NULL if there&#x27;s nothing to do at request end */</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的具体操作是跟着视频流程走了一遍, 部分内容不能理解, 主要是在实现扩展的 c 文件里找到定义的生命周期的四个步骤里加了自定义的输出语句, 然后编译安装后在命令行下执行 php 脚本, 发现会输出自定义的语句, 以此来感受 php 在命令行下执行的生命周期</p>
+<p>按照视频的教程所说, 空脚本执行后应该会输出的是: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ php test.php</span><br><span class="line">&gt;&gt; module init...</span><br><span class="line">&gt;&gt; request init...</span><br><span class="line">&gt;&gt; request shutdown...</span><br><span class="line">&gt;&gt; module shutdown...</span><br></pre></td></tr></table></figure>
+<p>但是我实际测试发现没有输出<code>module shutdown</code>, 但是执行如<code>php -i</code>或<code>php --version</code>之类的命令时, 则会输出<code>module shutdown</code>, 挺奇怪的, 暂时不理解原因, 先在这 mark 一下…</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>_YuLong
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blog.bitzo.cn/2022/09/27/php/bilibili-php-kernal/" title="BiliBili 深入 PHP 内核源码学习笔记">https://blog.bitzo.cn/2022/09/27/php/bilibili-php-kernal/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/PHP/" rel="tag"># PHP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/05/design-pattern/decorator/" rel="prev" title="【设计模式】装饰器模式">
+                  <i class="fa fa-chevron-left"></i> 【设计模式】装饰器模式
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">苏ICP备17000035号-2 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">_YuLong</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"yulong-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

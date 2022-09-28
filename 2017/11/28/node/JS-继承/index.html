@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png">
+  <link rel="mask-icon" href="/img/favicon.png" color="#222">
+  <meta name="google-site-verification" content="q-nPu4JRSjk-bKvgq8PyiwApbY1AwsNQGgWmfA9gND4">
+  <meta name="baidu-site-verification" content="code-QiMbi74HEx">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.bitzo.cn","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":null,"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="征服JavaScript面试系列：类继承和原型继承的区别 本文转载自：众成翻译译者：主小席链接：http:&#x2F;&#x2F;www.zcfy.cc&#x2F;article&#x2F;2185原文：https:&#x2F;&#x2F;medium.com&#x2F;javascript-scene&#x2F;master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转】征服JavaScript面试系列：类继承和原型继承的区别">
+<meta property="og:url" content="https://blog.bitzo.cn/2017/11/28/node/JS-%E7%BB%A7%E6%89%BF/index.html">
+<meta property="og:site_name" content="_YuLong&#39;s Blog">
+<meta property="og:description" content="征服JavaScript面试系列：类继承和原型继承的区别 本文转载自：众成翻译译者：主小席链接：http:&#x2F;&#x2F;www.zcfy.cc&#x2F;article&#x2F;2185原文：https:&#x2F;&#x2F;medium.com&#x2F;javascript-scene&#x2F;master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inh">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://p0.qhimg.com/t018bd413601b3b9a4a.jpg">
+<meta property="og:image" content="http://p0.qhimg.com/t0178c2bc72eeecf1c2.png">
+<meta property="og:image" content="http://p0.qhimg.com/t0115714d671a900a07.gif">
+<meta property="article:published_time" content="2017-11-28T12:28:34.000Z">
+<meta property="article:modified_time" content="2022-09-26T07:30:10.453Z">
+<meta property="article:author" content="_YuLong">
+<meta property="article:tag" content="继承">
+<meta property="article:tag" content="类">
+<meta property="article:tag" content="JS">
+<meta property="article:tag" content="转载">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://p0.qhimg.com/t018bd413601b3b9a4a.jpg">
+
+
+<link rel="canonical" href="https://blog.bitzo.cn/2017/11/28/node/JS-%E7%BB%A7%E6%89%BF/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.bitzo.cn/2017/11/28/node/JS-%E7%BB%A7%E6%89%BF/","path":"2017/11/28/node/JS-继承/","title":"【转】征服JavaScript面试系列：类继承和原型继承的区别"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【转】征服JavaScript面试系列：类继承和原型继承的区别 | _YuLong's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQXM56KHR7"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-QQXM56KHR7","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?44dbcc2ca1ba18ff5151aea0209f6730"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">_YuLong's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个假的程序猿👨🏻‍💻</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%81%E6%9C%8DJavaScript%E9%9D%A2%E8%AF%95%E7%B3%BB%E5%88%97%EF%BC%9A%E7%B1%BB%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">征服JavaScript面试系列：类继承和原型继承的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">类继承和原型继承有何区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%90%9E%E6%B8%85%E6%A5%9A%E7%B1%BB%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF%E5%BE%88%E9%87%8D%E8%A6%81%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">为什么搞清楚类继承和原型继承很重要？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E6%89%80%E6%9C%89%E7%9A%84%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F%E9%83%BD%E6%9C%89%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">1.2.1.</span> <span class="nav-text">是否所有的继承方式都有问题？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">三种不同的原型继承方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E5%AF%B9%E8%B1%A1%E7%BB%84%E5%90%88%E8%83%BD%E5%A4%9F%E9%81%BF%E5%85%8D%E8%84%86%E5%BC%B1%E5%9F%BA%E7%B1%BB%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.</span> <span class="nav-text">为什么说对象组合能够避免脆弱基类问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BA%86%E8%A7%A3%E5%8E%9F%E5%9E%8B%E4%BA%86%E5%90%97%EF%BC%9F"><span class="nav-number">1.4.1.</span> <span class="nav-text">你真的了解原型了吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stamps%EF%BC%9A%E5%8F%AF%E7%BB%84%E5%90%88%E5%BC%8F%E5%B7%A5%E5%8E%82%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.2.</span> <span class="nav-text">Stamps：可组合式工厂函数</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="_YuLong"
+      src="/img/avatar.jpg">
+  <p class="site-author-name" itemprop="name">_YuLong</p>
+  <div class="site-description" itemprop="description">后端 | 一个假的程序猿</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:bitzo@qq.com" title="E-Mail → mailto:bitzo@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/bitzo" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.bitzo.cn/2017/11/28/node/JS-%E7%BB%A7%E6%89%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/avatar.jpg">
+      <meta itemprop="name" content="_YuLong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="_YuLong's Blog">
+      <meta itemprop="description" content="后端 | 一个假的程序猿">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【转】征服JavaScript面试系列：类继承和原型继承的区别 | _YuLong's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【转】征服JavaScript面试系列：类继承和原型继承的区别
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-11-28 20:28:34" itemprop="dateCreated datePublished" datetime="2017-11-28T20:28:34+08:00">2017-11-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-26 15:30:10" itemprop="dateModified" datetime="2022-09-26T15:30:10+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%BD%AC%E8%BD%BD/" itemprop="url" rel="index"><span itemprop="name">转载</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%BD%AC%E8%BD%BD/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2017/11/28/node/JS-%E7%BB%A7%E6%89%BF/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/28/node/JS-继承/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="征服JavaScript面试系列：类继承和原型继承的区别"><a href="#征服JavaScript面试系列：类继承和原型继承的区别" class="headerlink" title="征服JavaScript面试系列：类继承和原型继承的区别"></a>征服JavaScript面试系列：类继承和原型继承的区别</h1><blockquote>
+<p>本文转载自：<a target="_blank" rel="noopener" href="http://www.zcfy.cc/">众成翻译</a><br>译者：<a target="_blank" rel="noopener" href="http://www.zcfy.cc/@msbhb5">主小席</a><br>链接：<a target="_blank" rel="noopener" href="http://www.zcfy.cc/article/2185">http://www.zcfy.cc/article/2185</a><br>原文：<a target="_blank" rel="noopener" href="https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9#.d84c324od">https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9#.d84c324od</a></p>
+</blockquote>
+<p><img src="http://p0.qhimg.com/t018bd413601b3b9a4a.jpg" alt="图-电子吉他-Feliciano Guimarães（CC BY 2.0"></p>
+<p>图-电子吉他-Feliciano Guimarães（CC BY 2.0）</p>
+<span id="more"></span>
+
+<blockquote>
+<p>“征服JavaScript面试”是我所写的一个系列文章，旨在帮助那些应聘中、高级JavaScript开发职位的读者们准备一些常见的面试问题。我自己在实际面试当中也经常会问到这类问题。系列的第一篇文章请参见<a target="_blank" rel="noopener" href="http://www.zcfy.cc/article/master-the-javascript-interview-what-is-a-closure-2127.html"><em>“什么是闭包”</em></a>。</p>
+</blockquote>
+<blockquote>
+<p>注：本文均以ES6标准做代码举例。如果想了解ES6，可以参阅<a target="_blank" rel="noopener" href="https://medium.com/javascript-scene/how-to-learn-es6-47d9a1ac2620"><em>“ES6学习指南”</em></a>。</p>
+</blockquote>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9#.d84c324od"><em>https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9#.d84c324od</em></a></p>
+<p>对象在JavaScript语言中使用十分广泛，学会如何有效地运用对象，有助于工作效率的提升。而不良的面向对象设计，可能会导致代码工程的失败，更严重的话还会引发<a target="_blank" rel="noopener" href="https://medium.com/javascript-scene/inside-the-dev-team-death-spiral-6a7ea255467b"><em>整个公司悲剧</em></a>。</p>
+<p>不同于其它大部分语言，JavaScript是基于<strong>原型</strong>的对象系统，而不是基于<strong>类</strong>。遗憾的是，大多数JavaScript开发者对其对象系统理解不到位，或者难以良好地应用，总想按照类的方式使用，其结果将导致代码里的对象使用混乱不堪。所以JavaScript开发者最好对<strong>原型和类</strong>都能有所了解。</p>
+<h2 id="类继承和原型继承有何区别？"><a href="#类继承和原型继承有何区别？" class="headerlink" title="类继承和原型继承有何区别？"></a>类继承和原型继承有何区别？</h2><p>这个问题比较复杂，大家有可能会在评论区各抒己见、莫衷一是。因此，列位看官需要打起十二分的精神学习个中差异，并将所学良好地运用到实践当中去。</p>
+<p><strong>类继承：可以把类比作一张蓝图，它描绘了被创建对象的属性及特征。</strong>。</p>
+<p>众所周知，使用_<code>new</code><em>关键字调用构造函数可以创建类的实例。在ES6中，不用</em><code>class</code><em>关键字也可以实现类继承。像Java语言中类的概念，从技术上来说在JavaScript中并不存在。不过JavaScript借鉴了构造函数的思想。ES6中的</em><code>class</code>_关键字，相当于是建立在构造函数之上的一种封装，其本质依旧是函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span> &#123;&#125;</span><br><span class="line"><span class="keyword">typeof</span> <span class="title class_">Foo</span> <span class="comment">// &#x27;function&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>虽然JavaScript中的类继承的实现建立在原型继承之上，但是并不意味二者_具有相同的功能：_</p>
+<p>JavaScript的类继承使用原型链来连接子类和父类的 <em><code>[[Prototype]]</code>，从而形成代理模式。通常情况下，</em><code>super()</code>_构造函数也会被调用。这种机制，形成了<strong>单一继承结构</strong>，以及<strong>面向对象设计中最紧密的耦合行为</strong>。</p>
+<blockquote>
+<p>“类之间的继承关系，<strong>导致了子类间的相互关联</strong>，从而形成了——基于层级的分类。”</p>
+</blockquote>
+<p><strong>原型继承：</strong> **<em>原型是工作对象的实例。</em>**对象直接从其他对象继承属性。</p>
+<p>原型继承模式下，对象实例可以由多个对象源所组成。这样就使得继承变得更加灵活且[[Prototype]]代理层级较浅。换言之，<strong>对于基于原型继承的面向对象设计，不会产生层级分类这样的副作用</strong>——这是区别于类继承的关键所在。</p>
+<p>对象实例通常由工厂函数或者_<code>Object.create()</code>_来创建，也可以直接使用Object字面定义。</p>
+<blockquote>
+<p>“<strong>原型是工作对象的实例</strong>。对象直接从其他对象继承属性。”</p>
+</blockquote>
+<h2 id="为什么搞清楚类继承和原型继承很重要？"><a href="#为什么搞清楚类继承和原型继承很重要？" class="headerlink" title="为什么搞清楚类继承和原型继承很重要？"></a>为什么搞清楚类继承和原型继承很重要？</h2><p>继承，本质上讲是一种代码重用机制——各种对象可以借此来共享代码。如果<strong>代码共享的方式</strong>选择不当，<strong>将会引发很多问题</strong>，如：</p>
+<p><strong>使用类继承，会产生父-子对象分类的副作用</strong></p>
+<p>这种类继承的层次划分体系，对于新用例将不可避免地出现问题。而且基类的过度派生，也会导致<strong>脆弱基类问题</strong>，其错误将难以修复。事实上，类继承会引发面向对象程序设计领域的诸多问题：</p>
+<ul>
+<li><p><strong>紧耦合问题</strong>（在面向对象设计中，类继承是耦合最严重的一种设计），紧耦合还会引发另一个问题：</p>
+</li>
+<li><p><strong>脆弱基类问题</strong></p>
+</li>
+<li><p><strong>层级僵化问题</strong>（新用例的出现，最终会使所有涉及到的继承层次上都出现问题）</p>
+</li>
+<li><p><strong>必然重复性问题</strong>（因为层级僵化，为了适应新用例，往往只能复制，而不能修改已有代码）</p>
+</li>
+<li><p><strong>大猩猩-香蕉问题</strong>（你想要的是一个香蕉，但是最终到的却是一个拿着香蕉的大猩猩，还有整个丛林）</p>
+</li>
+</ul>
+<p>对于这些问题我曾做过深入探讨：“类继承已是明日黄花——探究基于原型的面向对象编程思想”</p>
+<blockquote>
+<p>“优先选择对象组合而不是类继承。”<br>~先驱四人，<a target="_blank" rel="noopener" href="http://www.amazon.com/gp/product/0201633612?ie=UTF8&camp=213733&creative=393185&creativeASIN=0201633612&linkCode=shr&tag=eejs-20&linkId=WMUILDJNIUXY4NSH"><em>《设计模式：可复用面向对象软件之道》</em></a></p>
+</blockquote>
+<p>里面很好地总结了：</p>
+<h3 id="是否所有的继承方式都有问题？"><a href="#是否所有的继承方式都有问题？" class="headerlink" title="是否所有的继承方式都有问题？"></a>是否所有的继承方式都有问题？</h3><p>人们说“优先选择对象组合而不是继承”的时候，其实是要表达“优先选择对象组合而不是类继承”（引用自《设计模式》的原文）。该思想在面向对象设计领域属于普遍共识，因为<strong>类继承方式的先天缺陷</strong>，会导致很多问题。人们在谈到继承的时候，总是习惯性地省略<strong>类</strong>这个字，给人的感觉像是在针对所有的继承方式，而事实上并非如此。</p>
+<p>因为大部分的继承方式还是很棒的。</p>
+<h2 id="三种不同的原型继承方式"><a href="#三种不同的原型继承方式" class="headerlink" title="三种不同的原型继承方式"></a>三种不同的原型继承方式</h2><p>在深入探讨其他继承类型之前，还需要先仔细分析下我所说的<strong>类继承</strong>。</p>
+<p>你可以在Codepen上找到并测试下这段<a target="_blank" rel="noopener" href="http://codepen.io/ericelliott/pen/pgdPOb?editors=001"><em>示例程序</em></a>。</p>
+<p><em><code>BassAmp</code></em> 继承自 <em><code>GuitarAmp</code></em>, <em><code>ChannelStrip</code></em> 继承自 <em><code>BassAmp</code></em> 和 _<code>GuitarAmp</code>_。从这个例子我们可以看到面向对象设计发生问题的过程。ChannelStrip实际上并不是GuitarAmp的一种，而且它根本不需要一个cabinet的属性。一个比较好的解决办法是创建一个新的基类，供amps和strip来继承，但是这种方法依然有所局限。</p>
+<p>到最后，采用新建基类的策略也会失效。</p>
+<p>更好的办法就是通过类组合的方式，来继承那些真正需要的属性：</p>
+<p><a target="_blank" rel="noopener" href="http://codepen.io/ericelliott/pen/XXzadQ?editors=001"><em>修改后的代码</em></a>。</p>
+<p>认真看这段代码，你就会发现：通过对象组合，我们可以确切地保证对象可以按需继承。这一点是类继承模式不可能做到的。因为使用类继承的时候，子类会把需要的和不需要的属性统统继承过来。</p>
+<p>这时候你可能会问：“唔，是那么回事。可是这里头怎么没提到原型啊？”</p>
+<p>客官莫急，且听我一步步道来~首先你要知道，基于原型的面向对象设计方法总共有三种。</p>
+<ol>
+<li><p><strong>拼接继承：</strong> 是直接从一个对象拷贝属性到另一个对象的模式。被拷贝的原型通常被称为<strong>mixins</strong>。ES6为这个模式提供了一个方便的工具_<code>Object.assign()</code><em>。在ES6之前，一般使用Underscore/Lodash提供的</em><code>.extend()</code>，或者_ jQuery <em>中的<code>$.extend()</code>,</em> 来实现。上面那个对象组合的例子，采用的就是拼接继承的方式。</p>
+</li>
+<li><p><strong>原型代理：</strong>JavaScript中，一个对象可能包含一个指向原型的引用，该原型被称为<strong>代理</strong>。如果某个属性不存在于当前对象中，就会查找其代理原型。代理原型本身也会有自己的代理原型。这样就形成了一条原型链，沿着代理链向上查找，直到找到该属性，或者找到根代理_<code>Object.prototype</code><em>为止。原型就是这样，通过使用</em><code>new</code><em>关键字来创建实例以及</em><code>Constructor.prototype</code><em>前后勾连成一条继承链。当然，也可以使用</em><code>Object.create()</code>_来达到同样的目的，或者把它和拼接继承混用，从而可以把多个原型精简为单一代理，也可以做到在对象实例创建后继续扩展。</p>
+</li>
+<li><p><strong>函数继承：</strong>在JavaScript中，任何函数都可以用来创建对象。如果一个函数既不是构造函数，也不是 _<code>class</code>_，它就被称为<strong>工厂函数</strong>。函数继承的工作原理是：由工厂函数创建对象，并向该对象直接添加属性，借此来扩展对象（使用拼接继承）。函数继承的概念最先由道格拉斯·克罗克福德提出，不过这种继承方式在JavaScript中却早已有之。</p>
+</li>
+</ol>
+<p>这时候你会发现，<strong>拼接继承是JavaScript能够实现对象组合的秘诀</strong>，也使得原型代理和函数继承更加丰富多彩。</p>
+<p>多数人谈起JavaScript面向对象设计时，首先想到的都是原型代理。不过你看，可不仅仅只有原型代理。要取代类继承，原型代理还是得靠边站，<strong>对象组合才是主角</strong>。</p>
+<h2 id="为什么说对象组合能够避免脆弱基类问题"><a href="#为什么说对象组合能够避免脆弱基类问题" class="headerlink" title="为什么说对象组合能够避免脆弱基类问题"></a><strong>为什么说对象组合能够避免脆弱基类问题</strong></h2><p>要搞清楚这个问题，首先要知道脆弱基类是如何形成的：</p>
+<ol>
+<li><p>假设有基类_<code>A</code>_；</p>
+</li>
+<li><p>类_<code>B</code><em>继承自基类</em><code>A</code>_；</p>
+</li>
+<li><p>类_<code>C</code><em>继承自</em><code>B</code>_；</p>
+</li>
+<li><p>类_<code>D</code><em>也继承自</em><code>B</code>_；</p>
+</li>
+</ol>
+<p>在_<code>C</code><em>中调用</em><code>super</code><em>方法，该方法将执行类</em><code>B</code><em>中的代码。同样，</em><code>B</code><em>也调用</em><code>super</code><em>方法，该方法会执行</em><code>A</code>_中的代码。</p>
+<p>_<code>C</code><em>和</em><code>D</code><em>需要从</em><code>A</code><em>、</em><code>B</code><em>中继承一些无关联的特性。此时，</em><code>D</code><em>作为一个新用例，需要从</em><code>A</code><em>的初始化代码继承一些特性，这些特性与</em><code>C</code><em>的略有不同。为了应对以上需求，菜鸟开发人员会去调整</em><code>A</code><em>的初始化代码。于是乎，尽管**</em><code>D</code><em>可以正常工作**，但是</em><code>C</code>_原本的特性被破坏了。</p>
+<p><strong>上面这个例子中，_<code>A</code><em>和</em><code>B</code><em>为</em><code>C</code><em>和</em><code>D</code><em>提供各种特性。可是，</em><code>C</code><em>和</em><code>D</code><em>不需要来自</em><code>A</code><em>和</em><code>B</code><em>的所有特性，它们只是需要继承某些属性。但是，通过继承和调用</em><code>super</code>_方法，你无法选择性地继承，只能全部继承：</strong></p>
+<blockquote>
+<p>“面向对象语言的问题在于，子类会携带有父类所隐含的环境信息。<strong>你想要的是一个香蕉，但是最终到的却是一个拿着香蕉的大猩猩</strong>，以及整个丛林”——乔·阿姆斯特朗<a target="_blank" rel="noopener" href="http://www.amazon.com/gp/product/1430219483?ie=UTF8&camp=213733&creative=393185&creativeASIN=1430219483&linkCode=shr&tag=eejs-20&linkId=3MNWRRZU3C4Q4BDN"><em>《编程人生》</em></a></p>
+</blockquote>
+<p><strong>如果是使用对象组合的方式</strong><br>设想有如下几个特性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">feat1, feat2, feat3, feat4</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><em><code>C</code><em>需要特性</em><code>feat1</code></em> 和 <em><code>feat3</code><em>，而</em><code>D</code></em> 需要特性_<code>feat1</code>, <code>feat2</code>, <code>feat4</code>_：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> C = <span class="title function_">compose</span>(feat1, feat3);</span><br><span class="line"><span class="keyword">const</span> D = <span class="title function_">compose</span>(feat1, feat2, feat4);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>假如你发现_<code>D</code><em>需要的特性与</em><code>feat1</code><em><strong>略有出入</strong>。这时候无需改动</em><code>feat1</code><em>，**只要创建一个</em><code>feat1</code><em>的定制化版本**，就可以做到保持</em><code>feat2</code><em>和</em><code>feat4</code><em>特性的同时，也不会影响到</em><code>C</code>_，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> D = <span class="title function_">compose</span>(custom1, feat2, feat4);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>像这样灵活的优点，是类继承方式所不具备的。因为<strong>子类在继承的时候，会连带着整个类继承结构</strong>。</p>
+<p>这种情况下，要适应新的用例，要么复制现有类层划分（必然重复性问题），要么在现有类层结构的基础上进行重构，就又会导致<strong>脆弱基类问题</strong>。</p>
+<p>而采用对象组合的话，这两个问题都将迎刃而解。</p>
+<h3 id="你真的了解原型了吗？"><a href="#你真的了解原型了吗？" class="headerlink" title="你真的了解原型了吗？"></a>你真的了解原型了吗？</h3><p>采用先创建类和构造函数，然后再继承的方式，并不是<strong>正宗的原型继承</strong>，不过是<strong>使用原型来模拟类继承</strong>的方法罢了。这里有一些关于<a target="_blank" rel="noopener" href="https://medium.com/javascript-scene/common-misconceptions-about-inheritance-in-javascript-d5d9bab29b0a#.khem2m91q"><em>JavaScript中关于继承的常见误解</em></a>，供君参考。</p>
+<p>JavaScript中，类继承模式历史悠久，而且建立在灵活丰富的原型继承特性之上（ES6以上的版本亦然）。可是一旦使用了类继承，就再也享受不到原型灵活强大的特性了。<strong>类继承的所有问题都将始终如影随形无法摆脱</strong>。</p>
+<blockquote>
+<p>在JavaScript中使用类继承，是一种舍本逐末的行为。</p>
+</blockquote>
+<h3 id="Stamps：可组合式工厂函数"><a href="#Stamps：可组合式工厂函数" class="headerlink" title="Stamps：可组合式工厂函数"></a>Stamps：可组合式工厂函数</h3><p>多数情况下，对象组合是通过使用工厂函数来实现：工厂函数负责创建对象实例。如果工厂函数也可以组合呢？快查看<a target="_blank" rel="noopener" href="https://github.com/stampit-org/stamp-specification"><em>Stamp文档</em></a>找出答案吧。</p>
+<blockquote>
+<p><em>（译者注：感觉原文表达有些不尽兴。于是我自作主张地画了2个图便于读者理解。不足之处还请谅解和指正）</em><br><img src="http://p0.qhimg.com/t0178c2bc72eeecf1c2.png"><br>图：类继承</p>
+</blockquote>
+<blockquote>
+<p><em>说明：从图上可以直接看出单一继承关系、紧耦合以及层级分类的问题；其中，类8，只想继承五边形的属性，却得到了继承链上其它并不需要的属性——大猩猩/香蕉问题；类9只需要把五角星属性修改成四角形，导致需要修改基类1，从而影响整个继承树——脆弱基类/层级僵化问题；否则就需要为9新建基类——必然重复性问题。</em><br><img src="http://p0.qhimg.com/t0115714d671a900a07.gif"><br>图：原型继承/对象组合</p>
+</blockquote>
+<blockquote>
+<p><em>说明：采用原型继承/对象组合，可以避免复杂纵深的层级关系。当1需要四角星特性的时候，只需要组合新的特性即可，不会影响到其他实例。</em></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>_YuLong
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blog.bitzo.cn/2017/11/28/node/JS-%E7%BB%A7%E6%89%BF/" title="【转】征服JavaScript面试系列：类继承和原型继承的区别">https://blog.bitzo.cn/2017/11/28/node/JS-继承/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag"># 继承</a>
+              <a href="/tags/%E7%B1%BB/" rel="tag"># 类</a>
+              <a href="/tags/JS/" rel="tag"># JS</a>
+              <a href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag"># 转载</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/10/11/node/promise/" rel="prev" title="promise">
+                  <i class="fa fa-chevron-left"></i> promise
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/03/08/node/set-map/" rel="next" title="学习ES6： Set&Map">
+                  学习ES6： Set&Map <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">苏ICP备17000035号-2 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">_YuLong</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"yulong-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
