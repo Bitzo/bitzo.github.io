@@ -1,3 +1,4 @@
+https://blog.bitzo.cn/categories/index.html
 https://blog.bitzo.cn/2022/10/31/design-pattern/prototype/
 https://blog.bitzo.cn/2022/07/13/design-pattern/iterator/
 https://blog.bitzo.cn/2022/07/13/design-pattern/observer/
