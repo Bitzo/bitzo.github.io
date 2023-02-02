@@ -70,6 +70,196 @@
       </tags>
   </entry>
   <entry>
+    <title>【设计模式】适配器模式</title>
+    <url>/2022/07/10/design-pattern/adapter/</url>
+    <content><![CDATA[<p>结构型设计模式: 适配器模式 adapter</p>
+<span id="more"></span>
+
+<blockquote>
+<p>将一个类的接口转换成客户希望的另一个接口. 适配器模式使原本由于接口不兼容不能一起工作的那些类可以一起工作</p>
+</blockquote>
+<p>两种形式</p>
+<ul>
+<li>继承式</li>
+<li>组合式</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Standard</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">output</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChinaStandard</span> <span class="keyword">implements</span> <span class="title">Standard</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">output</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;220V&#x27;</span> . PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> <span class="keyword">implements</span> <span class="title">Standard</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$china_standard</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$china_standard</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;china_standard = <span class="variable">$china_standard</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">output</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;china_standard-&gt;<span class="title function_ invoke__">output</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>困惑点: 感觉装饰器模式和适配器模式有点像? </p>
+<ul>
+<li>装饰器模式: 不改变原有的功能, 不对原有的功能加限制, 不需要原有功能对新功能提供任何帮助, 仅在原有功能上添加新的功能</li>
+<li>适配器模式: 将一个类的接口转换成客户希望的另一个接口. 适配器模式使原本由于接口不兼容不能一起工作的那些类可以一起工作</li>
+</ul>
+<p>适配器模式与装饰器模式的区别</p>
+<p>装饰器与适配器都有一个别名叫做 包装模式(Wrapper)，它们看似都是起到包装一个类或对象的作用，但是使用它们的目的很不一一样。适配器模式的意义是要将一个接口转变成另一个接口，它的目的是通过改变接口来达到重复使用的目的。<br>而装饰器模式不是要改变被装饰对象的接口，而是恰恰要保持原有的接口，但是增强原有对象的功能，或者改变原有对象的处理方式而提升性能。所以这两个模式设计的目的是不同的。</p>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/296319765">适配器模式，装饰模式，代理模式异同，别再说看着都一样了！
+</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>适配器模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【设计模式】装饰器模式</title>
+    <url>/2022/07/05/design-pattern/decorator/</url>
+    <content><![CDATA[<p>结构性模式: 装饰模式 decorator</p>
+<span id="more"></span>
+
+<blockquote>
+<p>动态地给一个<strong>对象</strong>添加一些额外的职责, 就增加功能来说, 装饰器模式相比生成子类更灵活</p>
+</blockquote>
+<p>不改变原有的功能, 不对原有的功能加限制, 不需要原有功能对新功能提供任何帮助, 仅在原有功能上添加新的功能</p>
+<ul>
+<li>给老系统进行升级扩展</li>
+<li>不一定都是对同一个方法进行装饰，其实装饰者应该更多的用于对对象的装饰，对对象进行扩展, 增加功能方法, 削弱/减少功能方法</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">HouseBuilderInterface</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HouseBuilder</span> <span class="keyword">implements</span> <span class="title">HouseBuilderInterface</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;粉刷完成\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">HouseBuilderDecorator</span> <span class="keyword">implements</span> <span class="title">HouseBuilderInterface</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$houseBuilder</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">HouseBuilderInterface <span class="variable">$houseBuilder</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;houseBuilder = <span class="variable">$houseBuilder</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HouseBuilderDecoratorFloor</span> <span class="keyword">extends</span> <span class="title">HouseBuilderDecorator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;houseBuilder-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;铺完地板啦\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HouseBuilderDecoratorClean</span> <span class="keyword">extends</span> <span class="title">HouseBuilderDecorator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;houseBuilder-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;打扫好啦\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilder</span>();</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorFloor</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorClean</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br><span class="line"></span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilder</span>();</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorFloor</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorClean</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>装饰模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【设计模式】工厂模式</title>
+    <url>/2022/07/02/design-pattern/factory/</url>
+    <content><![CDATA[<p>创建型设计模式: 工厂模式 factory<br>简单工厂, 工厂方法, 抽象工厂</p>
+<span id="more"></span>
+
+<p>工厂模式</p>
+<ol>
+<li>简单工厂</li>
+<li>工厂方法</li>
+<li>抽象工厂</li>
+</ol>
+<h1 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h1><p>上层逻辑将需要的实例类型给到工厂, 工厂根据需求返回对应的对象. 一般通过条件分支语句实现</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// factory code</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProduct</span>(<span class="params"><span class="variable">$type</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$product</span> = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">switch</span>(<span class="variable">$type</span>) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="variable">$product</span> = <span class="keyword">new</span> <span class="title function_ invoke__">ProductA</span>();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="variable">$product</span> = <span class="keyword">new</span> <span class="title function_ invoke__">ProductB</span>();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$product</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// product code</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductA</span> <span class="keyword">implements</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductA&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductB</span> <span class="keyword">implements</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductB&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// super code</span></span><br><span class="line"><span class="variable">$type</span> = <span class="variable">$_REQUEST</span>[<span class="string">&#x27;type&#x27;</span>];</span><br><span class="line"><span class="variable">$factory</span> = <span class="keyword">new</span> <span class="title class_">Factory</span>();</span><br><span class="line"><span class="variable">$product</span> = <span class="variable">$factory</span>-&gt;<span class="title function_ invoke__">getProduct</span>(<span class="variable">$type</span>);</span><br><span class="line"><span class="variable">$product</span>-&gt;<span class="title function_ invoke__">show</span>();</span><br></pre></td></tr></table></figure>
+
+<h1 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h1><p>摒弃简单工厂中的条件分支判断, 将对象的实例交给具体的工厂<br>将对象的创建延迟到子类中进行, 不对外暴露具体实例化了哪个类<br><strong>一个具体工厂类只能生成一种具体的产品类的对象，不同的具体工厂生成不同的产品，而不是像简单工厂中那样，一个工厂类可以生成多种不同产品类的对象</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// factory code</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="built_in">static</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">factoryMethod</span>(<span class="params"><span class="variable">$type</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$factory</span> = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">switch</span>(<span class="variable">$type</span>) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="variable">$factory</span> = <span class="keyword">new</span> <span class="title function_ invoke__">FactoryA</span>();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="variable">$factory</span> = <span class="keyword">new</span> <span class="title function_ invoke__">FactoryB</span>();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$factory</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProduct</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FactoryA</span> <span class="keyword">extends</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProduct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_ invoke__">ProductA</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FactoryB</span> <span class="keyword">extends</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProduct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_ invoke__">ProductB</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// product code</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductA</span> <span class="keyword">implements</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductA&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductB</span> <span class="keyword">implements</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductB&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// super code</span></span><br><span class="line"><span class="variable">$factory</span> = <span class="title class_">Factory</span>::<span class="title function_ invoke__">factoryMethod</span>(<span class="number">2</span>);</span><br><span class="line"><span class="variable">$product</span> = <span class="variable">$factory</span>-&gt;<span class="title function_ invoke__">getProduct</span>();</span><br><span class="line"><span class="variable">$product</span>-&gt;<span class="title function_ invoke__">show</span>();</span><br></pre></td></tr></table></figure>
+
+<h1 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h1><p>和工厂方法很类似, 但是一个工厂可以生成多个产品</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// factory code</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="built_in">static</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">factoryMethod</span>(<span class="params"><span class="variable">$type</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$factory</span> = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">switch</span>(<span class="variable">$type</span>) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="variable">$factory</span> = <span class="keyword">new</span> <span class="title class_">Factory1</span>();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="variable">$factory</span> = <span class="keyword">new</span> <span class="title class_">Factory2</span>();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$factory</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProductA</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProductB</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory1</span> <span class="keyword">extends</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProductA</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ProductA1</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProductB</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ProductB1</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory2</span> <span class="keyword">extends</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProductA</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ProductA2</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProductB</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ProductB2</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// product code</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ProductA</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showA</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ProductB</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showB</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductA1</span> <span class="keyword">implements</span> <span class="title">ProductA</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showA</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductA1&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductA2</span> <span class="keyword">implements</span> <span class="title">ProductA</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showA</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductA2&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductB1</span> <span class="keyword">implements</span> <span class="title">ProductB</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showB</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductB1&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductB2</span> <span class="keyword">implements</span> <span class="title">ProductB</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showB</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductB2&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// super code</span></span><br><span class="line"><span class="variable">$factory</span> = <span class="title class_">Factory</span>::<span class="title function_ invoke__">factoryMethod</span>(<span class="number">2</span>);</span><br><span class="line"><span class="variable">$productA</span> = <span class="variable">$factory</span>-&gt;<span class="title function_ invoke__">getProductA</span>();</span><br><span class="line"><span class="variable">$productB</span> = <span class="variable">$factory</span>-&gt;<span class="title function_ invoke__">getProductB</span>();</span><br><span class="line"><span class="variable">$productA</span>-&gt;<span class="title function_ invoke__">showA</span>();</span><br><span class="line"><span class="variable">$productB</span>-&gt;<span class="title function_ invoke__">showB</span>();</span><br></pre></td></tr></table></figure>
+
+<h1 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h1><ol>
+<li><p>简单工厂<br>简单工厂方法中，包括一个“抽象产品类”（该类可以是接口Interface，也可以是实际的类Class），所有需要的产品类都是该“抽象产品类”的子类（如果是接口的话，那么就是说所有产品类都继承了该接口）。<br>简单工厂一般只包含一个具体的工厂类，由该工厂类生成所有的产品类的对象。生成产品类的方法，其内部一般是类似于switch的结构，根据输入的标志，选择创建不同类型的对象。由于不知道创建的对象到底是哪个类的，所以方法的返回值的类型是“抽象产品类”。</p>
+</li>
+<li><p>工厂方法<br>抽象工厂中，包括“抽象工厂类”和“抽象产品类”，同时包含不只一个工厂类。所有的工厂类都必须是“抽象工厂类”的子类，所有的产品都必须是“抽象产品类”的子类。<br>和简单工厂比起来，工厂方法一般是从抽象工厂开始的。一般都是在抽象工厂类中提供一个静态方法，由该方法根据输入的标志，生成不同的具体工厂类，然后由具体的产品类生成具体的产品。注意，一个具体工厂类只能生成一种具体的产品类的对象，不同的具体工厂生成不同的产品，而不是像简单工厂中那样，一个工厂类可以生成多种不同产品类的对象。可以这么理解，在选择不同的具体工厂类的时候，就选择了生成的产品，相对于简单工厂，相当于将选择产品的动作提前了。<br>因为不知道创建的具体工厂类到底是哪一个，所以生成具体工厂类的静态方法的返回值的类型是“抽象工厂类”。具体工厂类生成产品类的方法，返回值的类型也要求是“抽象产品类”（因为前端调用的时候，需要使用同样的代码来访问）。</p>
+</li>
+<li><p>抽象工厂<br>抽象工厂和工厂方法很类似，区别如下：<br><strong>工厂方法模式：</strong><br>一个抽象产品类，可以派生出多个具体产品类。<br>一个抽象工厂类，可以派生出多个具体工厂类。<br>每个具体工厂类只能创建一个具体产品类的实例。<br><strong>抽象工厂模式：</strong><br>多个抽象产品类，每个抽象产品类可以派生出多个具体产品类。<br>一个抽象工厂类，可以派生出多个具体工厂类。<br>每个具体工厂类可以创建多个具体产品类的实例。<br><strong>区别：</strong><br>工厂方法模式只有一个抽象产品类，而抽象工厂模式有多个。<br>工厂方法模式的具体工厂类只能创建一个具体产品类的实例，而抽象工厂模式可以创建多个</p>
+</li>
+</ol>
+<blockquote>
+<p><a href="https://www.pudn.com/news/628f8480bf399b7f351f046f.html">https://www.pudn.com/news/628f8480bf399b7f351f046f.html</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>工厂模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【设计模式】迭代器模式</title>
+    <url>/2022/07/13/design-pattern/iterator/</url>
+    <content><![CDATA[<p>行为型设计模式: 迭代器模式 iterator</p>
+<span id="more"></span>
+
+<blockquote>
+<p>提供一种方法顺序访问一个聚合对象中的各个元素, 而又不需要暴露该对象的内部表示. </p>
+</blockquote>
+<blockquote>
+<p>PHP 标准库 (SPL) 定义了一个最适合此模式的接口迭代器！往往也需要实现 Countable 接口，允许在迭代器对象上使用  count($object)  方法。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Aggregate</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">CreateIterator</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteAggregate</span> <span class="keyword">implements</span> <span class="title">Aggregate</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">CreateIterator</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$list</span> = [</span><br><span class="line">            <span class="string">&quot;a&quot;</span>,</span><br><span class="line">            <span class="string">&quot;b&quot;</span>,</span><br><span class="line">            <span class="string">&quot;c&quot;</span>,</span><br><span class="line">            <span class="string">&quot;d&quot;</span>,</span><br><span class="line">        ];</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ConcreteIterator</span>(<span class="variable">$list</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">MyIterator</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">First</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">Next</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">IsDone</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">CurrentItem</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteIterator</span> <span class="keyword">implements</span> <span class="title">MyIterator</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$list</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$index</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$list</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="keyword">list</span> = <span class="variable">$list</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;index = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">First</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;index = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">Next</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;index++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">IsDone</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;index &gt;= <span class="title function_ invoke__">count</span>(<span class="variable">$this</span>-&gt;<span class="keyword">list</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">CurrentItem</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;<span class="keyword">list</span>[<span class="variable language_">$this</span>-&gt;index];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$agreegate</span> = <span class="keyword">new</span> <span class="title class_">ConcreteAggregate</span>();</span><br><span class="line"><span class="variable">$iterator</span> = <span class="variable">$agreegate</span>-&gt;<span class="title function_ invoke__">CreateIterator</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (!<span class="variable">$iterator</span>-&gt;<span class="title function_ invoke__">IsDone</span>()) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$iterator</span>-&gt;<span class="title function_ invoke__">CurrentItem</span>(), PHP_EOL;</span><br><span class="line">    <span class="variable">$iterator</span>-&gt;<span class="title function_ invoke__">Next</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以在 <code>Subject</code> 里仅注重其本身的业务逻辑, 对于观察者模式下对观察者的notify 操作改为 implement 一个接口来实现, 使其 observable ?</p>
+<blockquote>
+<p>SPL扩展实现观察者模式-完整源码：<br><a href="https://github.com/zhangyue0503/designpatterns-php/blob/master/06.observer/source/spl_observer.php">https://github.com/zhangyue0503/designpatterns-php/blob/master/06.observer/source/spl_observer.php</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>迭代器模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【设计模式】观察者模式</title>
+    <url>/2022/07/13/design-pattern/observer/</url>
+    <content><![CDATA[<p>行为型设计模式: 观察者模式 observer</p>
+<span id="more"></span>
+
+<blockquote>
+<p>当对象的状态发生变化时，所有依赖于它的对象都得到通知并被自动更新。它使用的是低耦合的方式。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Observer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">Subject <span class="variable">$subject</span></span>): <span class="title">void</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteObserver</span> <span class="keyword">implements</span> <span class="title">Observer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$observerState</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">Subject <span class="variable">$subject</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;observerState = <span class="variable">$subject</span>-&gt;<span class="title function_ invoke__">getState</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;执行观察者操作！当前状态：&#x27;</span> . <span class="variable language_">$this</span>-&gt;observerState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subject</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$observers</span> = [];</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$stateNow</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">attach</span>(<span class="params">Observer <span class="variable">$observer</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="title function_ invoke__">array_push</span>(<span class="variable">$this</span>-&gt;observers, <span class="variable">$observer</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">detach</span>(<span class="params">Observer <span class="variable">$observer</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$position</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable language_">$this</span>-&gt;observers <span class="keyword">as</span> <span class="variable">$ob</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable">$ob</span> == <span class="variable">$observer</span>) &#123;</span><br><span class="line">                <span class="title function_ invoke__">array_splice</span>(<span class="variable">$this</span>-&gt;observers, (<span class="variable">$position</span>), <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            ++<span class="variable">$position</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">notify</span>(<span class="params"></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable language_">$this</span>-&gt;observers <span class="keyword">as</span> <span class="variable">$ob</span>) &#123;</span><br><span class="line">            <span class="variable">$ob</span>-&gt;<span class="title function_ invoke__">update</span>(<span class="variable">$this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteSubject</span> <span class="keyword">extends</span> <span class="title">Subject</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setState</span>(<span class="params"><span class="variable">$state</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;stateNow = <span class="variable">$state</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">notify</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getState</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;stateNow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以在 <code>Subject</code> 里仅注重其本身的业务逻辑, 对于观察者模式下对观察者的notify 操作改为 implement 一个接口来实现, 使其 observable ?</p>
+<blockquote>
+<p>SPL扩展实现观察者模式-完整源码：<br><a href="https://github.com/zhangyue0503/designpatterns-php/blob/master/06.observer/source/spl_observer.php">https://github.com/zhangyue0503/designpatterns-php/blob/master/06.observer/source/spl_observer.php</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>观察者模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【设计模式】原型模式</title>
+    <url>/2022/10/31/design-pattern/prototype/</url>
+    <content><![CDATA[<p>创建型模式: 原型模式 prototype</p>
+<span id="more"></span>
+
+<blockquote>
+<p>用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>原型模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【设计模式】策略模式</title>
+    <url>/2022/07/04/design-pattern/strategy/</url>
+    <content><![CDATA[<p>行为型设计模式: 策略模式 strategy</p>
+<span id="more"></span>
+
+<blockquote>
+<p>定义一系列的算法, 把他们一个个封装起来, 并且使他们可以相互替换</p>
+</blockquote>
+<p>分离「策略」并使他们之间能互相快速切换。此外，这种模式是一种不错的继承替代方案（替代使用扩展抽象类的方式）。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Algorithm</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StrategyAlgorithmA</span> <span class="keyword">implements</span> <span class="title">Algorithm</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;+&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StrategyAlgorithmB</span> <span class="keyword">implements</span> <span class="title">Algorithm</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;-&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">client</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResult</span>(<span class="params">Algorithm <span class="variable">$algorithm</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$algorithm</span>-&gt;<span class="title function_ invoke__">calculate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$client</span> = <span class="keyword">new</span> <span class="title class_">Client</span>();</span><br><span class="line"><span class="variable">$client</span> = <span class="keyword">new</span> <span class="title class_">Client</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$client</span>-&gt;<span class="title function_ invoke__">getResult</span>(<span class="keyword">new</span> <span class="title function_ invoke__">StrategyAlgorithmA</span>()) . PHP_EOL;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$client</span>-&gt;<span class="title function_ invoke__">getResult</span>(<span class="keyword">new</span> <span class="title function_ invoke__">StrategyAlgorithmB</span>()) . PHP_EOL;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>策略模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【转】10 JavaScript concepts</title>
     <url>/2017/07/23/node/10-JavaScript-concepts/</url>
     <content><![CDATA[<blockquote>
@@ -140,6 +330,79 @@
       <tags>
         <tag>javascript</tag>
         <tag>转载</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node.JS 内存控制</title>
+    <url>/2017/06/07/node/Node-JS%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<blockquote>
+<p>笔记部分内容摘自 《深入浅出 Node.JS》 —— 朴灵</p>
+</blockquote>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>一方面由于Node基于无阻塞、事件驱动，具有内存消耗低的特点，常用于开发高网络请求的应用，因此，在服务器端，需要对资源进行高效利用。另一方面node选择了V8，享受着V8带来的良好性能与语言特性，但是也受到了V8的一些限制。<br>如Node通过JS生成对象，V8会在内存中回收不再被使用的垃圾内存，一方面减少了内存管理的负担，但是另一方面也造成了内存管理上的不灵活，如V8在内存上有大小限制，32位系统上限制为0.7G，64位系统为1.4G，在应用中，若不小心触碰到这个极限值，会造成进程退出，并且在进行垃圾回收的过程中，会导致阻塞代码，程序暂停。</p>
+<blockquote>
+<p>这篇笔记，只是大致了解node里内存的控制、清理机制，具体如何使用、排查解决内存问题未做详细记录。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="内存控制"><a href="#内存控制" class="headerlink" title="内存控制"></a>内存控制</h1><h2 id="内存分代"><a href="#内存分代" class="headerlink" title="内存分代"></a>内存分代</h2><p>在V8中，所有的对象通过堆进行分配。</p>
+<p><img src="/img/%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6_1.png" alt="V8堆示意图"></p>
+<blockquote>
+<p>当我们声明变量并赋值时，程序会在堆中寻找空闲区分配内存，如果已经申请的堆空闲区已经不够分配新的对象，则继续申请堆内存，直到堆的大小超过V8的限制。</p>
+</blockquote>
+<p>在V8中，将内存分为新生（年轻）代以及老生（年老）代两种，进行分别控制。</p>
+<p><strong>新生代</strong>：存活事件较短的对象</p>
+<p><strong>老生代</strong>：存活时间较长或长期驻内存的对象。</p>
+<p><img src="/img/%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6_2.png" alt="V8分代示意图"></p>
+<p>如图所示，在V8的控制下，新生内存占较少的一部分，老生空间则占据了大部分堆空间。默认情况下，新生内存空间在64位和32位系统上分别占据32MB和16MB大小，而老生内存空间在64位和32位系统上分别占据1400MB和700MB大小。</p>
+<p><strong>但是，V8堆内存最大保留空间的配置代码，则是如下定义的：</strong></p>
+<blockquote>
+<p>The young generation consists of two semi spaces and we reserve twice the amount needed for those in order to ensure the new space can be aligned to its size</p>
+</blockquote>
+<p><strong>由此，年轻一代的堆内存空间是两倍的配置</strong></p>
+<p>可以手动设置，以使用更多的内存。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ node --max-old-space-size=1700 test.js //单位MB, 设置老生内存</span><br><span class="line"></span><br><span class="line">$ node --max-new-space-size=1024 test.js //单位kb, 设置新生内存</span><br></pre></td></tr></table></figure>
+
+<p><br/><br/></p>
+<h2 id="Scavenge-算法"><a href="#Scavenge-算法" class="headerlink" title="Scavenge 算法"></a>Scavenge 算法</h2><p><strong>Scavenge 算法主要用于新生代的垃圾回收</strong>，此算法采用的是一种<strong>复制</strong>的方式实现的垃圾回收算法。</p>
+<p>前面说了新生代的堆内存空间由两部分组成，分为正在使用中的堆内存空间，称为<strong>From空间</strong>，以及闲置的堆内存空间，称为<strong>To空间</strong>。顾名思义，Scavenge 算法正是一种在这两个空间中将仍存活的对象复制到闲置储存空间后释放原储存空间的方式。</p>
+<p><strong>过程：当分配对象时，显示在From空间中进行分配。当开始进行垃圾回收时，会检查From空间中的存活对象，这些存活对象将被复制到To空间中，而非存存活对象占用的空间会被释放，完成复制后，对换From空间和To空间，到此垃圾回收完成。</strong></p>
+<p>值得注意的是，如果一个对象经过多次复制依然存活，则会将此对象生存周期较长的对象，并移动到老生堆空间中，以采用其他算法进行管理，此过程称为对象的晋升。另外，当To空间使用占比已经超过限制，也会将新代对象直接移动到老生对象空间。</p>
+<p><strong>由于 Scavenge 算法将内存对象在两个空间中复制交换，因此，只能使用堆内存的一半空间，以牺牲空间换效率。 此算法也正因此，适合应用在新生代中，因为新生代的生命周期段，占用空间也较少。</strong></p>
+<p><br/><br/></p>
+<h2 id="Mark-Sweep-amp-Mark-Compact"><a href="#Mark-Sweep-amp-Mark-Compact" class="headerlink" title="Mark-Sweep &amp; Mark-Compact"></a>Mark-Sweep &amp; Mark-Compact</h2><p>大致了解了新生代的垃圾回收算法，下面了解下老生代的垃圾回收机制。</p>
+<br/>
+
+<h3 id="Mark-Sweep"><a href="#Mark-Sweep" class="headerlink" title="Mark-Sweep"></a>Mark-Sweep</h3><p>标记清除算法，通过一次遍历老生代对象，对所有还活着的对象进行标记，在遍历完成后实施清除，将所有未标记的对象清除。</p>
+<p>但是这种算法的问题也是显而易见的，在一次操作后，会造成内存空间的不连续状态，也就是内存碎片。这种情况下，当有一个稍大的对象要放入老生代空间中时，可能由于空间过于碎片化，而导致无法找到一块适合其大小的空间存放，便会造成又一次的垃圾回收，以期待回收出一块适合的区域存放该对象。由此，提出里另一个算法 Mark-Compact。</p>
+<br/>
+
+<h3 id="Mark-Compact"><a href="#Mark-Compact" class="headerlink" title="Mark-Compact"></a>Mark-Compact</h3><p>此算法是在 Mark-Sweep 的基础上改进而来的，差别在于对象在标记为死亡后，在整理的过程中，将或者的对象向一端移动，移动完成后，直接清理掉边界外的内存，这样就不会出现内存碎片的问题了。</p>
+<p><strong>在V8中，这两种回收策略并不是单独使用的，而是结合使用的</strong></p>
+<p><strong>V8主要使用Mark-Sweep，在空间不足以对从新生代晋升过来的对象进行分配时才使用Mark-Compact。</strong></p>
+<br/>
+
+<h3 id="Incremental-Marking"><a href="#Incremental-Marking" class="headerlink" title="Incremental Marking"></a>Incremental Marking</h3><p><strong>增量标记</strong></p>
+<blockquote>
+<p>为了避免出现 JS 应用逻辑与垃圾回收器看到的不一致的情况，垃圾回收的 3 种基本算法都需要将应用逻辑暂停下来，这种暂停成为 “全停顿”。V8 老生代通常配置得很大，且存活对象较多，全堆垃圾回收的各种动作造成的停顿会比较可怕，需要设法改善。V8 先从标记阶段入手，将原本一口气停顿完成的动作改为增量标记，也就是拆分为许多小 “步进”，没做完一步就让 JS 应用逻辑执行一小会儿。这种垃圾回收与应用逻辑交替执行直到标记完成，可以让最大停顿时间减少 5 倍左右。</p>
+</blockquote>
+<h1 id="关于使用内存"><a href="#关于使用内存" class="headerlink" title="关于使用内存"></a>关于使用内存</h1><p>参考《深入浅出NodeJS》一书的相关内容，主要说明了作用域及闭包等的使用，我觉得这些问题不如直接使用ES6的相关特性解决更加简单有效，还不容易让自己出错。所以这里就不再做繁琐的记录了。</p>
+<h1 id="关注内存与缓存"><a href="#关注内存与缓存" class="headerlink" title="关注内存与缓存"></a>关注内存与缓存</h1><blockquote>
+<p>勿将内存当做缓存使用。</p>
+</blockquote>
+<ol>
+<li>缓存限制（可使用现有的相关模块）、提供清空缓存队列的接口。</li>
+<li>使用redis、Memcached</li>
+</ol>
+<h1 id="内存泄漏排查"><a href="#内存泄漏排查" class="headerlink" title="内存泄漏排查"></a>内存泄漏排查</h1><p>使用相关模块：node-heapdump/node-memwatch </p>
+<p><em>说实话，我感觉以我现在的能力，我觉得我根本不会考虑到内存泄漏、检查等之类的问题→_→<br>所以暂时简单记录，以后如果需要的话，再详细补充</em></p>
+<p><br/><br/></p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>NodejS</tag>
       </tags>
   </entry>
   <entry>
@@ -271,79 +534,6 @@
         <tag>继承</tag>
         <tag>类</tag>
         <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Node.JS 内存控制</title>
-    <url>/2017/06/07/node/Node-JS%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<blockquote>
-<p>笔记部分内容摘自 《深入浅出 Node.JS》 —— 朴灵</p>
-</blockquote>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>一方面由于Node基于无阻塞、事件驱动，具有内存消耗低的特点，常用于开发高网络请求的应用，因此，在服务器端，需要对资源进行高效利用。另一方面node选择了V8，享受着V8带来的良好性能与语言特性，但是也受到了V8的一些限制。<br>如Node通过JS生成对象，V8会在内存中回收不再被使用的垃圾内存，一方面减少了内存管理的负担，但是另一方面也造成了内存管理上的不灵活，如V8在内存上有大小限制，32位系统上限制为0.7G，64位系统为1.4G，在应用中，若不小心触碰到这个极限值，会造成进程退出，并且在进行垃圾回收的过程中，会导致阻塞代码，程序暂停。</p>
-<blockquote>
-<p>这篇笔记，只是大致了解node里内存的控制、清理机制，具体如何使用、排查解决内存问题未做详细记录。</p>
-</blockquote>
-<span id="more"></span>
-
-<h1 id="内存控制"><a href="#内存控制" class="headerlink" title="内存控制"></a>内存控制</h1><h2 id="内存分代"><a href="#内存分代" class="headerlink" title="内存分代"></a>内存分代</h2><p>在V8中，所有的对象通过堆进行分配。</p>
-<p><img src="/img/%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6_1.png" alt="V8堆示意图"></p>
-<blockquote>
-<p>当我们声明变量并赋值时，程序会在堆中寻找空闲区分配内存，如果已经申请的堆空闲区已经不够分配新的对象，则继续申请堆内存，直到堆的大小超过V8的限制。</p>
-</blockquote>
-<p>在V8中，将内存分为新生（年轻）代以及老生（年老）代两种，进行分别控制。</p>
-<p><strong>新生代</strong>：存活事件较短的对象</p>
-<p><strong>老生代</strong>：存活时间较长或长期驻内存的对象。</p>
-<p><img src="/img/%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6_2.png" alt="V8分代示意图"></p>
-<p>如图所示，在V8的控制下，新生内存占较少的一部分，老生空间则占据了大部分堆空间。默认情况下，新生内存空间在64位和32位系统上分别占据32MB和16MB大小，而老生内存空间在64位和32位系统上分别占据1400MB和700MB大小。</p>
-<p><strong>但是，V8堆内存最大保留空间的配置代码，则是如下定义的：</strong></p>
-<blockquote>
-<p>The young generation consists of two semi spaces and we reserve twice the amount needed for those in order to ensure the new space can be aligned to its size</p>
-</blockquote>
-<p><strong>由此，年轻一代的堆内存空间是两倍的配置</strong></p>
-<p>可以手动设置，以使用更多的内存。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ node --max-old-space-size=1700 test.js //单位MB, 设置老生内存</span><br><span class="line"></span><br><span class="line">$ node --max-new-space-size=1024 test.js //单位kb, 设置新生内存</span><br></pre></td></tr></table></figure>
-
-<p><br/><br/></p>
-<h2 id="Scavenge-算法"><a href="#Scavenge-算法" class="headerlink" title="Scavenge 算法"></a>Scavenge 算法</h2><p><strong>Scavenge 算法主要用于新生代的垃圾回收</strong>，此算法采用的是一种<strong>复制</strong>的方式实现的垃圾回收算法。</p>
-<p>前面说了新生代的堆内存空间由两部分组成，分为正在使用中的堆内存空间，称为<strong>From空间</strong>，以及闲置的堆内存空间，称为<strong>To空间</strong>。顾名思义，Scavenge 算法正是一种在这两个空间中将仍存活的对象复制到闲置储存空间后释放原储存空间的方式。</p>
-<p><strong>过程：当分配对象时，显示在From空间中进行分配。当开始进行垃圾回收时，会检查From空间中的存活对象，这些存活对象将被复制到To空间中，而非存存活对象占用的空间会被释放，完成复制后，对换From空间和To空间，到此垃圾回收完成。</strong></p>
-<p>值得注意的是，如果一个对象经过多次复制依然存活，则会将此对象生存周期较长的对象，并移动到老生堆空间中，以采用其他算法进行管理，此过程称为对象的晋升。另外，当To空间使用占比已经超过限制，也会将新代对象直接移动到老生对象空间。</p>
-<p><strong>由于 Scavenge 算法将内存对象在两个空间中复制交换，因此，只能使用堆内存的一半空间，以牺牲空间换效率。 此算法也正因此，适合应用在新生代中，因为新生代的生命周期段，占用空间也较少。</strong></p>
-<p><br/><br/></p>
-<h2 id="Mark-Sweep-amp-Mark-Compact"><a href="#Mark-Sweep-amp-Mark-Compact" class="headerlink" title="Mark-Sweep &amp; Mark-Compact"></a>Mark-Sweep &amp; Mark-Compact</h2><p>大致了解了新生代的垃圾回收算法，下面了解下老生代的垃圾回收机制。</p>
-<br/>
-
-<h3 id="Mark-Sweep"><a href="#Mark-Sweep" class="headerlink" title="Mark-Sweep"></a>Mark-Sweep</h3><p>标记清除算法，通过一次遍历老生代对象，对所有还活着的对象进行标记，在遍历完成后实施清除，将所有未标记的对象清除。</p>
-<p>但是这种算法的问题也是显而易见的，在一次操作后，会造成内存空间的不连续状态，也就是内存碎片。这种情况下，当有一个稍大的对象要放入老生代空间中时，可能由于空间过于碎片化，而导致无法找到一块适合其大小的空间存放，便会造成又一次的垃圾回收，以期待回收出一块适合的区域存放该对象。由此，提出里另一个算法 Mark-Compact。</p>
-<br/>
-
-<h3 id="Mark-Compact"><a href="#Mark-Compact" class="headerlink" title="Mark-Compact"></a>Mark-Compact</h3><p>此算法是在 Mark-Sweep 的基础上改进而来的，差别在于对象在标记为死亡后，在整理的过程中，将或者的对象向一端移动，移动完成后，直接清理掉边界外的内存，这样就不会出现内存碎片的问题了。</p>
-<p><strong>在V8中，这两种回收策略并不是单独使用的，而是结合使用的</strong></p>
-<p><strong>V8主要使用Mark-Sweep，在空间不足以对从新生代晋升过来的对象进行分配时才使用Mark-Compact。</strong></p>
-<br/>
-
-<h3 id="Incremental-Marking"><a href="#Incremental-Marking" class="headerlink" title="Incremental Marking"></a>Incremental Marking</h3><p><strong>增量标记</strong></p>
-<blockquote>
-<p>为了避免出现 JS 应用逻辑与垃圾回收器看到的不一致的情况，垃圾回收的 3 种基本算法都需要将应用逻辑暂停下来，这种暂停成为 “全停顿”。V8 老生代通常配置得很大，且存活对象较多，全堆垃圾回收的各种动作造成的停顿会比较可怕，需要设法改善。V8 先从标记阶段入手，将原本一口气停顿完成的动作改为增量标记，也就是拆分为许多小 “步进”，没做完一步就让 JS 应用逻辑执行一小会儿。这种垃圾回收与应用逻辑交替执行直到标记完成，可以让最大停顿时间减少 5 倍左右。</p>
-</blockquote>
-<h1 id="关于使用内存"><a href="#关于使用内存" class="headerlink" title="关于使用内存"></a>关于使用内存</h1><p>参考《深入浅出NodeJS》一书的相关内容，主要说明了作用域及闭包等的使用，我觉得这些问题不如直接使用ES6的相关特性解决更加简单有效，还不容易让自己出错。所以这里就不再做繁琐的记录了。</p>
-<h1 id="关注内存与缓存"><a href="#关注内存与缓存" class="headerlink" title="关注内存与缓存"></a>关注内存与缓存</h1><blockquote>
-<p>勿将内存当做缓存使用。</p>
-</blockquote>
-<ol>
-<li>缓存限制（可使用现有的相关模块）、提供清空缓存队列的接口。</li>
-<li>使用redis、Memcached</li>
-</ol>
-<h1 id="内存泄漏排查"><a href="#内存泄漏排查" class="headerlink" title="内存泄漏排查"></a>内存泄漏排查</h1><p>使用相关模块：node-heapdump/node-memwatch </p>
-<p><em>说实话，我感觉以我现在的能力，我觉得我根本不会考虑到内存泄漏、检查等之类的问题→_→<br>所以暂时简单记录，以后如果需要的话，再详细补充</em></p>
-<p><br/><br/></p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>NodejS</tag>
       </tags>
   </entry>
   <entry>
@@ -613,6 +803,46 @@ call/apply/bind 总体上都是改变调用对象的this指向。
       <tags>
         <tag>笔记</tag>
         <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习ES6：let&amp;const</title>
+    <url>/2017/07/18/node/let-and-const/</url>
+    <content><![CDATA[<blockquote>
+<p>参考 <a href="http://es6.ruanyifeng.com/">阮一峰 《ES6 标准入门》</a> </p>
+</blockquote>
+<h1 id="let"><a href="#let" class="headerlink" title="let"></a>let</h1><h2 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h2><ul>
+<li>块级作用域：在ES5及以前，JS只有全局作用域及函数作用域，<code>let</code>则为JS提供了<strong>块级作用域</strong>。</li>
+<li>变量提升：<code>let</code>声明的变量<strong>不会提升</strong>。</li>
+<li>锁区：<code>let</code>声明的变量会暂时<strong>锁定</strong>其存在的作用域。</li>
+<li>不允许重复声明：<code>let</code>声明的变量只能在声明<strong>之后</strong>使用且<strong>不允许重复声明</strong>。</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><blockquote>
+<p><a href="http://www.bilibili.com/video/av6698380/index_1.html">http://www.bilibili.com/video/av6698380/index_1.html</a></p>
+</blockquote>
+<p><embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=6698380&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed></p>
+<br>
+
+<h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1><h2 id="简要说明-1"><a href="#简要说明-1" class="headerlink" title="简要说明"></a>简要说明</h2><ul>
+<li>声明全局变量，必须<strong>初始化</strong>。</li>
+<li>全局变量在其作用于下有效，同样不会变量提升，<strong>不能重新赋值</strong>。</li>
+</ul>
+<p><strong>常量不变，不能重新赋值是指常量本身的值（对简单变量来说，如<code>string</code>、<code>boolean</code>等，值不变，对于引用类型来说是引用指向不变）不能改变。<br>引用类型指向的对象里的属性可以改变值。</strong></p>
+<h2 id="视频-1"><a href="#视频-1" class="headerlink" title="视频"></a>视频</h2><blockquote>
+<p><a href="http://www.bilibili.com/video/av6698380/index_2.html">http://www.bilibili.com/video/av6698380/index_2.html</a></p>
+</blockquote>
+<p><embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=6698380&page=2" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed></p>
+<p><br><br></p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>nodejs</tag>
+        <tag>es6</tag>
       </tags>
   </entry>
   <entry>
@@ -1751,7 +1981,7 @@ call/apply/bind 总体上都是改变调用对象的this指向。
 <h1 id="PHP-生命周期"><a href="#PHP-生命周期" class="headerlink" title="PHP 生命周期"></a>PHP 生命周期</h1><p>取决于具体的 SAPI 的实现: PHP-CLI 或 PHP-FPM<br>共同点: 都经历5个主要阶段<br>区别: 部分阶段执行次数不同</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">main()</span><br><span class="line">  -&gt; php_module_startup() </span><br><span class="line">  -&gt; php_request_startup() &lt;──┐</span><br><span class="line">  -&gt; php_execute_script()     │ fpm 多次循环 </span><br><span class="line">  -&gt; php_request_shutdown() ──┘ </span><br><span class="line">  -&gt; php_module_shutdown() </span><br></pre></td></tr></table></figure>
 
-<h2 id="编写个扩展感受生命周期-112-x68-x70-64-55-x2e-49-php-cli"><a href="#编写个扩展感受生命周期-112-x68-x70-64-55-x2e-49-php-cli" class="headerlink" title="编写个扩展感受生命周期 (&#112;&#x68;&#x70;&#64;&#55;&#x2e;&#49; php-cli)"></a>编写个扩展感受生命周期 (<a href="mailto:&#112;&#x68;&#x70;&#64;&#55;&#x2e;&#49;">&#112;&#x68;&#x70;&#64;&#55;&#x2e;&#49;</a> php-cli)</h2><p><code>/path/to/php/ext</code> 源码的扩展目录: <code>ext_skel</code> 脚本, 可以初始化一个自定义扩展脚手架</p>
+<h2 id="编写个扩展感受生命周期-x70-x68-112-64-55-x2e-49-php-cli"><a href="#编写个扩展感受生命周期-x70-x68-112-64-55-x2e-49-php-cli" class="headerlink" title="编写个扩展感受生命周期 (&#x70;&#x68;&#112;&#64;&#55;&#x2e;&#49; php-cli)"></a>编写个扩展感受生命周期 (<a href="mailto:&#x70;&#x68;&#112;&#64;&#55;&#x2e;&#49;">&#x70;&#x68;&#112;&#64;&#55;&#x2e;&#49;</a> php-cli)</h2><p><code>/path/to/php/ext</code> 源码的扩展目录: <code>ext_skel</code> 脚本, 可以初始化一个自定义扩展脚手架</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./ext_skel --extname=EXT_NAME </span><br><span class="line"></span><br><span class="line">Creating directory EXT_NAME</span><br><span class="line">Creating basic files: config.m4 config.w32 .gitignore demo.c php_demo.h CREDITS EXPERIMENTAL tests/001.phpt demo.php [<span class="keyword">done</span>].</span><br><span class="line"></span><br><span class="line">To use your new extension, you will have to execute the following steps:</span><br><span class="line"></span><br><span class="line">1.  $ <span class="built_in">cd</span> ..</span><br><span class="line">2.  $ vi ext/demo/config.m4</span><br><span class="line">3.  $ ./buildconf</span><br><span class="line">4.  $ ./configure --[with|<span class="built_in">enable</span>]-demo</span><br><span class="line">5.  $ make</span><br><span class="line">6.  $ ./sapi/cli/php -f ext/demo/demo.php</span><br><span class="line">7.  $ vi ext/demo/demo.c</span><br><span class="line">8.  $ make</span><br><span class="line"></span><br><span class="line">Repeat steps 3-6 until you are satisfied with ext/demo/config.m4 and</span><br><span class="line">step 6 confirms that your module is compiled into PHP. Then, start writing</span><br><span class="line">code and repeat the last two steps as often as necessary.</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">PHP_MINIT(demo),</span><br><span class="line">PHP_MSHUTDOWN(demo),</span><br><span class="line">PHP_RINIT(demo),    <span class="comment">/* Replace with NULL if there&#x27;s nothing to do at request start */</span></span><br><span class="line">PHP_RSHUTDOWN(demo),    <span class="comment">/* Replace with NULL if there&#x27;s nothing to do at request end */</span></span><br></pre></td></tr></table></figure>
@@ -1767,236 +1997,6 @@ call/apply/bind 总体上都是改变调用对象的this指向。
       <tags>
         <tag>笔记</tag>
         <tag>PHP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【设计模式】工厂模式</title>
-    <url>/2022/07/02/design-pattern/factory/</url>
-    <content><![CDATA[<p>创建型设计模式: 工厂模式 factory<br>简单工厂, 工厂方法, 抽象工厂</p>
-<span id="more"></span>
-
-<p>工厂模式</p>
-<ol>
-<li>简单工厂</li>
-<li>工厂方法</li>
-<li>抽象工厂</li>
-</ol>
-<h1 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h1><p>上层逻辑将需要的实例类型给到工厂, 工厂根据需求返回对应的对象. 一般通过条件分支语句实现</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// factory code</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProduct</span>(<span class="params"><span class="variable">$type</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$product</span> = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">switch</span>(<span class="variable">$type</span>) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="variable">$product</span> = <span class="keyword">new</span> <span class="title function_ invoke__">ProductA</span>();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="variable">$product</span> = <span class="keyword">new</span> <span class="title function_ invoke__">ProductB</span>();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$product</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// product code</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductA</span> <span class="keyword">implements</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductA&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductB</span> <span class="keyword">implements</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductB&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// super code</span></span><br><span class="line"><span class="variable">$type</span> = <span class="variable">$_REQUEST</span>[<span class="string">&#x27;type&#x27;</span>];</span><br><span class="line"><span class="variable">$factory</span> = <span class="keyword">new</span> <span class="title class_">Factory</span>();</span><br><span class="line"><span class="variable">$product</span> = <span class="variable">$factory</span>-&gt;<span class="title function_ invoke__">getProduct</span>(<span class="variable">$type</span>);</span><br><span class="line"><span class="variable">$product</span>-&gt;<span class="title function_ invoke__">show</span>();</span><br></pre></td></tr></table></figure>
-
-<h1 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h1><p>摒弃简单工厂中的条件分支判断, 将对象的实例交给具体的工厂<br>将对象的创建延迟到子类中进行, 不对外暴露具体实例化了哪个类<br><strong>一个具体工厂类只能生成一种具体的产品类的对象，不同的具体工厂生成不同的产品，而不是像简单工厂中那样，一个工厂类可以生成多种不同产品类的对象</strong></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// factory code</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="built_in">static</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">factoryMethod</span>(<span class="params"><span class="variable">$type</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$factory</span> = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">switch</span>(<span class="variable">$type</span>) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="variable">$factory</span> = <span class="keyword">new</span> <span class="title function_ invoke__">FactoryA</span>();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="variable">$factory</span> = <span class="keyword">new</span> <span class="title function_ invoke__">FactoryB</span>();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$factory</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProduct</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FactoryA</span> <span class="keyword">extends</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProduct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_ invoke__">ProductA</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FactoryB</span> <span class="keyword">extends</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProduct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_ invoke__">ProductB</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// product code</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductA</span> <span class="keyword">implements</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductA&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductB</span> <span class="keyword">implements</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductB&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// super code</span></span><br><span class="line"><span class="variable">$factory</span> = <span class="title class_">Factory</span>::<span class="title function_ invoke__">factoryMethod</span>(<span class="number">2</span>);</span><br><span class="line"><span class="variable">$product</span> = <span class="variable">$factory</span>-&gt;<span class="title function_ invoke__">getProduct</span>();</span><br><span class="line"><span class="variable">$product</span>-&gt;<span class="title function_ invoke__">show</span>();</span><br></pre></td></tr></table></figure>
-
-<h1 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h1><p>和工厂方法很类似, 但是一个工厂可以生成多个产品</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// factory code</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="built_in">static</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">factoryMethod</span>(<span class="params"><span class="variable">$type</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$factory</span> = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">switch</span>(<span class="variable">$type</span>) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="variable">$factory</span> = <span class="keyword">new</span> <span class="title class_">Factory1</span>();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="variable">$factory</span> = <span class="keyword">new</span> <span class="title class_">Factory2</span>();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$factory</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProductA</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProductB</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory1</span> <span class="keyword">extends</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProductA</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ProductA1</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProductB</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ProductB1</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory2</span> <span class="keyword">extends</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProductA</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ProductA2</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getProductB</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ProductB2</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// product code</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ProductA</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showA</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ProductB</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showB</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductA1</span> <span class="keyword">implements</span> <span class="title">ProductA</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showA</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductA1&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductA2</span> <span class="keyword">implements</span> <span class="title">ProductA</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showA</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductA2&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductB1</span> <span class="keyword">implements</span> <span class="title">ProductB</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showB</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductB1&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductB2</span> <span class="keyword">implements</span> <span class="title">ProductB</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showB</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Show ProductB2&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// super code</span></span><br><span class="line"><span class="variable">$factory</span> = <span class="title class_">Factory</span>::<span class="title function_ invoke__">factoryMethod</span>(<span class="number">2</span>);</span><br><span class="line"><span class="variable">$productA</span> = <span class="variable">$factory</span>-&gt;<span class="title function_ invoke__">getProductA</span>();</span><br><span class="line"><span class="variable">$productB</span> = <span class="variable">$factory</span>-&gt;<span class="title function_ invoke__">getProductB</span>();</span><br><span class="line"><span class="variable">$productA</span>-&gt;<span class="title function_ invoke__">showA</span>();</span><br><span class="line"><span class="variable">$productB</span>-&gt;<span class="title function_ invoke__">showB</span>();</span><br></pre></td></tr></table></figure>
-
-<h1 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h1><ol>
-<li><p>简单工厂<br>简单工厂方法中，包括一个“抽象产品类”（该类可以是接口Interface，也可以是实际的类Class），所有需要的产品类都是该“抽象产品类”的子类（如果是接口的话，那么就是说所有产品类都继承了该接口）。<br>简单工厂一般只包含一个具体的工厂类，由该工厂类生成所有的产品类的对象。生成产品类的方法，其内部一般是类似于switch的结构，根据输入的标志，选择创建不同类型的对象。由于不知道创建的对象到底是哪个类的，所以方法的返回值的类型是“抽象产品类”。</p>
-</li>
-<li><p>工厂方法<br>抽象工厂中，包括“抽象工厂类”和“抽象产品类”，同时包含不只一个工厂类。所有的工厂类都必须是“抽象工厂类”的子类，所有的产品都必须是“抽象产品类”的子类。<br>和简单工厂比起来，工厂方法一般是从抽象工厂开始的。一般都是在抽象工厂类中提供一个静态方法，由该方法根据输入的标志，生成不同的具体工厂类，然后由具体的产品类生成具体的产品。注意，一个具体工厂类只能生成一种具体的产品类的对象，不同的具体工厂生成不同的产品，而不是像简单工厂中那样，一个工厂类可以生成多种不同产品类的对象。可以这么理解，在选择不同的具体工厂类的时候，就选择了生成的产品，相对于简单工厂，相当于将选择产品的动作提前了。<br>因为不知道创建的具体工厂类到底是哪一个，所以生成具体工厂类的静态方法的返回值的类型是“抽象工厂类”。具体工厂类生成产品类的方法，返回值的类型也要求是“抽象产品类”（因为前端调用的时候，需要使用同样的代码来访问）。</p>
-</li>
-<li><p>抽象工厂<br>抽象工厂和工厂方法很类似，区别如下：<br><strong>工厂方法模式：</strong><br>一个抽象产品类，可以派生出多个具体产品类。<br>一个抽象工厂类，可以派生出多个具体工厂类。<br>每个具体工厂类只能创建一个具体产品类的实例。<br><strong>抽象工厂模式：</strong><br>多个抽象产品类，每个抽象产品类可以派生出多个具体产品类。<br>一个抽象工厂类，可以派生出多个具体工厂类。<br>每个具体工厂类可以创建多个具体产品类的实例。<br><strong>区别：</strong><br>工厂方法模式只有一个抽象产品类，而抽象工厂模式有多个。<br>工厂方法模式的具体工厂类只能创建一个具体产品类的实例，而抽象工厂模式可以创建多个</p>
-</li>
-</ol>
-<blockquote>
-<p><a href="https://www.pudn.com/news/628f8480bf399b7f351f046f.html">https://www.pudn.com/news/628f8480bf399b7f351f046f.html</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-        <tag>工厂模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【设计模式】策略模式</title>
-    <url>/2022/07/04/design-pattern/strategy/</url>
-    <content><![CDATA[<p>行为型设计模式: 策略模式 strategy</p>
-<span id="more"></span>
-
-<blockquote>
-<p>定义一系列的算法, 把他们一个个封装起来, 并且使他们可以相互替换</p>
-</blockquote>
-<p>分离「策略」并使他们之间能互相快速切换。此外，这种模式是一种不错的继承替代方案（替代使用扩展抽象类的方式）。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Algorithm</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StrategyAlgorithmA</span> <span class="keyword">implements</span> <span class="title">Algorithm</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;+&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StrategyAlgorithmB</span> <span class="keyword">implements</span> <span class="title">Algorithm</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;-&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">client</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResult</span>(<span class="params">Algorithm <span class="variable">$algorithm</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$algorithm</span>-&gt;<span class="title function_ invoke__">calculate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$client</span> = <span class="keyword">new</span> <span class="title class_">Client</span>();</span><br><span class="line"><span class="variable">$client</span> = <span class="keyword">new</span> <span class="title class_">Client</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$client</span>-&gt;<span class="title function_ invoke__">getResult</span>(<span class="keyword">new</span> <span class="title function_ invoke__">StrategyAlgorithmA</span>()) . PHP_EOL;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$client</span>-&gt;<span class="title function_ invoke__">getResult</span>(<span class="keyword">new</span> <span class="title function_ invoke__">StrategyAlgorithmB</span>()) . PHP_EOL;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-        <tag>策略模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【设计模式】装饰器模式</title>
-    <url>/2022/07/05/design-pattern/decorator/</url>
-    <content><![CDATA[<p>结构性模式: 装饰模式 decorator</p>
-<span id="more"></span>
-
-<blockquote>
-<p>动态地给一个<strong>对象</strong>添加一些额外的职责, 就增加功能来说, 装饰器模式相比生成子类更灵活</p>
-</blockquote>
-<p>不改变原有的功能, 不对原有的功能加限制, 不需要原有功能对新功能提供任何帮助, 仅在原有功能上添加新的功能</p>
-<ul>
-<li>给老系统进行升级扩展</li>
-<li>不一定都是对同一个方法进行装饰，其实装饰者应该更多的用于对对象的装饰，对对象进行扩展, 增加功能方法, 削弱/减少功能方法</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">HouseBuilderInterface</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HouseBuilder</span> <span class="keyword">implements</span> <span class="title">HouseBuilderInterface</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;粉刷完成\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">HouseBuilderDecorator</span> <span class="keyword">implements</span> <span class="title">HouseBuilderInterface</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$houseBuilder</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">HouseBuilderInterface <span class="variable">$houseBuilder</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;houseBuilder = <span class="variable">$houseBuilder</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HouseBuilderDecoratorFloor</span> <span class="keyword">extends</span> <span class="title">HouseBuilderDecorator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;houseBuilder-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;铺完地板啦\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HouseBuilderDecoratorClean</span> <span class="keyword">extends</span> <span class="title">HouseBuilderDecorator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;houseBuilder-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;打扫好啦\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilder</span>();</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorFloor</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorClean</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br><span class="line"></span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilder</span>();</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorFloor</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorClean</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-        <tag>装饰模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【设计模式】适配器模式</title>
-    <url>/2022/07/10/design-pattern/adapter/</url>
-    <content><![CDATA[<p>结构型设计模式: 适配器模式 adapter</p>
-<span id="more"></span>
-
-<blockquote>
-<p>将一个类的接口转换成客户希望的另一个接口. 适配器模式使原本由于接口不兼容不能一起工作的那些类可以一起工作</p>
-</blockquote>
-<p>两种形式</p>
-<ul>
-<li>继承式</li>
-<li>组合式</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Standard</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">output</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChinaStandard</span> <span class="keyword">implements</span> <span class="title">Standard</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">output</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;220V&#x27;</span> . PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> <span class="keyword">implements</span> <span class="title">Standard</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$china_standard</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$china_standard</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;china_standard = <span class="variable">$china_standard</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">output</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;china_standard-&gt;<span class="title function_ invoke__">output</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>困惑点: 感觉装饰器模式和适配器模式有点像? </p>
-<ul>
-<li>装饰器模式: 不改变原有的功能, 不对原有的功能加限制, 不需要原有功能对新功能提供任何帮助, 仅在原有功能上添加新的功能</li>
-<li>适配器模式: 将一个类的接口转换成客户希望的另一个接口. 适配器模式使原本由于接口不兼容不能一起工作的那些类可以一起工作</li>
-</ul>
-<p>适配器模式与装饰器模式的区别</p>
-<p>装饰器与适配器都有一个别名叫做 包装模式(Wrapper)，它们看似都是起到包装一个类或对象的作用，但是使用它们的目的很不一一样。适配器模式的意义是要将一个接口转变成另一个接口，它的目的是通过改变接口来达到重复使用的目的。<br>而装饰器模式不是要改变被装饰对象的接口，而是恰恰要保持原有的接口，但是增强原有对象的功能，或者改变原有对象的处理方式而提升性能。所以这两个模式设计的目的是不同的。</p>
-<blockquote>
-<p><a href="https://zhuanlan.zhihu.com/p/296319765">适配器模式，装饰模式，代理模式异同，别再说看着都一样了！
-</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-        <tag>适配器模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【设计模式】迭代器模式</title>
-    <url>/2022/07/13/design-pattern/iterator/</url>
-    <content><![CDATA[<p>行为型设计模式: 迭代器模式 iterator</p>
-<span id="more"></span>
-
-<blockquote>
-<p>提供一种方法顺序访问一个聚合对象中的各个元素, 而又不需要暴露该对象的内部表示. </p>
-</blockquote>
-<blockquote>
-<p>PHP 标准库 (SPL) 定义了一个最适合此模式的接口迭代器！往往也需要实现 Countable 接口，允许在迭代器对象上使用  count($object)  方法。</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Aggregate</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">CreateIterator</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteAggregate</span> <span class="keyword">implements</span> <span class="title">Aggregate</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">CreateIterator</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$list</span> = [</span><br><span class="line">            <span class="string">&quot;a&quot;</span>,</span><br><span class="line">            <span class="string">&quot;b&quot;</span>,</span><br><span class="line">            <span class="string">&quot;c&quot;</span>,</span><br><span class="line">            <span class="string">&quot;d&quot;</span>,</span><br><span class="line">        ];</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ConcreteIterator</span>(<span class="variable">$list</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">MyIterator</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">First</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">Next</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">IsDone</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">CurrentItem</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteIterator</span> <span class="keyword">implements</span> <span class="title">MyIterator</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$list</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$index</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$list</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="keyword">list</span> = <span class="variable">$list</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;index = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">First</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;index = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">Next</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;index++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">IsDone</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;index &gt;= <span class="title function_ invoke__">count</span>(<span class="variable">$this</span>-&gt;<span class="keyword">list</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">CurrentItem</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;<span class="keyword">list</span>[<span class="variable language_">$this</span>-&gt;index];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$agreegate</span> = <span class="keyword">new</span> <span class="title class_">ConcreteAggregate</span>();</span><br><span class="line"><span class="variable">$iterator</span> = <span class="variable">$agreegate</span>-&gt;<span class="title function_ invoke__">CreateIterator</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (!<span class="variable">$iterator</span>-&gt;<span class="title function_ invoke__">IsDone</span>()) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$iterator</span>-&gt;<span class="title function_ invoke__">CurrentItem</span>(), PHP_EOL;</span><br><span class="line">    <span class="variable">$iterator</span>-&gt;<span class="title function_ invoke__">Next</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以在 <code>Subject</code> 里仅注重其本身的业务逻辑, 对于观察者模式下对观察者的notify 操作改为 implement 一个接口来实现, 使其 observable ?</p>
-<blockquote>
-<p>SPL扩展实现观察者模式-完整源码：<br><a href="https://github.com/zhangyue0503/designpatterns-php/blob/master/06.observer/source/spl_observer.php">https://github.com/zhangyue0503/designpatterns-php/blob/master/06.observer/source/spl_observer.php</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-        <tag>迭代器模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【设计模式】观察者模式</title>
-    <url>/2022/07/13/design-pattern/observer/</url>
-    <content><![CDATA[<p>行为型设计模式: 观察者模式 observer</p>
-<span id="more"></span>
-
-<blockquote>
-<p>当对象的状态发生变化时，所有依赖于它的对象都得到通知并被自动更新。它使用的是低耦合的方式。</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Observer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">Subject <span class="variable">$subject</span></span>): <span class="title">void</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteObserver</span> <span class="keyword">implements</span> <span class="title">Observer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$observerState</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">Subject <span class="variable">$subject</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;observerState = <span class="variable">$subject</span>-&gt;<span class="title function_ invoke__">getState</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;执行观察者操作！当前状态：&#x27;</span> . <span class="variable language_">$this</span>-&gt;observerState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subject</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$observers</span> = [];</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$stateNow</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">attach</span>(<span class="params">Observer <span class="variable">$observer</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="title function_ invoke__">array_push</span>(<span class="variable">$this</span>-&gt;observers, <span class="variable">$observer</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">detach</span>(<span class="params">Observer <span class="variable">$observer</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$position</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable language_">$this</span>-&gt;observers <span class="keyword">as</span> <span class="variable">$ob</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable">$ob</span> == <span class="variable">$observer</span>) &#123;</span><br><span class="line">                <span class="title function_ invoke__">array_splice</span>(<span class="variable">$this</span>-&gt;observers, (<span class="variable">$position</span>), <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            ++<span class="variable">$position</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">notify</span>(<span class="params"></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable language_">$this</span>-&gt;observers <span class="keyword">as</span> <span class="variable">$ob</span>) &#123;</span><br><span class="line">            <span class="variable">$ob</span>-&gt;<span class="title function_ invoke__">update</span>(<span class="variable">$this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteSubject</span> <span class="keyword">extends</span> <span class="title">Subject</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setState</span>(<span class="params"><span class="variable">$state</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;stateNow = <span class="variable">$state</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">notify</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getState</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;stateNow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以在 <code>Subject</code> 里仅注重其本身的业务逻辑, 对于观察者模式下对观察者的notify 操作改为 implement 一个接口来实现, 使其 observable ?</p>
-<blockquote>
-<p>SPL扩展实现观察者模式-完整源码：<br><a href="https://github.com/zhangyue0503/designpatterns-php/blob/master/06.observer/source/spl_observer.php">https://github.com/zhangyue0503/designpatterns-php/blob/master/06.observer/source/spl_observer.php</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-        <tag>观察者模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【设计模式】原型模式</title>
-    <url>/2022/10/31/design-pattern/prototype/</url>
-    <content><![CDATA[<p>创建型模式: 原型模式 prototype</p>
-<span id="more"></span>
-
-<blockquote>
-<p>用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-        <tag>原型模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习ES6：let&amp;const</title>
-    <url>/2017/07/18/node/let-and-const/</url>
-    <content><![CDATA[<blockquote>
-<p>参考 <a href="http://es6.ruanyifeng.com/">阮一峰 《ES6 标准入门》</a> </p>
-</blockquote>
-<h1 id="let"><a href="#let" class="headerlink" title="let"></a>let</h1><h2 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h2><ul>
-<li>块级作用域：在ES5及以前，JS只有全局作用域及函数作用域，<code>let</code>则为JS提供了<strong>块级作用域</strong>。</li>
-<li>变量提升：<code>let</code>声明的变量<strong>不会提升</strong>。</li>
-<li>锁区：<code>let</code>声明的变量会暂时<strong>锁定</strong>其存在的作用域。</li>
-<li>不允许重复声明：<code>let</code>声明的变量只能在声明<strong>之后</strong>使用且<strong>不允许重复声明</strong>。</li>
-</ul>
-<span id="more"></span>
-
-<h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><blockquote>
-<p><a href="http://www.bilibili.com/video/av6698380/index_1.html">http://www.bilibili.com/video/av6698380/index_1.html</a></p>
-</blockquote>
-<p><embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=6698380&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed></p>
-<br>
-
-<h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1><h2 id="简要说明-1"><a href="#简要说明-1" class="headerlink" title="简要说明"></a>简要说明</h2><ul>
-<li>声明全局变量，必须<strong>初始化</strong>。</li>
-<li>全局变量在其作用于下有效，同样不会变量提升，<strong>不能重新赋值</strong>。</li>
-</ul>
-<p><strong>常量不变，不能重新赋值是指常量本身的值（对简单变量来说，如<code>string</code>、<code>boolean</code>等，值不变，对于引用类型来说是引用指向不变）不能改变。<br>引用类型指向的对象里的属性可以改变值。</strong></p>
-<h2 id="视频-1"><a href="#视频-1" class="headerlink" title="视频"></a>视频</h2><blockquote>
-<p><a href="http://www.bilibili.com/video/av6698380/index_2.html">http://www.bilibili.com/video/av6698380/index_2.html</a></p>
-</blockquote>
-<p><embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=6698380&page=2" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed></p>
-<p><br><br></p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>nodejs</tag>
-        <tag>es6</tag>
       </tags>
   </entry>
 </search>
