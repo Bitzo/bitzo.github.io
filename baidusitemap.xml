@@ -101,10 +101,6 @@
     <lastmod>2022-09-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.bitzo.cn/2017/05/29/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2022-09-26</lastmod>
-  </url>
-  <url>
     <loc>https://blog.bitzo.cn/2017/07/04/node/buffer/</loc>
     <lastmod>2022-09-26</lastmod>
   </url>
@@ -121,15 +117,19 @@
     <lastmod>2022-09-26</lastmod>
   </url>
   <url>
+    <loc>https://blog.bitzo.cn/2017/05/29/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2022-09-26</lastmod>
+  </url>
+  <url>
     <loc>https://blog.bitzo.cn/2017/07/23/node/10-JavaScript-concepts/</loc>
     <lastmod>2022-09-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.bitzo.cn/2017/06/07/node/Node-JS%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6/</loc>
+    <loc>https://blog.bitzo.cn/2017/11/28/node/JS-%E7%BB%A7%E6%89%BF/</loc>
     <lastmod>2022-09-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.bitzo.cn/2017/11/28/node/JS-%E7%BB%A7%E6%89%BF/</loc>
+    <loc>https://blog.bitzo.cn/2017/06/07/node/Node-JS%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6/</loc>
     <lastmod>2022-09-26</lastmod>
   </url>
 </urlset> 
