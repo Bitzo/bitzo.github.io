@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2017/05/29/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>Hexo</tag>
-        <tag>教程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【设计模式】适配器模式</title>
     <url>/2022/07/10/design-pattern/adapter/</url>
     <content><![CDATA[<p>结构型设计模式: 适配器模式 adapter</p>
@@ -64,27 +37,54 @@
       </tags>
   </entry>
   <entry>
-    <title>【设计模式】观察者模式</title>
-    <url>/2022/07/13/design-pattern/observer/</url>
-    <content><![CDATA[<p>行为型设计模式: 观察者模式 observer</p>
+    <title>Hello World</title>
+    <url>/2017/05/29/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>Hexo</tag>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【设计模式】装饰器模式</title>
+    <url>/2022/07/05/design-pattern/decorator/</url>
+    <content><![CDATA[<p>结构性模式: 装饰模式 decorator</p>
 <span id="more"></span>
 
 <blockquote>
-<p>当对象的状态发生变化时，所有依赖于它的对象都得到通知并被自动更新。它使用的是低耦合的方式。</p>
+<p>动态地给一个<strong>对象</strong>添加一些额外的职责, 就增加功能来说, 装饰器模式相比生成子类更灵活</p>
 </blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Observer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">Subject <span class="variable">$subject</span></span>): <span class="title">void</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteObserver</span> <span class="keyword">implements</span> <span class="title">Observer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$observerState</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">Subject <span class="variable">$subject</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;observerState = <span class="variable">$subject</span>-&gt;<span class="title function_ invoke__">getState</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;执行观察者操作！当前状态：&#x27;</span> . <span class="variable language_">$this</span>-&gt;observerState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subject</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$observers</span> = [];</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$stateNow</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">attach</span>(<span class="params">Observer <span class="variable">$observer</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="title function_ invoke__">array_push</span>(<span class="variable">$this</span>-&gt;observers, <span class="variable">$observer</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">detach</span>(<span class="params">Observer <span class="variable">$observer</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$position</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable language_">$this</span>-&gt;observers <span class="keyword">as</span> <span class="variable">$ob</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable">$ob</span> == <span class="variable">$observer</span>) &#123;</span><br><span class="line">                <span class="title function_ invoke__">array_splice</span>(<span class="variable">$this</span>-&gt;observers, (<span class="variable">$position</span>), <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            ++<span class="variable">$position</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">notify</span>(<span class="params"></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable language_">$this</span>-&gt;observers <span class="keyword">as</span> <span class="variable">$ob</span>) &#123;</span><br><span class="line">            <span class="variable">$ob</span>-&gt;<span class="title function_ invoke__">update</span>(<span class="variable">$this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteSubject</span> <span class="keyword">extends</span> <span class="title">Subject</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setState</span>(<span class="params"><span class="variable">$state</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;stateNow = <span class="variable">$state</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">notify</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getState</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;stateNow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以在 <code>Subject</code> 里仅注重其本身的业务逻辑, 对于观察者模式下对观察者的notify 操作改为 implement 一个接口来实现, 使其 observable ?</p>
-<blockquote>
-<p>SPL扩展实现观察者模式-完整源码：<br><a href="https://github.com/zhangyue0503/designpatterns-php/blob/master/06.observer/source/spl_observer.php">https://github.com/zhangyue0503/designpatterns-php/blob/master/06.observer/source/spl_observer.php</a></p>
-</blockquote>
+<p>不改变原有的功能, 不对原有的功能加限制, 不需要原有功能对新功能提供任何帮助, 仅在原有功能上添加新的功能</p>
+<ul>
+<li>给老系统进行升级扩展</li>
+<li>不一定都是对同一个方法进行装饰，其实装饰者应该更多的用于对对象的装饰，对对象进行扩展, 增加功能方法, 削弱&#x2F;减少功能方法</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">HouseBuilderInterface</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HouseBuilder</span> <span class="keyword">implements</span> <span class="title">HouseBuilderInterface</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;粉刷完成\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">HouseBuilderDecorator</span> <span class="keyword">implements</span> <span class="title">HouseBuilderInterface</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$houseBuilder</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">HouseBuilderInterface <span class="variable">$houseBuilder</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;houseBuilder = <span class="variable">$houseBuilder</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HouseBuilderDecoratorFloor</span> <span class="keyword">extends</span> <span class="title">HouseBuilderDecorator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;houseBuilder-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;铺完地板啦\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HouseBuilderDecoratorClean</span> <span class="keyword">extends</span> <span class="title">HouseBuilderDecorator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;houseBuilder-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;打扫好啦\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilder</span>();</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorFloor</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorClean</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br><span class="line"></span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilder</span>();</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorFloor</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorClean</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>设计模式</category>
       </categories>
       <tags>
         <tag>设计模式</tag>
-        <tag>观察者模式</tag>
+        <tag>装饰模式</tag>
       </tags>
   </entry>
   <entry>
@@ -129,27 +129,27 @@
       </tags>
   </entry>
   <entry>
-    <title>【设计模式】装饰器模式</title>
-    <url>/2022/07/05/design-pattern/decorator/</url>
-    <content><![CDATA[<p>结构性模式: 装饰模式 decorator</p>
+    <title>【设计模式】观察者模式</title>
+    <url>/2022/07/13/design-pattern/observer/</url>
+    <content><![CDATA[<p>行为型设计模式: 观察者模式 observer</p>
 <span id="more"></span>
 
 <blockquote>
-<p>动态地给一个<strong>对象</strong>添加一些额外的职责, 就增加功能来说, 装饰器模式相比生成子类更灵活</p>
+<p>当对象的状态发生变化时，所有依赖于它的对象都得到通知并被自动更新。它使用的是低耦合的方式。</p>
 </blockquote>
-<p>不改变原有的功能, 不对原有的功能加限制, 不需要原有功能对新功能提供任何帮助, 仅在原有功能上添加新的功能</p>
-<ul>
-<li>给老系统进行升级扩展</li>
-<li>不一定都是对同一个方法进行装饰，其实装饰者应该更多的用于对对象的装饰，对对象进行扩展, 增加功能方法, 削弱&#x2F;减少功能方法</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">HouseBuilderInterface</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HouseBuilder</span> <span class="keyword">implements</span> <span class="title">HouseBuilderInterface</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;粉刷完成\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">HouseBuilderDecorator</span> <span class="keyword">implements</span> <span class="title">HouseBuilderInterface</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$houseBuilder</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">HouseBuilderInterface <span class="variable">$houseBuilder</span></span>) </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;houseBuilder = <span class="variable">$houseBuilder</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HouseBuilderDecoratorFloor</span> <span class="keyword">extends</span> <span class="title">HouseBuilderDecorator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;houseBuilder-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;铺完地板啦\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HouseBuilderDecoratorClean</span> <span class="keyword">extends</span> <span class="title">HouseBuilderDecorator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beautify</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;houseBuilder-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;打扫好啦\t&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilder</span>();</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorFloor</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorClean</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br><span class="line"></span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilder</span>();</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorFloor</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span> = <span class="keyword">new</span> <span class="title class_">HouseBuilderDecoratorClean</span>(<span class="variable">$houseBuilder</span>);</span><br><span class="line"><span class="variable">$houseBuilder</span>-&gt;<span class="title function_ invoke__">beautify</span>();</span><br><span class="line"><span class="keyword">echo</span> PHP_EOL;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Observer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">Subject <span class="variable">$subject</span></span>): <span class="title">void</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteObserver</span> <span class="keyword">implements</span> <span class="title">Observer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$observerState</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">Subject <span class="variable">$subject</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;observerState = <span class="variable">$subject</span>-&gt;<span class="title function_ invoke__">getState</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;执行观察者操作！当前状态：&#x27;</span> . <span class="variable language_">$this</span>-&gt;observerState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subject</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$observers</span> = [];</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$stateNow</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">attach</span>(<span class="params">Observer <span class="variable">$observer</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="title function_ invoke__">array_push</span>(<span class="variable">$this</span>-&gt;observers, <span class="variable">$observer</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">detach</span>(<span class="params">Observer <span class="variable">$observer</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$position</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable language_">$this</span>-&gt;observers <span class="keyword">as</span> <span class="variable">$ob</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable">$ob</span> == <span class="variable">$observer</span>) &#123;</span><br><span class="line">                <span class="title function_ invoke__">array_splice</span>(<span class="variable">$this</span>-&gt;observers, (<span class="variable">$position</span>), <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            ++<span class="variable">$position</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">notify</span>(<span class="params"></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable language_">$this</span>-&gt;observers <span class="keyword">as</span> <span class="variable">$ob</span>) &#123;</span><br><span class="line">            <span class="variable">$ob</span>-&gt;<span class="title function_ invoke__">update</span>(<span class="variable">$this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteSubject</span> <span class="keyword">extends</span> <span class="title">Subject</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setState</span>(<span class="params"><span class="variable">$state</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;stateNow = <span class="variable">$state</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">notify</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getState</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;stateNow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以在 <code>Subject</code> 里仅注重其本身的业务逻辑, 对于观察者模式下对观察者的notify 操作改为 implement 一个接口来实现, 使其 observable ?</p>
+<blockquote>
+<p>SPL扩展实现观察者模式-完整源码：<br><a href="https://github.com/zhangyue0503/designpatterns-php/blob/master/06.observer/source/spl_observer.php">https://github.com/zhangyue0503/designpatterns-php/blob/master/06.observer/source/spl_observer.php</a></p>
+</blockquote>
 ]]></content>
       <categories>
         <category>设计模式</category>
       </categories>
       <tags>
         <tag>设计模式</tag>
-        <tag>装饰模式</tag>
+        <tag>观察者模式</tag>
       </tags>
   </entry>
   <entry>
@@ -215,93 +215,6 @@
       <tags>
         <tag>设计模式</tag>
         <tag>策略模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git常用命令</title>
-    <url>/2017/05/29/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="什么是-git"><a href="#什么是-git" class="headerlink" title="什么是 git"></a>什么是 git</h2><blockquote>
-<p>Git 是目前世界上最先进的分布式版本控制系统</p>
-</blockquote>
-<h2 id="git-安装"><a href="#git-安装" class="headerlink" title="git 安装"></a>git 安装</h2><h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><p><a href="https://git-scm.com/downloads">官网</a>直接下载安装包</p>
-<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>bash 下:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">&quot;bitzo&quot;</span></span><br><span class="line">$ git config --global user.email <span class="string">&quot;bitzo@qq.com&quot;</span></span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen</span><br></pre></td></tr></table></figure>
-
-<p>生成的密钥会保存在 ~&#x2F;.ssh&#x2F; 下.</p>
-<h2 id="git-常用命令"><a href="#git-常用命令" class="headerlink" title="git 常用命令"></a>git 常用命令</h2><h3 id="建立-git-仓库"><a href="#建立-git-仓库" class="headerlink" title="建立 git 仓库"></a>建立 git 仓库</h3><h4 id="本地创建"><a href="#本地创建" class="headerlink" title="本地创建"></a>本地创建</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ./myGitRepo</span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure>
-<h4 id="本地-clone-远程"><a href="#本地-clone-远程" class="headerlink" title="本地 clone 远程"></a>本地 clone 远程</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git[http]://xxxx.xxxx.xx:xxx/xxx.git</span><br></pre></td></tr></table></figure>
-<h3 id="添加更改"><a href="#添加更改" class="headerlink" title="添加更改"></a>添加更改</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add fileName</span><br></pre></td></tr></table></figure>
-<h3 id="查看git仓库状态"><a href="#查看git仓库状态" class="headerlink" title="查看git仓库状态"></a>查看git仓库状态</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
-<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- fileName</span><br></pre></td></tr></table></figure>
-<h3 id="提交更改"><a href="#提交更改" class="headerlink" title="提交更改"></a>提交更改</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -m<span class="string">&quot;edit you message&quot;</span></span><br></pre></td></tr></table></figure>
-<h3 id="向远程仓库推送更改"><a href="#向远程仓库推送更改" class="headerlink" title="向远程仓库推送更改"></a>向远程仓库推送更改</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-<h3 id="将本地仓库与远程连接"><a href="#将本地仓库与远程连接" class="headerlink" title="将本地仓库与远程连接"></a>将本地仓库与远程连接</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin &lt;server&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="创建分支并切换"><a href="#创建分支并切换" class="headerlink" title="创建分支并切换"></a>创建分支并切换</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b branchName</span><br></pre></td></tr></table></figure>
-<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout branchName</span><br></pre></td></tr></table></figure>
-<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d branchName</span><br></pre></td></tr></table></figure>
-<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin --delete &lt;branchName&gt; <span class="comment"># git &gt;v1.7.0</span></span><br><span class="line"><span class="comment"># 否则</span></span><br><span class="line">git push origin :&lt;branchName&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="从远程版本库拉取最新版本"><a href="#从远程版本库拉取最新版本" class="headerlink" title="从远程版本库拉取最新版本"></a>从远程版本库拉取最新版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull origin master</span><br></pre></td></tr></table></figure>
-<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge branchName</span><br></pre></td></tr></table></figure>
-<h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff sourceBranch targetBranch</span><br></pre></td></tr></table></figure>
-<h3 id="查看历史记录"><a href="#查看历史记录" class="headerlink" title="查看历史记录"></a>查看历史记录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard XXXXX <span class="comment"># 直接丢弃更改</span></span><br><span class="line">$ git reset --soft XXXXX <span class="comment"># 保留更改于缓存区</span></span><br><span class="line"></span><br><span class="line">$ git reflog <span class="comment"># 打印记录你的每一次操作记录, 便于后悔回退</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># git revert 命令意思是撤销某次提交。</span></span><br><span class="line"><span class="comment"># 它会产生一个新的提交，虽然代码回退了，但是版本依然是向前的</span></span><br><span class="line"><span class="comment"># 所以，当你用revert回退之后，所有人pull之后，他们的代码也自动的回退了。</span></span><br><span class="line">$ git revert XXXXXXX <span class="comment"># revert 是撤销一次提交，所以后面的commit id是你需要回滚到的版本的前一次提交</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nginx反向代理（端口转发）</title>
-    <url>/2017/07/28/server/nginx/</url>
-    <content><![CDATA[<p>nginx配合nodejs做代理，进行端口转发。</p>
-<span id="more"></span>
-
-<h1 id="安装-nginx"><a href="#安装-nginx" class="headerlink" title="安装 nginx"></a>安装 nginx</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br></pre></td></tr></table></figure>
-
-<h2 id="nginx-文件结构"><a href="#nginx-文件结构" class="headerlink" title="nginx 文件结构"></a>nginx 文件结构</h2><ul>
-<li>所有的配置文件都在 &#x2F;etc&#x2F;nginx 下，并且每个虚拟主机已经安排在了 &#x2F;etc&#x2F;nginx&#x2F;sites-available 下</li>
-<li>程序文件在 &#x2F;usr&#x2F;sbin&#x2F;nginx</li>
-<li>日志放在了 &#x2F;var&#x2F;log&#x2F;nginx 中</li>
-<li>并已经在 &#x2F;etc&#x2F;init.d&#x2F; 下创建了启动脚本 nginx</li>
-<li>默认的虚拟主机的目录设置在了 &#x2F;var&#x2F;www&#x2F;nginx-default (有的版本 默认的虚拟主机的目录设置在了 &#x2F;var&#x2F;www, 请参考 &#x2F; etc&#x2F;nginx&#x2F;sites-available 里的配置)</li>
-</ul>
-<h1 id="启动-nginx"><a href="#启动-nginx" class="headerlink" title="启动 nginx"></a>启动 nginx</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo /etc/init.d/nginx start</span><br></pre></td></tr></table></figure>
-
-<h1 id="配置-Nginx"><a href="#配置-Nginx" class="headerlink" title="配置 Nginx"></a>配置 Nginx</h1><h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><ul>
-<li><code>/etc/nginx/sites-available</code> 记录代理配置</li>
-<li><code>/etc/nginx/sites-enabled</code> 启动已配置好的代理</li>
-<li>先在 <code>/etc/nginx/sites-available</code> 配置代理</li>
-<li>在 <code>/etc/nginx/sites-enabled</code> 下创建symbol link链接available下的配置文件以启用代理配置</li>
-</ul>
-<h2 id="主要配置"><a href="#主要配置" class="headerlink" title="主要配置"></a>主要配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    # 监听的端口号</span><br><span class="line">    listen 80;</span><br><span class="line">    </span><br><span class="line">    # 监听的域名</span><br><span class="line">    server_name: a.b.com;</span><br><span class="line">    </span><br><span class="line">    # 转发规则</span><br><span class="line">    localtion / &#123;</span><br><span class="line">        proxy_pass http://a.b.com:port;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="转发规则"><a href="#转发规则" class="headerlink" title="转发规则"></a>转发规则</h3><p>我用的是<code>nodejs</code>+<code>express</code>，内部已经定义了静态资源服务，所以可以直接将所有的请求直接转发给node服务，以作出相应。若非上游服务做静态资源服务，可以在<code>location</code>模块定义资源目录。</p>
-<ul>
-<li>location后的地址（rul匹配）十分灵活，接受正则。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location = / &#123;</span><br><span class="line">    # 完全匹配  =</span><br><span class="line">    # 大小写敏感 ~</span><br><span class="line">    # 忽略大小写 ~*</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ^~ /images/ &#123;</span><br><span class="line">    # 前半部分匹配 ^~</span><br><span class="line">    # 可以使用正则，如：</span><br><span class="line">    # location ~* \.(gif|jpg|png)$ &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">    # 如果以上都未匹配，会进入这里</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>root  定义该匹配后的处理路径根目录</li>
-<li>index 定义首页（按顺序，以此尝试访问） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    root /home/wwwroot/bitzo/;</span><br><span class="line">    index index.html index.htm</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>反向代理：proxy_pass</li>
-<li>还有其他相关的代理配置，等了解了再慢慢加在这。。。</li>
-</ul>
-<h2 id="一个坑"><a href="#一个坑" class="headerlink" title="一个坑"></a>一个坑</h2><p>在配置的时候我没注意，location里一直加着 <code>try_files $uri $uri/ =404</code>, 导致除了主页面，访问其他一切资源全部都404。之后将这条语句注释掉即可成功。目前还不太清楚为什么。惨惨惨。</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>linux</tag>
-        <tag>ubuntu</tag>
-        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -375,6 +288,79 @@
       <tags>
         <tag>javascript</tag>
         <tag>转载</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node.JS 内存控制</title>
+    <url>/2017/06/07/node/Node-JS%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<blockquote>
+<p>笔记部分内容摘自 《深入浅出 Node.JS》 —— 朴灵</p>
+</blockquote>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>一方面由于Node基于无阻塞、事件驱动，具有内存消耗低的特点，常用于开发高网络请求的应用，因此，在服务器端，需要对资源进行高效利用。另一方面node选择了V8，享受着V8带来的良好性能与语言特性，但是也受到了V8的一些限制。<br>如Node通过JS生成对象，V8会在内存中回收不再被使用的垃圾内存，一方面减少了内存管理的负担，但是另一方面也造成了内存管理上的不灵活，如V8在内存上有大小限制，32位系统上限制为0.7G，64位系统为1.4G，在应用中，若不小心触碰到这个极限值，会造成进程退出，并且在进行垃圾回收的过程中，会导致阻塞代码，程序暂停。</p>
+<blockquote>
+<p>这篇笔记，只是大致了解node里内存的控制、清理机制，具体如何使用、排查解决内存问题未做详细记录。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="内存控制"><a href="#内存控制" class="headerlink" title="内存控制"></a>内存控制</h1><h2 id="内存分代"><a href="#内存分代" class="headerlink" title="内存分代"></a>内存分代</h2><p>在V8中，所有的对象通过堆进行分配。</p>
+<p><img src="/img/%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6_1.png" alt="V8堆示意图"></p>
+<blockquote>
+<p>当我们声明变量并赋值时，程序会在堆中寻找空闲区分配内存，如果已经申请的堆空闲区已经不够分配新的对象，则继续申请堆内存，直到堆的大小超过V8的限制。</p>
+</blockquote>
+<p>在V8中，将内存分为新生（年轻）代以及老生（年老）代两种，进行分别控制。</p>
+<p><strong>新生代</strong>：存活事件较短的对象</p>
+<p><strong>老生代</strong>：存活时间较长或长期驻内存的对象。</p>
+<p><img src="/img/%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6_2.png" alt="V8分代示意图"></p>
+<p>如图所示，在V8的控制下，新生内存占较少的一部分，老生空间则占据了大部分堆空间。默认情况下，新生内存空间在64位和32位系统上分别占据32MB和16MB大小，而老生内存空间在64位和32位系统上分别占据1400MB和700MB大小。</p>
+<p><strong>但是，V8堆内存最大保留空间的配置代码，则是如下定义的：</strong></p>
+<blockquote>
+<p>The young generation consists of two semi spaces and we reserve twice the amount needed for those in order to ensure the new space can be aligned to its size</p>
+</blockquote>
+<p><strong>由此，年轻一代的堆内存空间是两倍的配置</strong></p>
+<p>可以手动设置，以使用更多的内存。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ node --max-old-space-size=1700 test.js //单位MB, 设置老生内存</span><br><span class="line"></span><br><span class="line">$ node --max-new-space-size=1024 test.js //单位kb, 设置新生内存</span><br></pre></td></tr></table></figure>
+
+<p><br/><br/></p>
+<h2 id="Scavenge-算法"><a href="#Scavenge-算法" class="headerlink" title="Scavenge 算法"></a>Scavenge 算法</h2><p><strong>Scavenge 算法主要用于新生代的垃圾回收</strong>，此算法采用的是一种<strong>复制</strong>的方式实现的垃圾回收算法。</p>
+<p>前面说了新生代的堆内存空间由两部分组成，分为正在使用中的堆内存空间，称为<strong>From空间</strong>，以及闲置的堆内存空间，称为<strong>To空间</strong>。顾名思义，Scavenge 算法正是一种在这两个空间中将仍存活的对象复制到闲置储存空间后释放原储存空间的方式。</p>
+<p><strong>过程：当分配对象时，显示在From空间中进行分配。当开始进行垃圾回收时，会检查From空间中的存活对象，这些存活对象将被复制到To空间中，而非存存活对象占用的空间会被释放，完成复制后，对换From空间和To空间，到此垃圾回收完成。</strong></p>
+<p>值得注意的是，如果一个对象经过多次复制依然存活，则会将此对象生存周期较长的对象，并移动到老生堆空间中，以采用其他算法进行管理，此过程称为对象的晋升。另外，当To空间使用占比已经超过限制，也会将新代对象直接移动到老生对象空间。</p>
+<p><strong>由于 Scavenge 算法将内存对象在两个空间中复制交换，因此，只能使用堆内存的一半空间，以牺牲空间换效率。 此算法也正因此，适合应用在新生代中，因为新生代的生命周期段，占用空间也较少。</strong></p>
+<p><br/><br/></p>
+<h2 id="Mark-Sweep-amp-Mark-Compact"><a href="#Mark-Sweep-amp-Mark-Compact" class="headerlink" title="Mark-Sweep &amp; Mark-Compact"></a>Mark-Sweep &amp; Mark-Compact</h2><p>大致了解了新生代的垃圾回收算法，下面了解下老生代的垃圾回收机制。</p>
+<br/>
+
+<h3 id="Mark-Sweep"><a href="#Mark-Sweep" class="headerlink" title="Mark-Sweep"></a>Mark-Sweep</h3><p>标记清除算法，通过一次遍历老生代对象，对所有还活着的对象进行标记，在遍历完成后实施清除，将所有未标记的对象清除。</p>
+<p>但是这种算法的问题也是显而易见的，在一次操作后，会造成内存空间的不连续状态，也就是内存碎片。这种情况下，当有一个稍大的对象要放入老生代空间中时，可能由于空间过于碎片化，而导致无法找到一块适合其大小的空间存放，便会造成又一次的垃圾回收，以期待回收出一块适合的区域存放该对象。由此，提出里另一个算法 Mark-Compact。</p>
+<br/>
+
+<h3 id="Mark-Compact"><a href="#Mark-Compact" class="headerlink" title="Mark-Compact"></a>Mark-Compact</h3><p>此算法是在 Mark-Sweep 的基础上改进而来的，差别在于对象在标记为死亡后，在整理的过程中，将或者的对象向一端移动，移动完成后，直接清理掉边界外的内存，这样就不会出现内存碎片的问题了。</p>
+<p><strong>在V8中，这两种回收策略并不是单独使用的，而是结合使用的</strong></p>
+<p><strong>V8主要使用Mark-Sweep，在空间不足以对从新生代晋升过来的对象进行分配时才使用Mark-Compact。</strong></p>
+<br/>
+
+<h3 id="Incremental-Marking"><a href="#Incremental-Marking" class="headerlink" title="Incremental Marking"></a>Incremental Marking</h3><p><strong>增量标记</strong></p>
+<blockquote>
+<p>为了避免出现 JS 应用逻辑与垃圾回收器看到的不一致的情况，垃圾回收的 3 种基本算法都需要将应用逻辑暂停下来，这种暂停成为 “全停顿”。V8 老生代通常配置得很大，且存活对象较多，全堆垃圾回收的各种动作造成的停顿会比较可怕，需要设法改善。V8 先从标记阶段入手，将原本一口气停顿完成的动作改为增量标记，也就是拆分为许多小 “步进”，没做完一步就让 JS 应用逻辑执行一小会儿。这种垃圾回收与应用逻辑交替执行直到标记完成，可以让最大停顿时间减少 5 倍左右。</p>
+</blockquote>
+<h1 id="关于使用内存"><a href="#关于使用内存" class="headerlink" title="关于使用内存"></a>关于使用内存</h1><p>参考《深入浅出NodeJS》一书的相关内容，主要说明了作用域及闭包等的使用，我觉得这些问题不如直接使用ES6的相关特性解决更加简单有效，还不容易让自己出错。所以这里就不再做繁琐的记录了。</p>
+<h1 id="关注内存与缓存"><a href="#关注内存与缓存" class="headerlink" title="关注内存与缓存"></a>关注内存与缓存</h1><blockquote>
+<p>勿将内存当做缓存使用。</p>
+</blockquote>
+<ol>
+<li>缓存限制（可使用现有的相关模块）、提供清空缓存队列的接口。</li>
+<li>使用redis、Memcached</li>
+</ol>
+<h1 id="内存泄漏排查"><a href="#内存泄漏排查" class="headerlink" title="内存泄漏排查"></a>内存泄漏排查</h1><p>使用相关模块：node-heapdump&#x2F;node-memwatch </p>
+<p><em>说实话，我感觉以我现在的能力，我觉得我根本不会考虑到内存泄漏、检查等之类的问题→_→<br>所以暂时简单记录，以后如果需要的话，再详细补充</em></p>
+<p><br/><br/></p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>NodejS</tag>
       </tags>
   </entry>
   <entry>
@@ -509,6 +495,38 @@
       </tags>
   </entry>
   <entry>
+    <title>js-call-apply-bind</title>
+    <url>/2017/09/07/node/js-call-apply-bind/</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+call/apply/bind 总体上都是改变调用对象的this指向。
+</blockquote>
+
+<span id="more"></span>
+
+<h1 id="apply-x2F-call"><a href="#apply-x2F-call" class="headerlink" title="apply()&#x2F;call()"></a>apply()&#x2F;call()</h1><p>apply()&#x2F;call()类似，差别只在给函数传入参数的方式不一样。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">fun.<span class="title function_">call</span>(thisArg[, arg1[, arg2[, arg3[, ...]]]]);</span><br><span class="line"></span><br><span class="line">fun.<span class="title function_">apply</span>(thisArg, args);</span><br></pre></td></tr></table></figure>
+
+<p>apply()方法第二参数也可以支持类数组对象。</p>
+<h1 id="bind"><a href="#bind" class="headerlink" title="bind()"></a>bind()</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">fun.<span class="title function_">bind</span>(thisArg[, arg1[, arg2[, ...]]]);</span><br></pre></td></tr></table></figure>
+
+<p>bind() 方法不同在于</p>
+<ol>
+<li>通过bind修改了this指向后返回原函数拷贝，并不会默认执行。</li>
+<li>参数可以执行时再添加，参数按照形参顺序依次读入。</li>
+<li>bind第一个参数指定this指向，该参数不能被重写，即只能被绑定一次。</li>
+</ol>
+<h1 id="详细用法"><a href="#详细用法" class="headerlink" title="详细用法"></a>详细用法</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call">call</a>   <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">apply</a>   <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">bind</a></p>
+<br>
+<br>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Buffer</title>
     <url>/2017/07/04/node/buffer/</url>
     <content><![CDATA[<blockquote>
@@ -602,71 +620,6 @@
       <tags>
         <tag>笔记</tag>
         <tag>nodejs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>js-call-apply-bind</title>
-    <url>/2017/09/07/node/js-call-apply-bind/</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-call/apply/bind 总体上都是改变调用对象的this指向。
-</blockquote>
-
-<span id="more"></span>
-
-<h1 id="apply-x2F-call"><a href="#apply-x2F-call" class="headerlink" title="apply()&#x2F;call()"></a>apply()&#x2F;call()</h1><p>apply()&#x2F;call()类似，差别只在给函数传入参数的方式不一样。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">fun.<span class="title function_">call</span>(thisArg[, arg1[, arg2[, arg3[, ...]]]]);</span><br><span class="line"></span><br><span class="line">fun.<span class="title function_">apply</span>(thisArg, args);</span><br></pre></td></tr></table></figure>
-
-<p>apply()方法第二参数也可以支持类数组对象。</p>
-<h1 id="bind"><a href="#bind" class="headerlink" title="bind()"></a>bind()</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">fun.<span class="title function_">bind</span>(thisArg[, arg1[, arg2[, ...]]]);</span><br></pre></td></tr></table></figure>
-
-<p>bind() 方法不同在于</p>
-<ol>
-<li>通过bind修改了this指向后返回原函数拷贝，并不会默认执行。</li>
-<li>参数可以执行时再添加，参数按照形参顺序依次读入。</li>
-<li>bind第一个参数指定this指向，该参数不能被重写，即只能被绑定一次。</li>
-</ol>
-<h1 id="详细用法"><a href="#详细用法" class="headerlink" title="详细用法"></a>详细用法</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call">call</a>   <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">apply</a>   <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">bind</a></p>
-<br>
-<br>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS的this</title>
-    <url>/2017/09/06/node/js-this/</url>
-    <content><![CDATA[<p>this指向相关问题</p>
-<span id="more"></span>
-
-<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this">MDN This</a></p>
-<p><a href="http://www.cnblogs.com/pssp/p/5216085.html">彻底理解 js 中 this 的指向，不必硬背。</a></p>
-<h2 id="简单整理"><a href="#简单整理" class="headerlink" title="简单整理"></a>简单整理</h2><p><strong>只是简单整理，不严谨，学习还是看<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this">MDN</a>官方文档</strong></p>
-<ul>
-<li>绝大多数情况下，函数的调用方式决定了<code>this</code>的值。</li>
-<li>绝大多数情况下，<code>this</code>的指向在函数定义时不能确定，在函数执行时确定。</li>
-<li>绝大多数情况下，<code>this</code>指向调用它的对象。</li>
-<li>全局情况下，<code>this</code>指window，nodeJS下指向<code>global</code>。</li>
-<li>全局情况下，严格模式时<code>this</code>指向<code>undefined</code>。</li>
-<li>调用时，可以通过<code>call()/apply()</code>方法间接调用以改变上下文。</li>
-<li>可以使用<code>bind()</code>永久绑定其指向到第一个参数，无论这个函数时如何调用的。且bind只生效一次。</li>
-<li>一个含有<code>this</code>的函数被多级调用，<code>this</code>也只指向直接调用它的上一级对象，而不是最外层。</li>
-<li>特殊情况，通过ES6箭头函数捕获其所在上下文的<code>this</code>值，作为自己的<code>this</code>值。</li>
-<li>箭头函数下this会忽略严格模式下的相关规则。</li>
-<li>箭头函数中的<code>this</code>指向不会因为<code>call()/apply()/bind()</code>方法改变。</li>
-</ul>
-</br>
-</br>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -778,119 +731,76 @@ call/apply/bind 总体上都是改变调用对象的this指向。
       </tags>
   </entry>
   <entry>
-    <title>Node.JS 内存控制</title>
-    <url>/2017/06/07/node/Node-JS%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<blockquote>
-<p>笔记部分内容摘自 《深入浅出 Node.JS》 —— 朴灵</p>
-</blockquote>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>一方面由于Node基于无阻塞、事件驱动，具有内存消耗低的特点，常用于开发高网络请求的应用，因此，在服务器端，需要对资源进行高效利用。另一方面node选择了V8，享受着V8带来的良好性能与语言特性，但是也受到了V8的一些限制。<br>如Node通过JS生成对象，V8会在内存中回收不再被使用的垃圾内存，一方面减少了内存管理的负担，但是另一方面也造成了内存管理上的不灵活，如V8在内存上有大小限制，32位系统上限制为0.7G，64位系统为1.4G，在应用中，若不小心触碰到这个极限值，会造成进程退出，并且在进行垃圾回收的过程中，会导致阻塞代码，程序暂停。</p>
-<blockquote>
-<p>这篇笔记，只是大致了解node里内存的控制、清理机制，具体如何使用、排查解决内存问题未做详细记录。</p>
-</blockquote>
+    <title>JS的this</title>
+    <url>/2017/09/06/node/js-this/</url>
+    <content><![CDATA[<p>this指向相关问题</p>
 <span id="more"></span>
 
-<h1 id="内存控制"><a href="#内存控制" class="headerlink" title="内存控制"></a>内存控制</h1><h2 id="内存分代"><a href="#内存分代" class="headerlink" title="内存分代"></a>内存分代</h2><p>在V8中，所有的对象通过堆进行分配。</p>
-<p><img src="/img/%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6_1.png" alt="V8堆示意图"></p>
-<blockquote>
-<p>当我们声明变量并赋值时，程序会在堆中寻找空闲区分配内存，如果已经申请的堆空闲区已经不够分配新的对象，则继续申请堆内存，直到堆的大小超过V8的限制。</p>
-</blockquote>
-<p>在V8中，将内存分为新生（年轻）代以及老生（年老）代两种，进行分别控制。</p>
-<p><strong>新生代</strong>：存活事件较短的对象</p>
-<p><strong>老生代</strong>：存活时间较长或长期驻内存的对象。</p>
-<p><img src="/img/%E5%86%85%E5%AD%98%E6%8E%A7%E5%88%B6_2.png" alt="V8分代示意图"></p>
-<p>如图所示，在V8的控制下，新生内存占较少的一部分，老生空间则占据了大部分堆空间。默认情况下，新生内存空间在64位和32位系统上分别占据32MB和16MB大小，而老生内存空间在64位和32位系统上分别占据1400MB和700MB大小。</p>
-<p><strong>但是，V8堆内存最大保留空间的配置代码，则是如下定义的：</strong></p>
-<blockquote>
-<p>The young generation consists of two semi spaces and we reserve twice the amount needed for those in order to ensure the new space can be aligned to its size</p>
-</blockquote>
-<p><strong>由此，年轻一代的堆内存空间是两倍的配置</strong></p>
-<p>可以手动设置，以使用更多的内存。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ node --max-old-space-size=1700 test.js //单位MB, 设置老生内存</span><br><span class="line"></span><br><span class="line">$ node --max-new-space-size=1024 test.js //单位kb, 设置新生内存</span><br></pre></td></tr></table></figure>
-
-<p><br/><br/></p>
-<h2 id="Scavenge-算法"><a href="#Scavenge-算法" class="headerlink" title="Scavenge 算法"></a>Scavenge 算法</h2><p><strong>Scavenge 算法主要用于新生代的垃圾回收</strong>，此算法采用的是一种<strong>复制</strong>的方式实现的垃圾回收算法。</p>
-<p>前面说了新生代的堆内存空间由两部分组成，分为正在使用中的堆内存空间，称为<strong>From空间</strong>，以及闲置的堆内存空间，称为<strong>To空间</strong>。顾名思义，Scavenge 算法正是一种在这两个空间中将仍存活的对象复制到闲置储存空间后释放原储存空间的方式。</p>
-<p><strong>过程：当分配对象时，显示在From空间中进行分配。当开始进行垃圾回收时，会检查From空间中的存活对象，这些存活对象将被复制到To空间中，而非存存活对象占用的空间会被释放，完成复制后，对换From空间和To空间，到此垃圾回收完成。</strong></p>
-<p>值得注意的是，如果一个对象经过多次复制依然存活，则会将此对象生存周期较长的对象，并移动到老生堆空间中，以采用其他算法进行管理，此过程称为对象的晋升。另外，当To空间使用占比已经超过限制，也会将新代对象直接移动到老生对象空间。</p>
-<p><strong>由于 Scavenge 算法将内存对象在两个空间中复制交换，因此，只能使用堆内存的一半空间，以牺牲空间换效率。 此算法也正因此，适合应用在新生代中，因为新生代的生命周期段，占用空间也较少。</strong></p>
-<p><br/><br/></p>
-<h2 id="Mark-Sweep-amp-Mark-Compact"><a href="#Mark-Sweep-amp-Mark-Compact" class="headerlink" title="Mark-Sweep &amp; Mark-Compact"></a>Mark-Sweep &amp; Mark-Compact</h2><p>大致了解了新生代的垃圾回收算法，下面了解下老生代的垃圾回收机制。</p>
-<br/>
-
-<h3 id="Mark-Sweep"><a href="#Mark-Sweep" class="headerlink" title="Mark-Sweep"></a>Mark-Sweep</h3><p>标记清除算法，通过一次遍历老生代对象，对所有还活着的对象进行标记，在遍历完成后实施清除，将所有未标记的对象清除。</p>
-<p>但是这种算法的问题也是显而易见的，在一次操作后，会造成内存空间的不连续状态，也就是内存碎片。这种情况下，当有一个稍大的对象要放入老生代空间中时，可能由于空间过于碎片化，而导致无法找到一块适合其大小的空间存放，便会造成又一次的垃圾回收，以期待回收出一块适合的区域存放该对象。由此，提出里另一个算法 Mark-Compact。</p>
-<br/>
-
-<h3 id="Mark-Compact"><a href="#Mark-Compact" class="headerlink" title="Mark-Compact"></a>Mark-Compact</h3><p>此算法是在 Mark-Sweep 的基础上改进而来的，差别在于对象在标记为死亡后，在整理的过程中，将或者的对象向一端移动，移动完成后，直接清理掉边界外的内存，这样就不会出现内存碎片的问题了。</p>
-<p><strong>在V8中，这两种回收策略并不是单独使用的，而是结合使用的</strong></p>
-<p><strong>V8主要使用Mark-Sweep，在空间不足以对从新生代晋升过来的对象进行分配时才使用Mark-Compact。</strong></p>
-<br/>
-
-<h3 id="Incremental-Marking"><a href="#Incremental-Marking" class="headerlink" title="Incremental Marking"></a>Incremental Marking</h3><p><strong>增量标记</strong></p>
-<blockquote>
-<p>为了避免出现 JS 应用逻辑与垃圾回收器看到的不一致的情况，垃圾回收的 3 种基本算法都需要将应用逻辑暂停下来，这种暂停成为 “全停顿”。V8 老生代通常配置得很大，且存活对象较多，全堆垃圾回收的各种动作造成的停顿会比较可怕，需要设法改善。V8 先从标记阶段入手，将原本一口气停顿完成的动作改为增量标记，也就是拆分为许多小 “步进”，没做完一步就让 JS 应用逻辑执行一小会儿。这种垃圾回收与应用逻辑交替执行直到标记完成，可以让最大停顿时间减少 5 倍左右。</p>
-</blockquote>
-<h1 id="关于使用内存"><a href="#关于使用内存" class="headerlink" title="关于使用内存"></a>关于使用内存</h1><p>参考《深入浅出NodeJS》一书的相关内容，主要说明了作用域及闭包等的使用，我觉得这些问题不如直接使用ES6的相关特性解决更加简单有效，还不容易让自己出错。所以这里就不再做繁琐的记录了。</p>
-<h1 id="关注内存与缓存"><a href="#关注内存与缓存" class="headerlink" title="关注内存与缓存"></a>关注内存与缓存</h1><blockquote>
-<p>勿将内存当做缓存使用。</p>
-</blockquote>
-<ol>
-<li>缓存限制（可使用现有的相关模块）、提供清空缓存队列的接口。</li>
-<li>使用redis、Memcached</li>
-</ol>
-<h1 id="内存泄漏排查"><a href="#内存泄漏排查" class="headerlink" title="内存泄漏排查"></a>内存泄漏排查</h1><p>使用相关模块：node-heapdump&#x2F;node-memwatch </p>
-<p><em>说实话，我感觉以我现在的能力，我觉得我根本不会考虑到内存泄漏、检查等之类的问题→_→<br>所以暂时简单记录，以后如果需要的话，再详细补充</em></p>
-<p><br/><br/></p>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this">MDN This</a></p>
+<p><a href="http://www.cnblogs.com/pssp/p/5216085.html">彻底理解 js 中 this 的指向，不必硬背。</a></p>
+<h2 id="简单整理"><a href="#简单整理" class="headerlink" title="简单整理"></a>简单整理</h2><p><strong>只是简单整理，不严谨，学习还是看<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this">MDN</a>官方文档</strong></p>
+<ul>
+<li>绝大多数情况下，函数的调用方式决定了<code>this</code>的值。</li>
+<li>绝大多数情况下，<code>this</code>的指向在函数定义时不能确定，在函数执行时确定。</li>
+<li>绝大多数情况下，<code>this</code>指向调用它的对象。</li>
+<li>全局情况下，<code>this</code>指window，nodeJS下指向<code>global</code>。</li>
+<li>全局情况下，严格模式时<code>this</code>指向<code>undefined</code>。</li>
+<li>调用时，可以通过<code>call()/apply()</code>方法间接调用以改变上下文。</li>
+<li>可以使用<code>bind()</code>永久绑定其指向到第一个参数，无论这个函数时如何调用的。且bind只生效一次。</li>
+<li>一个含有<code>this</code>的函数被多级调用，<code>this</code>也只指向直接调用它的上一级对象，而不是最外层。</li>
+<li>特殊情况，通过ES6箭头函数捕获其所在上下文的<code>this</code>值，作为自己的<code>this</code>值。</li>
+<li>箭头函数下this会忽略严格模式下的相关规则。</li>
+<li>箭头函数中的<code>this</code>指向不会因为<code>call()/apply()/bind()</code>方法改变。</li>
+</ul>
+</br>
+</br>
 ]]></content>
       <categories>
         <category>笔记</category>
       </categories>
       <tags>
         <tag>笔记</tag>
-        <tag>NodejS</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
-    <title>nodeJS后端文件接收与处理</title>
-    <url>/2017/07/10/node/nodeJS%E5%90%8E%E7%AB%AF%E6%96%87%E4%BB%B6%E6%8E%A5%E6%94%B6%E4%B8%8E%E5%A4%84%E7%90%86/</url>
+    <title>学习ES6：let&amp;const</title>
+    <url>/2017/07/18/node/let-and-const/</url>
     <content><![CDATA[<blockquote>
-<p>参考：<a href="http://blog.csdn.net/bugall/article/details/44873651">nodejs 对 form 表单上传文件数据的解析过程</a></p>
+<p>参考 <a href="http://es6.ruanyifeng.com/">阮一峰 《ES6 标准入门》</a> </p>
 </blockquote>
-<p>我是给这东西跪了。。。</p>
+<h1 id="let"><a href="#let" class="headerlink" title="let"></a>let</h1><h2 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h2><ul>
+<li>块级作用域：在ES5及以前，JS只有全局作用域及函数作用域，<code>let</code>则为JS提供了<strong>块级作用域</strong>。</li>
+<li>变量提升：<code>let</code>声明的变量<strong>不会提升</strong>。</li>
+<li>锁区：<code>let</code>声明的变量会暂时<strong>锁定</strong>其存在的作用域。</li>
+<li>不允许重复声明：<code>let</code>声明的变量只能在声明<strong>之后</strong>使用且<strong>不允许重复声明</strong>。</li>
+</ul>
 <span id="more"></span>
 
-<p>对包体解析，处理数据，拆分数据，整理数据。终于将文件数据和其他参数分离且存好了。</p>
-<p>本来觉得一切完美，结果文件这块似乎不能把<code>Buffer</code>转成<code>String</code>存储</p>
-<p>最后还是利用了 <a href="https://github.com/felixge/node-formidable">Node-formidable</a> 这个组件。。 </p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exports</span>.<span class="property">formupload</span> = <span class="keyword">function</span>(<span class="params">req,res,next</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> form = <span class="keyword">new</span> formidable.<span class="title class_">IncomingForm</span>();</span><br><span class="line">    <span class="keyword">let</span> uploadDir = path.<span class="title function_">normalize</span>(__dirname+<span class="string">&#x27;/&#x27;</span>+<span class="string">&quot;../avatar&quot;</span>);</span><br><span class="line">    form.<span class="property">uploadDir</span> = uploadDir;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(uploadDir);</span><br><span class="line">    form.<span class="title function_">parse</span>(req, <span class="keyword">function</span>(<span class="params">err, fields, files</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">in</span> files)&#123;</span><br><span class="line">            <span class="comment">//<span class="doctag">TODO:</span> 处理文件</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(util.<span class="title function_">inspect</span>(&#123;<span class="attr">fields</span>: fields, <span class="attr">files</span>: files&#125;));</span><br><span class="line">        <span class="keyword">return</span> res.<span class="title function_">json</span>(&#123;</span><br><span class="line">            <span class="attr">status</span>: <span class="number">200</span>,</span><br><span class="line">            <span class="attr">msg</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><blockquote>
+<p><a href="http://www.bilibili.com/video/av6698380/index_1.html">http://www.bilibili.com/video/av6698380/index_1.html</a></p>
+</blockquote>
+<p><embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=6698380&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed></p>
+<br>
 
-<p>还找到一段源码，是直接操作buffer的，可以参考。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">router.<span class="title function_">use</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> chunks = [],</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    req.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span> , <span class="keyword">function</span>(<span class="params">chunk</span>)&#123;</span><br><span class="line">        chunks.<span class="title function_">push</span>(chunk);</span><br><span class="line">        size+=chunk.<span class="property">length</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line">    req.<span class="title function_">on</span>(<span class="string">&quot;end&quot;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> buffer = <span class="title class_">Buffer</span>.<span class="title function_">concat</span>(chunks , size);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(!size)&#123;</span><br><span class="line">            res.<span class="title function_">writeHead</span>(<span class="number">404</span>);</span><br><span class="line">            res.<span class="title function_">end</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> rems = [];        </span><br><span class="line">        <span class="comment">// 根据 \ r\n 分离数据和报头</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;buffer.<span class="property">length</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">let</span> v = buffer[i];</span><br><span class="line">            <span class="keyword">let</span> v2 = buffer[i+<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(v == <span class="number">13</span> &amp;&amp; v2 == <span class="number">10</span>)&#123;</span><br><span class="line">                rems.<span class="title function_">push</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 图片信息</span></span><br><span class="line">        <span class="keyword">let</span> picmsg_1 = buffer.<span class="title function_">slice</span>(rems[<span class="number">0</span>]+<span class="number">2</span>,rems[<span class="number">1</span>]).<span class="title function_">toString</span>();</span><br><span class="line">        <span class="keyword">let</span> filename = picmsg_1.<span class="title function_">match</span>(<span class="regexp">/filename=&quot;.*&quot;/g</span>)[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&#x27;&quot;&#x27;</span>)[<span class="number">1</span>];   </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 图片数据</span></span><br><span class="line">        <span class="keyword">let</span> nbuf = buffer.<span class="title function_">slice</span>(rems[<span class="number">3</span>]+<span class="number">2</span>,rems[rems.<span class="property">length</span>-<span class="number">2</span>]);        </span><br><span class="line">        <span class="keyword">let</span> path = <span class="variable constant_">APP_PATH</span> + <span class="string">&#x27;/public/images/avatar/&#x27;</span>+filename;</span><br><span class="line">        </span><br><span class="line">        fs.<span class="title function_">writeFileSync</span>(path , nbuf);</span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot; 保存 &quot;</span>+filename+<span class="string">&quot; 成功 &quot;</span>);        </span><br><span class="line">        <span class="keyword">return</span> res.<span class="title function_">json</span>(&#123;</span><br><span class="line">            <span class="attr">success</span>: <span class="literal">true</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>2017年7月30日 <strong>更新</strong></p>
-<p>今天又研究了下这个最后的这个方法，直接操作buffer的，惊讶发现把随文件传递的数据信息比如token、其它相关data一起当作图片数据存起来，竟然可以正常显示图片！(如图片所示，上传的文件正常显示，但是用记事本等打开可以发现下面存储了随文件一同传递的相关参数)</p>
-<p><img src="/img/%E6%96%87%E4%BB%B6.png" alt="文件"></p>
-<p><em>没研究过图片文件的数据啥的，感觉有点神奇</em></p>
-<p>所以上方这个直接操作buffer的方法有点不太好，在 处理图片数据这块。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> nbuf = buffer.<span class="title function_">slice</span>(rems[<span class="number">3</span>]+<span class="number">2</span>,rems[rems.<span class="property">length</span>-<span class="number">2</span>]); </span><br></pre></td></tr></table></figure>
-
-<p>这行代码有点问题。如果前端真的只传了文件倒是OK，没问题，如果还包含了其他重要的数据就又可能造成问题。图片可以正常存储显示，不过数据可能会不安全。</p>
-<hr>
-<p>总结来说，在后端处理文件的时候有两个方法</p>
-<ol>
-<li>直接使用<code>formidable</code>，简单方便。</li>
-<li>操作buffer, 稍微复杂，不过只要知道了文件上传时数据格式就简单了。需要注意在操作类似图片的文件时，最好直接操作buffer，不要随意转码。</li>
-</ol>
-<p><br><br><br></p>
+<h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1><h2 id="简要说明-1"><a href="#简要说明-1" class="headerlink" title="简要说明"></a>简要说明</h2><ul>
+<li>声明全局变量，必须<strong>初始化</strong>。</li>
+<li>全局变量在其作用于下有效，同样不会变量提升，<strong>不能重新赋值</strong>。</li>
+</ul>
+<p><strong>常量不变，不能重新赋值是指常量本身的值（对简单变量来说，如<code>string</code>、<code>boolean</code>等，值不变，对于引用类型来说是引用指向不变）不能改变。<br>引用类型指向的对象里的属性可以改变值。</strong></p>
+<h2 id="视频-1"><a href="#视频-1" class="headerlink" title="视频"></a>视频</h2><blockquote>
+<p><a href="http://www.bilibili.com/video/av6698380/index_2.html">http://www.bilibili.com/video/av6698380/index_2.html</a></p>
+</blockquote>
+<p><embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=6698380&page=2" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed></p>
+<p><br><br></p>
 ]]></content>
       <categories>
-        <category>nodejs</category>
+        <category>笔记</category>
       </categories>
       <tags>
+        <tag>笔记</tag>
         <tag>nodejs</tag>
-        <tag>后端</tag>
-        <tag>文件处理</tag>
+        <tag>es6</tag>
       </tags>
   </entry>
   <entry>
@@ -972,43 +882,46 @@ call/apply/bind 总体上都是改变调用对象的this指向。
       </tags>
   </entry>
   <entry>
-    <title>学习ES6：let&amp;const</title>
-    <url>/2017/07/18/node/let-and-const/</url>
+    <title>nodeJS后端文件接收与处理</title>
+    <url>/2017/07/10/node/nodeJS%E5%90%8E%E7%AB%AF%E6%96%87%E4%BB%B6%E6%8E%A5%E6%94%B6%E4%B8%8E%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<blockquote>
-<p>参考 <a href="http://es6.ruanyifeng.com/">阮一峰 《ES6 标准入门》</a> </p>
+<p>参考：<a href="http://blog.csdn.net/bugall/article/details/44873651">nodejs 对 form 表单上传文件数据的解析过程</a></p>
 </blockquote>
-<h1 id="let"><a href="#let" class="headerlink" title="let"></a>let</h1><h2 id="简要说明"><a href="#简要说明" class="headerlink" title="简要说明"></a>简要说明</h2><ul>
-<li>块级作用域：在ES5及以前，JS只有全局作用域及函数作用域，<code>let</code>则为JS提供了<strong>块级作用域</strong>。</li>
-<li>变量提升：<code>let</code>声明的变量<strong>不会提升</strong>。</li>
-<li>锁区：<code>let</code>声明的变量会暂时<strong>锁定</strong>其存在的作用域。</li>
-<li>不允许重复声明：<code>let</code>声明的变量只能在声明<strong>之后</strong>使用且<strong>不允许重复声明</strong>。</li>
-</ul>
+<p>我是给这东西跪了。。。</p>
 <span id="more"></span>
 
-<h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><blockquote>
-<p><a href="http://www.bilibili.com/video/av6698380/index_1.html">http://www.bilibili.com/video/av6698380/index_1.html</a></p>
-</blockquote>
-<p><embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=6698380&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed></p>
-<br>
+<p>对包体解析，处理数据，拆分数据，整理数据。终于将文件数据和其他参数分离且存好了。</p>
+<p>本来觉得一切完美，结果文件这块似乎不能把<code>Buffer</code>转成<code>String</code>存储</p>
+<p>最后还是利用了 <a href="https://github.com/felixge/node-formidable">Node-formidable</a> 这个组件。。 </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exports</span>.<span class="property">formupload</span> = <span class="keyword">function</span>(<span class="params">req,res,next</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> form = <span class="keyword">new</span> formidable.<span class="title class_">IncomingForm</span>();</span><br><span class="line">    <span class="keyword">let</span> uploadDir = path.<span class="title function_">normalize</span>(__dirname+<span class="string">&#x27;/&#x27;</span>+<span class="string">&quot;../avatar&quot;</span>);</span><br><span class="line">    form.<span class="property">uploadDir</span> = uploadDir;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(uploadDir);</span><br><span class="line">    form.<span class="title function_">parse</span>(req, <span class="keyword">function</span>(<span class="params">err, fields, files</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">in</span> files)&#123;</span><br><span class="line">            <span class="comment">//<span class="doctag">TODO:</span> 处理文件</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(util.<span class="title function_">inspect</span>(&#123;<span class="attr">fields</span>: fields, <span class="attr">files</span>: files&#125;));</span><br><span class="line">        <span class="keyword">return</span> res.<span class="title function_">json</span>(&#123;</span><br><span class="line">            <span class="attr">status</span>: <span class="number">200</span>,</span><br><span class="line">            <span class="attr">msg</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1><h2 id="简要说明-1"><a href="#简要说明-1" class="headerlink" title="简要说明"></a>简要说明</h2><ul>
-<li>声明全局变量，必须<strong>初始化</strong>。</li>
-<li>全局变量在其作用于下有效，同样不会变量提升，<strong>不能重新赋值</strong>。</li>
-</ul>
-<p><strong>常量不变，不能重新赋值是指常量本身的值（对简单变量来说，如<code>string</code>、<code>boolean</code>等，值不变，对于引用类型来说是引用指向不变）不能改变。<br>引用类型指向的对象里的属性可以改变值。</strong></p>
-<h2 id="视频-1"><a href="#视频-1" class="headerlink" title="视频"></a>视频</h2><blockquote>
-<p><a href="http://www.bilibili.com/video/av6698380/index_2.html">http://www.bilibili.com/video/av6698380/index_2.html</a></p>
-</blockquote>
-<p><embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=6698380&page=2" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed></p>
-<p><br><br></p>
+<p>还找到一段源码，是直接操作buffer的，可以参考。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">router.<span class="title function_">use</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> chunks = [],</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    req.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span> , <span class="keyword">function</span>(<span class="params">chunk</span>)&#123;</span><br><span class="line">        chunks.<span class="title function_">push</span>(chunk);</span><br><span class="line">        size+=chunk.<span class="property">length</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line">    req.<span class="title function_">on</span>(<span class="string">&quot;end&quot;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> buffer = <span class="title class_">Buffer</span>.<span class="title function_">concat</span>(chunks , size);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(!size)&#123;</span><br><span class="line">            res.<span class="title function_">writeHead</span>(<span class="number">404</span>);</span><br><span class="line">            res.<span class="title function_">end</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> rems = [];        </span><br><span class="line">        <span class="comment">// 根据 \ r\n 分离数据和报头</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;buffer.<span class="property">length</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">let</span> v = buffer[i];</span><br><span class="line">            <span class="keyword">let</span> v2 = buffer[i+<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(v == <span class="number">13</span> &amp;&amp; v2 == <span class="number">10</span>)&#123;</span><br><span class="line">                rems.<span class="title function_">push</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 图片信息</span></span><br><span class="line">        <span class="keyword">let</span> picmsg_1 = buffer.<span class="title function_">slice</span>(rems[<span class="number">0</span>]+<span class="number">2</span>,rems[<span class="number">1</span>]).<span class="title function_">toString</span>();</span><br><span class="line">        <span class="keyword">let</span> filename = picmsg_1.<span class="title function_">match</span>(<span class="regexp">/filename=&quot;.*&quot;/g</span>)[<span class="number">0</span>].<span class="title function_">split</span>(<span class="string">&#x27;&quot;&#x27;</span>)[<span class="number">1</span>];   </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 图片数据</span></span><br><span class="line">        <span class="keyword">let</span> nbuf = buffer.<span class="title function_">slice</span>(rems[<span class="number">3</span>]+<span class="number">2</span>,rems[rems.<span class="property">length</span>-<span class="number">2</span>]);        </span><br><span class="line">        <span class="keyword">let</span> path = <span class="variable constant_">APP_PATH</span> + <span class="string">&#x27;/public/images/avatar/&#x27;</span>+filename;</span><br><span class="line">        </span><br><span class="line">        fs.<span class="title function_">writeFileSync</span>(path , nbuf);</span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot; 保存 &quot;</span>+filename+<span class="string">&quot; 成功 &quot;</span>);        </span><br><span class="line">        <span class="keyword">return</span> res.<span class="title function_">json</span>(&#123;</span><br><span class="line">            <span class="attr">success</span>: <span class="literal">true</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2017年7月30日 <strong>更新</strong></p>
+<p>今天又研究了下这个最后的这个方法，直接操作buffer的，惊讶发现把随文件传递的数据信息比如token、其它相关data一起当作图片数据存起来，竟然可以正常显示图片！(如图片所示，上传的文件正常显示，但是用记事本等打开可以发现下面存储了随文件一同传递的相关参数)</p>
+<p><img src="/img/%E6%96%87%E4%BB%B6.png" alt="文件"></p>
+<p><em>没研究过图片文件的数据啥的，感觉有点神奇</em></p>
+<p>所以上方这个直接操作buffer的方法有点不太好，在 处理图片数据这块。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> nbuf = buffer.<span class="title function_">slice</span>(rems[<span class="number">3</span>]+<span class="number">2</span>,rems[rems.<span class="property">length</span>-<span class="number">2</span>]); </span><br></pre></td></tr></table></figure>
+
+<p>这行代码有点问题。如果前端真的只传了文件倒是OK，没问题，如果还包含了其他重要的数据就又可能造成问题。图片可以正常存储显示，不过数据可能会不安全。</p>
+<hr>
+<p>总结来说，在后端处理文件的时候有两个方法</p>
+<ol>
+<li>直接使用<code>formidable</code>，简单方便。</li>
+<li>操作buffer, 稍微复杂，不过只要知道了文件上传时数据格式就简单了。需要注意在操作类似图片的文件时，最好直接操作buffer，不要随意转码。</li>
+</ol>
+<p><br><br><br></p>
 ]]></content>
       <categories>
-        <category>笔记</category>
+        <category>nodejs</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
         <tag>nodejs</tag>
-        <tag>es6</tag>
+        <tag>后端</tag>
+        <tag>文件处理</tag>
       </tags>
   </entry>
   <entry>
@@ -1054,59 +967,6 @@ call/apply/bind 总体上都是改变调用对象的this指向。
       <tags>
         <tag>nodejs</tag>
         <tag>socket</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>promise</title>
-    <url>/2017/10/11/node/promise/</url>
-    <content><![CDATA[<div class="post-body" itemprop="articleBody" style="opacity: 1; display: block; transform: translateY(0px);">
-
-<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a><a href="#Promise" title="Promise"></a>Promise</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN: promise</a></p>
-<p>顾名思义，<code>Promise</code>意为一种承诺，表明承诺做完一件事，要么成功要么失败，对应每一种结果，我都承诺会给予相应的回应（即解决方法）。</p>
-<p>ES6 已自身实现了<code>Promise</code>，可以直接使用。</p>
-<span id="more"></span>
-
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
-<li><code>Promise</code>对象对应着三种状态，即<code>PENDING</code>(进行中，还未有结果)，<code>FULFILLED</code>(完成态),<code>REJECTED</code>(失败)。</li>
-<li><code>Promise</code>对象的状态可以由<code>PENDING</code>→<code>FULFILLED</code>或<code>PENDING</code>→<code>REJECTED</code>转换，且一旦转换，则不再改变。</li>
-<li><code>Promise</code>对象一旦发生了改变，即使再对其添加回调，也会立刻得到该结果。（_测试发现确实是这样，但是还不能确定自己理解是正确的_）</li>
-<li><code>Promise</code>对象一定有<code>then</code>方法，用以对对象的状态改变后，做出相应的回应。</li>
-<li><code>Promise</code>一旦执行则无法中途取消。</li>
-</ul>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (success) &#123;</span><br><span class="line">    <span class="title function_">resolve</span>(val);</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_">reject</span>(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">p</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// success</span></span><br><span class="line">  &#125;, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// failure</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>参数 <strong>executor</strong><br>executor 是一个带有 resolve 和 reject 两个参数的函数 。<strong>executor 函数在 Promise 构造函数执行时同步执行</strong>，被传递 resolve 和 reject 函数（executor 函数在 Promise 构造函数返回新建对象前被调用）。resolve 和 reject 函数被调用时，分别将 promise 的状态改为 fulfilled（完成）或 rejected（失败）。executor 内部通常会执行一些异步操作，一旦完成，可以调用 resolve 函数来将 promise 状态改成 fulfilled，或者在发生错误时将它的状态改为 rejected。<br>如果在 executor 函数中抛出一个错误，那么该 promise 状态为 rejected。executor 函数的返回值被忽略。</p>
-</blockquote>
-<h2 id="Promise-简单功能实现"><a href="#Promise-简单功能实现" class="headerlink" title="Promise 简单功能实现"></a>Promise 简单功能实现</h2><p>此处代码高度参考 <a href="https://github.com/Bitzo/node-practice/blob/master/control/promise/README.md">Github:ElemeFE&#x2F;node-practice</a></p>
-<p>看了好两边遍，自己倒是也尝试着写了好几遍 &#x3D; &#x3D;。。实现起来还是感觉很生疏。。每到最后实现多个 then 的时候就会出现问题。。可能自己是真的蠢。。&#x2F; 尴尬</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">FULFILLED</span> = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">REJECTED</span> = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PENDING</span> = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Promisee</span>(<span class="params">callback</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> status = <span class="variable constant_">PENDING</span>;</span><br><span class="line">  <span class="keyword">let</span> value = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">let</span> handler = [];</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">reject</span>(<span class="params">err</span>) &#123;</span><br><span class="line">    value = err;</span><br><span class="line">    status = <span class="variable constant_">REJECTED</span>;</span><br><span class="line">    handler.<span class="title function_">forEach</span>(next);</span><br><span class="line">    handler = [];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">resolve</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> then = <span class="keyword">typeof</span> value.<span class="property">then</span> == <span class="string">&#x27;function&#x27;</span> ? value.<span class="property">then</span> : <span class="literal">null</span>;</span><br><span class="line">      <span class="keyword">if</span> (then) &#123;</span><br><span class="line">        value.<span class="property">then</span>.<span class="title function_">apply</span>(<span class="literal">null</span>, [resolve, reject]);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">fulfill</span>(v);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      <span class="title function_">reject</span>(e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">fulfill</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    status = <span class="variable constant_">FULFILLED</span>;</span><br><span class="line">    value = val;</span><br><span class="line">    <span class="title function_">next</span>(handler);</span><br><span class="line">    handler.<span class="title function_">forEach</span>(next);</span><br><span class="line">    handler = [];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">next</span>(<span class="params">&#123;onFulfill, onReject&#125;</span>) &#123;</span><br><span class="line">    <span class="keyword">switch</span> (status) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="attr">PENDING</span>:</span><br><span class="line">      handler.<span class="title function_">push</span>(&#123;onFulfill, onReject&#125;);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="attr">FULFILLED</span>:</span><br><span class="line">      onFulfill &amp;&amp; <span class="title function_">onFulfill</span>(value);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="attr">REJECTED</span>:</span><br><span class="line">      onReject &amp;&amp; <span class="title function_">onReject</span>(value);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">then</span> = <span class="function">(<span class="params">onFulfill, onReject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promisee</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">next</span>(&#123;</span><br><span class="line">        <span class="attr">onFulfill</span>: <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="title function_">resolve</span>(<span class="title function_">onFulfill</span>(val));</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onReject</span>: <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="title function_">reject</span>(<span class="title function_">onReject</span>(err));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="title function_">callback</span>(resolve, reject);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="title class_">Promisee</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>经常忘记的是 resolve 方法下，忽略了新对象的 then 方法上下文绑定。</li>
-<li>目前对 then 方法实现这块的 next 调用，所谓的_参数拦截_？有点不太明白。这是第一次遇到这种写法。。</li>
-<li>还没有做完备的参数检查等异常处理。</li>
-</ul>
-<h2 id="几个-Promise-方法"><a href="#几个-Promise-方法" class="headerlink" title="几个 Promise 方法"></a>几个 Promise 方法</h2><h3 id="Promise-prototype-catch-onRejected"><a href="#Promise-prototype-catch-onRejected" class="headerlink" title="Promise.prototype.catch(onRejected)"></a>Promise.prototype.catch(onRejected)</h3><p>指定发生错误时执行的回调。</p>
-<p>它可以在 promise&#x2F;then 中发生异常时，捕获异常并处理。<br><strong>Promise 对象的错误具有 “冒泡” 性质，会一直向后传递，直到被捕获为止。也就是说，错误总是会被下一个 catch 语句捕获。</strong><br>一般 then 方法里可以不用谢第二个 reject 的回调，可以只写 resolve 回调，然后直接在最后加上 catch 捕获异常。</p>
-<p><img src="/img/promise_catch.png" alt="promise_catch"></p>
-<h3 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h3><p>Promise.all() 接受一个 Iterable 参数，Iterable 对象的每个子项都是一个 Promise 实例，若不是，则调用 Promise.resolve() 方法将其转换。</p>
-<p>Promise.all() 的状态由其 Iterable 对象的所有子项决定</p>
-<ul>
-<li>若所有子项都 FULFILLED，则 Promise.all() 的状态才变为 FULFILLED，其 Iterable 的所有子项的返回值组成一个数组，传递给 Promise.all() 的回调。</li>
-<li>若有任意一个子项被 REJECT，则 Promise.all() 直接 REJECT，其中第一个被 REJECT 的子项的返回值传递给 Promise.all() 的回调。</li>
-</ul>
-<h3 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h3><p>该方法形式上与 Promise.all() 有点类似，但时表现不一样。<br>Promise.race() 对于其参数 Iterable 对象，若有任意一个子项 FULFILLED，则 Promise.race() 也 FULFILLED，如有任意一个子项 REJECT，则 Promise.race() 也 REJECT。<br>即 Promise.race() 总是和其 Iterable 对象的第一个出结果的子项具有相同的状态。</p>
-<h3 id="Promise-resolve-和-Promise-reject"><a href="#Promise-resolve-和-Promise-reject" class="headerlink" title="Promise.resolve() 和 Promise.reject()"></a>Promise.resolve() 和 Promise.reject()</h3><p>某峰的 ES6 入门这块写的还是很全的。。。<br><a href="http://es6.ruanyifeng.com/#docs/promise#Promise-resolve">ECMAScript 6 入门</a><br>包括后面的<code>Promise.done()</code>，<code>Promise.finally()</code>以及<code>Promise.try()</code></p>
-<br>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>nodejs</tag>
-        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -1176,6 +1036,59 @@ call/apply/bind 总体上都是改变调用对象的this指向。
       <tags>
         <tag>笔记</tag>
         <tag>进程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>promise</title>
+    <url>/2017/10/11/node/promise/</url>
+    <content><![CDATA[<div class="post-body" itemprop="articleBody" style="opacity: 1; display: block; transform: translateY(0px);">
+
+<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a><a href="#Promise" title="Promise"></a>Promise</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN: promise</a></p>
+<p>顾名思义，<code>Promise</code>意为一种承诺，表明承诺做完一件事，要么成功要么失败，对应每一种结果，我都承诺会给予相应的回应（即解决方法）。</p>
+<p>ES6 已自身实现了<code>Promise</code>，可以直接使用。</p>
+<span id="more"></span>
+
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li><code>Promise</code>对象对应着三种状态，即<code>PENDING</code>(进行中，还未有结果)，<code>FULFILLED</code>(完成态),<code>REJECTED</code>(失败)。</li>
+<li><code>Promise</code>对象的状态可以由<code>PENDING</code>→<code>FULFILLED</code>或<code>PENDING</code>→<code>REJECTED</code>转换，且一旦转换，则不再改变。</li>
+<li><code>Promise</code>对象一旦发生了改变，即使再对其添加回调，也会立刻得到该结果。（_测试发现确实是这样，但是还不能确定自己理解是正确的_）</li>
+<li><code>Promise</code>对象一定有<code>then</code>方法，用以对对象的状态改变后，做出相应的回应。</li>
+<li><code>Promise</code>一旦执行则无法中途取消。</li>
+</ul>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (success) &#123;</span><br><span class="line">    <span class="title function_">resolve</span>(val);</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_">reject</span>(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">p</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// success</span></span><br><span class="line">  &#125;, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// failure</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参数 <strong>executor</strong><br>executor 是一个带有 resolve 和 reject 两个参数的函数 。<strong>executor 函数在 Promise 构造函数执行时同步执行</strong>，被传递 resolve 和 reject 函数（executor 函数在 Promise 构造函数返回新建对象前被调用）。resolve 和 reject 函数被调用时，分别将 promise 的状态改为 fulfilled（完成）或 rejected（失败）。executor 内部通常会执行一些异步操作，一旦完成，可以调用 resolve 函数来将 promise 状态改成 fulfilled，或者在发生错误时将它的状态改为 rejected。<br>如果在 executor 函数中抛出一个错误，那么该 promise 状态为 rejected。executor 函数的返回值被忽略。</p>
+</blockquote>
+<h2 id="Promise-简单功能实现"><a href="#Promise-简单功能实现" class="headerlink" title="Promise 简单功能实现"></a>Promise 简单功能实现</h2><p>此处代码高度参考 <a href="https://github.com/Bitzo/node-practice/blob/master/control/promise/README.md">Github:ElemeFE&#x2F;node-practice</a></p>
+<p>看了好两边遍，自己倒是也尝试着写了好几遍 &#x3D; &#x3D;。。实现起来还是感觉很生疏。。每到最后实现多个 then 的时候就会出现问题。。可能自己是真的蠢。。&#x2F; 尴尬</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">FULFILLED</span> = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">REJECTED</span> = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PENDING</span> = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Promisee</span>(<span class="params">callback</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> status = <span class="variable constant_">PENDING</span>;</span><br><span class="line">  <span class="keyword">let</span> value = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">let</span> handler = [];</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">reject</span>(<span class="params">err</span>) &#123;</span><br><span class="line">    value = err;</span><br><span class="line">    status = <span class="variable constant_">REJECTED</span>;</span><br><span class="line">    handler.<span class="title function_">forEach</span>(next);</span><br><span class="line">    handler = [];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">resolve</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> then = <span class="keyword">typeof</span> value.<span class="property">then</span> == <span class="string">&#x27;function&#x27;</span> ? value.<span class="property">then</span> : <span class="literal">null</span>;</span><br><span class="line">      <span class="keyword">if</span> (then) &#123;</span><br><span class="line">        value.<span class="property">then</span>.<span class="title function_">apply</span>(<span class="literal">null</span>, [resolve, reject]);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">fulfill</span>(v);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      <span class="title function_">reject</span>(e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">fulfill</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    status = <span class="variable constant_">FULFILLED</span>;</span><br><span class="line">    value = val;</span><br><span class="line">    <span class="title function_">next</span>(handler);</span><br><span class="line">    handler.<span class="title function_">forEach</span>(next);</span><br><span class="line">    handler = [];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">next</span>(<span class="params">&#123;onFulfill, onReject&#125;</span>) &#123;</span><br><span class="line">    <span class="keyword">switch</span> (status) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="attr">PENDING</span>:</span><br><span class="line">      handler.<span class="title function_">push</span>(&#123;onFulfill, onReject&#125;);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="attr">FULFILLED</span>:</span><br><span class="line">      onFulfill &amp;&amp; <span class="title function_">onFulfill</span>(value);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="attr">REJECTED</span>:</span><br><span class="line">      onReject &amp;&amp; <span class="title function_">onReject</span>(value);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">then</span> = <span class="function">(<span class="params">onFulfill, onReject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promisee</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">next</span>(&#123;</span><br><span class="line">        <span class="attr">onFulfill</span>: <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="title function_">resolve</span>(<span class="title function_">onFulfill</span>(val));</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onReject</span>: <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="title function_">reject</span>(<span class="title function_">onReject</span>(err));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="title function_">callback</span>(resolve, reject);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="title class_">Promisee</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>经常忘记的是 resolve 方法下，忽略了新对象的 then 方法上下文绑定。</li>
+<li>目前对 then 方法实现这块的 next 调用，所谓的_参数拦截_？有点不太明白。这是第一次遇到这种写法。。</li>
+<li>还没有做完备的参数检查等异常处理。</li>
+</ul>
+<h2 id="几个-Promise-方法"><a href="#几个-Promise-方法" class="headerlink" title="几个 Promise 方法"></a>几个 Promise 方法</h2><h3 id="Promise-prototype-catch-onRejected"><a href="#Promise-prototype-catch-onRejected" class="headerlink" title="Promise.prototype.catch(onRejected)"></a>Promise.prototype.catch(onRejected)</h3><p>指定发生错误时执行的回调。</p>
+<p>它可以在 promise&#x2F;then 中发生异常时，捕获异常并处理。<br><strong>Promise 对象的错误具有 “冒泡” 性质，会一直向后传递，直到被捕获为止。也就是说，错误总是会被下一个 catch 语句捕获。</strong><br>一般 then 方法里可以不用谢第二个 reject 的回调，可以只写 resolve 回调，然后直接在最后加上 catch 捕获异常。</p>
+<p><img src="/img/promise_catch.png" alt="promise_catch"></p>
+<h3 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h3><p>Promise.all() 接受一个 Iterable 参数，Iterable 对象的每个子项都是一个 Promise 实例，若不是，则调用 Promise.resolve() 方法将其转换。</p>
+<p>Promise.all() 的状态由其 Iterable 对象的所有子项决定</p>
+<ul>
+<li>若所有子项都 FULFILLED，则 Promise.all() 的状态才变为 FULFILLED，其 Iterable 的所有子项的返回值组成一个数组，传递给 Promise.all() 的回调。</li>
+<li>若有任意一个子项被 REJECT，则 Promise.all() 直接 REJECT，其中第一个被 REJECT 的子项的返回值传递给 Promise.all() 的回调。</li>
+</ul>
+<h3 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h3><p>该方法形式上与 Promise.all() 有点类似，但时表现不一样。<br>Promise.race() 对于其参数 Iterable 对象，若有任意一个子项 FULFILLED，则 Promise.race() 也 FULFILLED，如有任意一个子项 REJECT，则 Promise.race() 也 REJECT。<br>即 Promise.race() 总是和其 Iterable 对象的第一个出结果的子项具有相同的状态。</p>
+<h3 id="Promise-resolve-和-Promise-reject"><a href="#Promise-resolve-和-Promise-reject" class="headerlink" title="Promise.resolve() 和 Promise.reject()"></a>Promise.resolve() 和 Promise.reject()</h3><p>某峰的 ES6 入门这块写的还是很全的。。。<br><a href="http://es6.ruanyifeng.com/#docs/promise#Promise-resolve">ECMAScript 6 入门</a><br>包括后面的<code>Promise.done()</code>，<code>Promise.finally()</code>以及<code>Promise.try()</code></p>
+<br>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>js</tag>
+        <tag>nodejs</tag>
       </tags>
   </entry>
   <entry>
@@ -1306,47 +1219,6 @@ call/apply/bind 总体上都是改变调用对象的this指向。
       </tags>
   </entry>
   <entry>
-    <title>学习ES6：字符串扩展</title>
-    <url>/2017/07/18/node/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95/</url>
-    <content><![CDATA[<blockquote>
-<p>参考 <a href="http://es6.ruanyifeng.com/">阮一峰 《ES6 标准入门》</a></p>
-</blockquote>
-<h1 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h1><p>使用反引号<code>`</code>标识， 模版字符串可以填充普通字符串，也可以定义多行字符串。</p>
-<ul>
-<li>使用多行模版时，所有的空格缩进都会被保存在输出中。</li>
-<li>使用<code>$&#123;&#125;</code>嵌入变量，<code>&#123;&#125;</code>中可以写任何js表达式。</li>
-<li>模版中使用反引号用反斜杠<code>\</code>转义。</li>
-</ul>
-<span id="more"></span>
-
-<h1 id="字符串遍历器"><a href="#字符串遍历器" class="headerlink" title="字符串遍历器"></a>字符串遍历器</h1><p>为字符串添加了Iterator，使之可以通过<code>for..of...</code>遍历。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> letter <span class="keyword">of</span> <span class="string">&#x27;string&#x27;</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(letter);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//&quot;s&quot;</span></span><br><span class="line"><span class="comment">//&quot;t&quot;</span></span><br><span class="line"><span class="comment">//&quot;r&quot;</span></span><br><span class="line"><span class="comment">//&quot;i&quot;</span></span><br><span class="line"><span class="comment">//&quot;n&quot;</span></span><br><span class="line"><span class="comment">//&quot;g&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="字符串扩展API"><a href="#字符串扩展API" class="headerlink" title="字符串扩展API"></a>字符串扩展API</h1><p>只记录我感觉常用或比较实用的部分。</p>
-<h2 id="includes"><a href="#includes" class="headerlink" title="includes()"></a>includes()</h2><p><strong>includes(str[, postion])</strong><br><strong>Function</strong>: 字符串中是否存在参数字符串<br><strong>return</strong>: boolean</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">&#x27;javascript&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">includes</span>(<span class="string">&#x27;av&#x27;</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">includes</span>(<span class="string">&#x27;av&#x27;</span>, <span class="number">1</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">includes</span>(<span class="string">&#x27;av&#x27;</span>, <span class="number">3</span>)); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="startsWith"><a href="#startsWith" class="headerlink" title="startsWith()"></a>startsWith()</h2><p><strong>startsWith(str[, postion])</strong><br><strong>Function</strong>: 字符串是否以参数字符串开头<br><strong>return</strong>: boolean</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">&#x27;javascript&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">startsWith</span>(<span class="string">&#x27;ja&#x27;</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">startsWith</span>(<span class="string">&#x27;av&#x27;</span>, <span class="number">1</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">startsWith</span>(<span class="string">&#x27;ja&#x27;</span>, <span class="number">1</span>)); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="endsWith"><a href="#endsWith" class="headerlink" title="endsWith()"></a>endsWith()</h2><p><strong>endsWith(str[, postion])</strong><br><strong>Function</strong>: 字符串是否以参数字符串结尾<br><strong>return</strong>: boolean</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">&#x27;javascript&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">endsWith</span>(<span class="string">&#x27;pt&#x27;</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">endsWith</span>(<span class="string">&#x27;pt&#x27;</span>, <span class="number">1</span>)); <span class="comment">//false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">endsWith</span>(<span class="string">&#x27;av&#x27;</span>, <span class="number">3</span>)); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h2><p><strong>repeat(count)</strong><br><strong>Function</strong>: 将字符串重复count次 <em>count非整数会被向下取整，非数字会先转成数字</em><br><strong>return</strong>: string</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;x&#x27;</span>.<span class="title function_">repeat</span>(<span class="number">3</span>)); <span class="comment">//&#x27;xxx&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;x&#x27;</span>.<span class="title function_">repeat</span>(<span class="number">3.2</span>)); <span class="comment">//&#x27;xxx&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;x&#x27;</span>.<span class="title function_">repeat</span>(<span class="number">3.6</span>)); <span class="comment">//&#x27;xxx&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;x&#x27;</span>.<span class="title function_">repeat</span>(<span class="number">0</span>)); <span class="comment">//&#x27;&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;x&#x27;</span>.<span class="title function_">repeat</span>(<span class="string">&#x27;3&#x27;</span>)); <span class="comment">//&#x27;xxx&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;x&#x27;</span>.<span class="title function_">repeat</span>(<span class="string">&#x27;a&#x27;</span>)); <span class="comment">//&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<br>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>nodejs</tag>
-        <tag>es6</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>学习ES6：函数扩展</title>
     <url>/2017/09/08/node/%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<p>es6中函数扩展</p>
@@ -1412,8 +1284,8 @@ call/apply/bind 总体上都是改变调用对象的this指向。
         <category>笔记</category>
       </categories>
       <tags>
-        <tag>nodejs</tag>
         <tag>js</tag>
+        <tag>nodejs</tag>
         <tag>es6</tag>
       </tags>
   </entry>
@@ -1513,6 +1385,47 @@ call/apply/bind 总体上都是改变调用对象的this指向。
       </tags>
   </entry>
   <entry>
+    <title>学习ES6：字符串扩展</title>
+    <url>/2017/07/18/node/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95/</url>
+    <content><![CDATA[<blockquote>
+<p>参考 <a href="http://es6.ruanyifeng.com/">阮一峰 《ES6 标准入门》</a></p>
+</blockquote>
+<h1 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h1><p>使用反引号<code>`</code>标识， 模版字符串可以填充普通字符串，也可以定义多行字符串。</p>
+<ul>
+<li>使用多行模版时，所有的空格缩进都会被保存在输出中。</li>
+<li>使用<code>$&#123;&#125;</code>嵌入变量，<code>&#123;&#125;</code>中可以写任何js表达式。</li>
+<li>模版中使用反引号用反斜杠<code>\</code>转义。</li>
+</ul>
+<span id="more"></span>
+
+<h1 id="字符串遍历器"><a href="#字符串遍历器" class="headerlink" title="字符串遍历器"></a>字符串遍历器</h1><p>为字符串添加了Iterator，使之可以通过<code>for..of...</code>遍历。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> letter <span class="keyword">of</span> <span class="string">&#x27;string&#x27;</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(letter);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//&quot;s&quot;</span></span><br><span class="line"><span class="comment">//&quot;t&quot;</span></span><br><span class="line"><span class="comment">//&quot;r&quot;</span></span><br><span class="line"><span class="comment">//&quot;i&quot;</span></span><br><span class="line"><span class="comment">//&quot;n&quot;</span></span><br><span class="line"><span class="comment">//&quot;g&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="字符串扩展API"><a href="#字符串扩展API" class="headerlink" title="字符串扩展API"></a>字符串扩展API</h1><p>只记录我感觉常用或比较实用的部分。</p>
+<h2 id="includes"><a href="#includes" class="headerlink" title="includes()"></a>includes()</h2><p><strong>includes(str[, postion])</strong><br><strong>Function</strong>: 字符串中是否存在参数字符串<br><strong>return</strong>: boolean</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">&#x27;javascript&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">includes</span>(<span class="string">&#x27;av&#x27;</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">includes</span>(<span class="string">&#x27;av&#x27;</span>, <span class="number">1</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">includes</span>(<span class="string">&#x27;av&#x27;</span>, <span class="number">3</span>)); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="startsWith"><a href="#startsWith" class="headerlink" title="startsWith()"></a>startsWith()</h2><p><strong>startsWith(str[, postion])</strong><br><strong>Function</strong>: 字符串是否以参数字符串开头<br><strong>return</strong>: boolean</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">&#x27;javascript&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">startsWith</span>(<span class="string">&#x27;ja&#x27;</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">startsWith</span>(<span class="string">&#x27;av&#x27;</span>, <span class="number">1</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">startsWith</span>(<span class="string">&#x27;ja&#x27;</span>, <span class="number">1</span>)); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="endsWith"><a href="#endsWith" class="headerlink" title="endsWith()"></a>endsWith()</h2><p><strong>endsWith(str[, postion])</strong><br><strong>Function</strong>: 字符串是否以参数字符串结尾<br><strong>return</strong>: boolean</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">&#x27;javascript&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">endsWith</span>(<span class="string">&#x27;pt&#x27;</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">endsWith</span>(<span class="string">&#x27;pt&#x27;</span>, <span class="number">1</span>)); <span class="comment">//false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(string.<span class="title function_">endsWith</span>(<span class="string">&#x27;av&#x27;</span>, <span class="number">3</span>)); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h2><p><strong>repeat(count)</strong><br><strong>Function</strong>: 将字符串重复count次 <em>count非整数会被向下取整，非数字会先转成数字</em><br><strong>return</strong>: string</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;x&#x27;</span>.<span class="title function_">repeat</span>(<span class="number">3</span>)); <span class="comment">//&#x27;xxx&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;x&#x27;</span>.<span class="title function_">repeat</span>(<span class="number">3.2</span>)); <span class="comment">//&#x27;xxx&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;x&#x27;</span>.<span class="title function_">repeat</span>(<span class="number">3.6</span>)); <span class="comment">//&#x27;xxx&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;x&#x27;</span>.<span class="title function_">repeat</span>(<span class="number">0</span>)); <span class="comment">//&#x27;&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;x&#x27;</span>.<span class="title function_">repeat</span>(<span class="string">&#x27;3&#x27;</span>)); <span class="comment">//&#x27;xxx&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;x&#x27;</span>.<span class="title function_">repeat</span>(<span class="string">&#x27;a&#x27;</span>)); <span class="comment">//&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<br>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>nodejs</tag>
+        <tag>es6</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>异步编程（一）</title>
     <url>/2017/06/05/node/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<blockquote>
@@ -1563,124 +1476,6 @@ call/apply/bind 总体上都是改变调用对象的this指向。
 <h1 id="多线程编程"><a href="#多线程编程" class="headerlink" title="多线程编程"></a>多线程编程</h1><p>Node.js 单线程应用， 不能充分利用系统资源。<br>可通过多部署，子进程、集群等解决。在后面的学习中补充。</p>
 <h1 id="异步转同步"><a href="#异步转同步" class="headerlink" title="异步转同步"></a>异步转同步</h1><blockquote>
 <p>Node提供API大部分是异步，同步API较少，在同步需求下，需要借助库或编译等手段来实现。</p>
-</blockquote>
-<p></br></br></p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>Nodejs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>异步编程（二）</title>
-    <url>/2017/06/06/node/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<blockquote>
-<p>笔记部分内容摘自 《深入浅出Node.JS》 —— 朴灵</p>
-</blockquote>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ul>
-<li>事件发布&#x2F;订阅模式</li>
-<li>Promise&#x2F;Deferred模式</li>
-<li>流程控制库</li>
-</ul>
-<h1 id="事件发布-x2F-订阅模式"><a href="#事件发布-x2F-订阅模式" class="headerlink" title="事件发布&#x2F;订阅模式"></a>事件发布&#x2F;订阅模式</h1><blockquote>
-<p>常常用来解耦业务逻辑</p>
-</blockquote>
-<h2 id="Node-js内的实现"><a href="#Node-js内的实现" class="headerlink" title="Node.js内的实现"></a>Node.js内的实现</h2><p>Node自身提供的events模块，是事件发布&#x2F;订阅模式的简单实现。<br>通过模块提供的监听、触发等方法实现。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//订阅</span></span><br><span class="line">emitter.<span class="title function_">on</span>(<span class="string">&quot;event1&quot;</span>, <span class="keyword">function</span> (<span class="params">message</span>) &#123;</span><br><span class="line">    <span class="comment">//TODO</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//发布</span></span><br><span class="line">emitter.<span class="title function_">emit</span>(<span class="string">&quot;event&quot;</span>, <span class="string">&quot;message&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>事件发布&#x2F;订阅模式 可以将一个事件与多个回调关联起来。一个事件的发布，可以传递给所以正在侦听此事件的监听器(<em>数量设限，过多可能会导致内存泄漏</em>)执行。</p>
-<span id="more"></span>
-
-<h2 id="多异步依赖"><a href="#多异步依赖" class="headerlink" title="多异步依赖"></a>多异步依赖</h2><p>通过添加<strong>哨兵变量</strong>和<strong>偏函数</strong>的方式，来解决多异步协作的问题。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//只有在times个异步都处理完后才能调用callback</span></span><br><span class="line"><span class="keyword">var</span> allDone = <span class="keyword">function</span> (<span class="params">times, callback</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span>,</span><br><span class="line">        results = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params">key, value</span>) &#123;</span><br><span class="line">        results[key] = value;</span><br><span class="line">        ++count;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (count === times) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(results);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> done = <span class="title function_">allDone</span>(times, callback);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>可使用第三方模块 <code>EventProxy</code> 来解决事件订阅&#x2F;发布模式的一些问题。<br><a href="https://github.com/JacksonTian/eventproxy">github</a> or  <a href="https://www.npmjs.com/package/eventproxy">npm</a></p>
-</blockquote>
-<h1 id="Promise-x2F-Deferred-模式"><a href="#Promise-x2F-Deferred-模式" class="headerlink" title="Promise&#x2F;Deferred 模式"></a>Promise&#x2F;Deferred 模式</h1><blockquote>
-<p>Promise 是一种规范，Promise 都拥有一个叫做 then 的唯一接口，当 Promise 失败或成功时，它就会进行回调。<br>它代表了一种可能会长时间运行而且不一定必须完成的操作结果。这种模式不会阻塞和等待长时间的操作完成，而是返回一个代表了承诺的（promised）结果的对象。<br>Defferred 就是之后来处理回调的对象。二者紧密不可分割。</p>
-</blockquote>
-<p>Promise对象只要具备then()方法即可，对于then()方法，有以下几点要求：</p>
-<ul>
-<li>接受完成态、错误态的回调方法。</li>
-<li>可选的支持progress事件回调作为第三个方法。</li>
-<li>then()方法只接受function对象，其余对象直接被忽略。</li>
-<li>then()方法须继续返回Promise对象，以实现链式调用。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//then()方法的定义</span></span><br><span class="line"><span class="title function_">then</span>(fulfilledHandler, errorHandler, progressHandler)</span><br></pre></td></tr></table></figure>
-
-<p>Deferred对象（延迟对象）以用来实现触发执行被Promise.then()保存起来的回调函数的地方。</p>
-<p><img src="/img/Promise_Deferred_1.png" alt="Promise/Deferred模式 对象关系示意图"></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">start</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Deffered</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title function_">offWork</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        d.<span class="title function_">resolve</span>(<span class="string">&#x27;done----offWork&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> d.<span class="property">promise</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">start</span>().<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Deffered</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title function_">backHome</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        d.<span class="title function_">resolve</span>(<span class="string">&#x27;done----backhome&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> d.<span class="property">promise</span>;</span><br><span class="line"></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Deffered</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title function_">eatFood</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        d.<span class="title function_">resolve</span>(<span class="string">&#x27;done----eatFood&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> d.<span class="property">promise</span>;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;eating&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="流程控制库"><a href="#流程控制库" class="headerlink" title="流程控制库"></a>流程控制库</h1><h2 id="尾触发与Next"><a href="#尾触发与Next" class="headerlink" title="尾触发与Next"></a>尾触发与Next</h2><blockquote>
-<p>除了事件和Promise外，还有一类方法需要手工调用才能持续执行的后续调用的，我们将此方法叫做尾触发。<br>常见的关键词是Next。</p>
-</blockquote>
-<p>这种方法常用在Connect中间件中使用。<br>通过对代码改造，在每个方法后面增加next参数，以连续调用下一个中间件，行成处理流。</p>
-<p>中间件机制使得在处理网络请求时，对请求进行过虑、验证、记录日志等功能，与具体业务代码解耦。</p>
-<p><em>使用尾触发会导致任务串行执行，将串行的逻辑扁平化，由此不能很好的发挥出异步的优势。</em></p>
-<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><h3 id="异步的串行执行"><a href="#异步的串行执行" class="headerlink" title="异步的串行执行"></a>异步的串行执行</h3><p>Sample：通过series()方法</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span>.<span class="title function_">series</span>([</span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file2.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file3.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;</span><br><span class="line">], <span class="keyword">function</span> (<span class="params">err, results</span>) &#123;</span><br><span class="line">    <span class="comment">//results =&gt; [file1, file2, file3]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>每个callback会在执行时将结果保存起来，然后执行下一个调用，当全部的调用结束，最后将全部的结果以数组的形式传递给最后的调用。过程中，有任何一个调用出现异常，就直接结束所有调用。</p>
-<h3 id="异步的并行执行"><a href="#异步的并行执行" class="headerlink" title="异步的并行执行"></a>异步的并行执行</h3><p>Sample：parallel()方法</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span>.<span class="title function_">parallel</span>([</span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file2.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file3.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;</span><br><span class="line">], <span class="keyword">function</span> (<span class="params">err, results</span>) &#123;</span><br><span class="line">    <span class="comment">//results =&gt; [file1, file2, file3]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>与series()类似，只是parallel()以并行方式执行。</p>
-<h3 id="异步调用的依赖处理"><a href="#异步调用的依赖处理" class="headerlink" title="异步调用的依赖处理"></a>异步调用的依赖处理</h3><p>Sample：waterfall()方法</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span>.<span class="title function_">parallel</span>([</span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, content</span>) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(err, content);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">         fs.<span class="title function_">readFile</span>(args, <span class="string">&#x27;UTF-8&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, content</span>) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(err, content);</span><br><span class="line">         &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">         fs.<span class="title function_">readFile</span>(args, <span class="string">&#x27;UTF-8&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, content</span>) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(err, content);</span><br><span class="line">         &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">], <span class="keyword">function</span> (<span class="params">err, results</span>) &#123;</span><br><span class="line">    <span class="comment">//results =&gt; results4</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>通过这种方法实现异步的依赖处理。异步函数依次执行，将异步方法得出的结果作为参数传递给下一个调用。</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>详情用法见<a href="http://caolan.github.io/async/">官方文档</a></p>
-<h2 id="step"><a href="#step" class="headerlink" title="step"></a>step</h2><h3 id="串行执行"><a href="#串行执行" class="headerlink" title="串行执行"></a>串行执行</h3><p>只有一个接口step，step接受任意数量的任务，所有任务一次串行执行。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Step</span>(</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">readFile1</span>(<span class="params"></span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">readFile2</span>(<span class="params">err, content</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file2&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">readFile3</span>(<span class="params">err, content</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file3&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">done</span>(<span class="params">err, results</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(results);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>在Step中用到了关键字this，他是Step内部的next()方法，将异步调用的结果传递给下一个任务作为参数并执行。</p>
-<h3 id="并行执行"><a href="#并行执行" class="headerlink" title="并行执行"></a>并行执行</h3><p>使用step中的parallel()方法</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Step</span>(</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">readFiles</span>(<span class="params"></span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>.<span class="title function_">parallel</span>());</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file2&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>.<span class="title function_">parallel</span>());</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">done</span>(<span class="params">err, res1, res2</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>并行执行，按异步调用结束的顺序，一次返回调用的结果。</p>
-<p><strong>值得注意的是，如果异步方法的结果传回的是多个参数，Step()将只会取前两个参数</strong></p>
-<h2 id="wind"><a href="#wind" class="headerlink" title="wind"></a>wind</h2><p>看了几个博客，都是一样的内容，目前还不太理解，暂时直接摘录的别人的博客内容。</p>
-<p>摘自：<a href="http://purplebamboo.github.io/2014/04/08/nodejs-async/#wind-js">purplebamboo’s blog</a></p>
-<p>还有种比较知名的方式，是国内的程序员老赵的 wind.js, 它使用了一种完全不同的异步实现方式。前面的所有方式都要改变我们正常的编程习惯，但是 wind.js 不用。它提供了一些服务函数使得我们可以按照正常的思维去编程。</p>
-<p>下面是一个简单的冒泡排序的算法：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> compare = <span class="keyword">function</span> (<span class="params">x, y</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x - y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> swap = <span class="keyword">function</span> (<span class="params">a, i, j</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> t = a[i]; a[i] = a[j]; a[j] = t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bubbleSort = <span class="keyword">function</span> (<span class="params">array</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; array.<span class="property">length</span> - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_">compare</span>(array[j], array[j + <span class="number">1</span>]) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="title function_">swap</span>(array, j, j + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>很简单就不讲解了，现在的问题是我们如果要做一个动画，一点点的展示这个过程呢。<br>于是我们需要给 compare 加个延时，并且 swap 后重绘数字展现。<br>可 javascript 是不支持 sleep 这样的休眠方法的。如果我们用 setTimeout 模拟，又不能保证比较的顺序的正确执行。</p>
-<p>可是有了 windjs 后我们就可以这么写：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> compareAsync = <span class="built_in">eval</span>(<span class="title class_">Wind</span>.<span class="title function_">compile</span>(<span class="string">&quot;async&quot;</span>, <span class="keyword">function</span> (<span class="params">x, y</span>) &#123;</span><br><span class="line">    $await(<span class="title class_">Wind</span>.<span class="property">Async</span>.<span class="title function_">sleep</span>(<span class="number">10</span>)); <span class="comment">// 暂停10毫秒</span></span><br><span class="line">    <span class="keyword">return</span> x - y;</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> swapAsync = <span class="built_in">eval</span>(<span class="title class_">Wind</span>.<span class="title function_">compile</span>(<span class="string">&quot;async&quot;</span>, <span class="keyword">function</span> (<span class="params">a, i, j</span>) &#123;</span><br><span class="line">    $await(<span class="title class_">Wind</span>.<span class="property">Async</span>.<span class="title function_">sleep</span>(<span class="number">20</span>)); <span class="comment">// 暂停20毫秒</span></span><br><span class="line">    <span class="keyword">var</span> t = a[i]; a[i] = a[j]; a[j] = t;</span><br><span class="line">    <span class="title function_">paint</span>(a); <span class="comment">// 重绘数组</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bubbleSortAsync = <span class="built_in">eval</span>(<span class="title class_">Wind</span>.<span class="title function_">compile</span>(<span class="string">&quot;async&quot;</span>, <span class="keyword">function</span> (<span class="params">array</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; array.<span class="property">length</span> - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="comment">// 异步比较元素</span></span><br><span class="line">            <span class="keyword">var</span> r = $await(<span class="title function_">compareAsync</span>(array[j], array[j + <span class="number">1</span>]));</span><br><span class="line">            <span class="comment">// 异步交换元素</span></span><br><span class="line">            <span class="keyword">if</span> (r &gt; <span class="number">0</span>) $await(<span class="title function_">swapAsync</span>(array, j, j + <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
-
-<p>注意其中最终要的几个辅助函数：</p>
-<ol>
-<li>eval(Wind.compile(“async”, func) 这个函数用来定义一个 “异步函数”。这样的函数定义方式是 “模板代码”，没有任何变化，可以认做是 “异步函数” 与 “普通函数” 的区别。</li>
-<li>Wind.Async.sleep() 这是 windjs 对于 settimeout 的一个封装，就是用上面的 eval(Wind.compile 来定义的。</li>
-<li>$await() 所有经过定义的异步函数，都可以使用这个方法 来等待异步函数的执行完毕。</li>
-</ol>
-<p>这样上面的代码就可以很容易的理解了。compare，swap 都被弄成了异步函数，然后使用 $await 等待他们的执行完毕。可以看到跟我们之前的写法比起来，实现思路几乎一样，只是多了些辅助函数。相当的创新。</p>
-<blockquote>
-<p>windjs 的实现原理，暂时没怎么看，这是一种预编译的思路。之后有空看看也来实现一个简单的 demo。</p>
-</blockquote>
-<br/>
-
-<p><strong>无聊小记</strong></p>
-<p>想起来以前看到别人写过的一个排序算法 —— sleepSort 挺搞笑的。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">13</span>, <span class="number">12</span>, <span class="number">34</span>, <span class="number">11</span>, <span class="number">42</span>, <span class="number">23</span>, <span class="number">6</span>, <span class="number">32</span>, <span class="number">23</span>];</span><br><span class="line"></span><br><span class="line">arr.<span class="title function_">map</span>(<span class="function"><span class="params">num</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(num), num);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="generator"><a href="#generator" class="headerlink" title="generator"></a>generator</h2><p>直接看代码</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">fib</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">yield</span> a;</span><br><span class="line">        [a, b] = [b, a + b];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//one method</span></span><br><span class="line"><span class="keyword">let</span> [first, second, third, fourth, fifth, sixth] = <span class="title function_">fib</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(third); <span class="comment">//1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sixth); <span class="comment">//5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//the onther</span></span><br><span class="line"><span class="keyword">let</span> it = <span class="title function_">fib</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;0&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;1&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;1&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;2&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;3&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;5&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;8&#x27;, done: false&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>function* funcName(...params)&#123;...&#125;</code>    生成器函数 function generator</p>
-<p>不多说，详见<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Generator">MDN官方文档</a></p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><blockquote>
-<p>异步编程，在性能问题上尤其是 io 处理上是它的优势，但是同时也是它的劣势，大部分人都无法很好的组织异步代码。于是就出现了一大堆的库，来给它擦屁股。</p>
-</blockquote>
-<br>
-
-<blockquote>
-<p>世界上本没有嵌套回调，写的人多了，也便有了。</p>
 </blockquote>
 <p></br></br></p>
 ]]></content>
@@ -1804,6 +1599,124 @@ call/apply/bind 总体上都是改变调用对象的this指向。
       </tags>
   </entry>
   <entry>
+    <title>异步编程（二）</title>
+    <url>/2017/06/06/node/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<blockquote>
+<p>笔记部分内容摘自 《深入浅出Node.JS》 —— 朴灵</p>
+</blockquote>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ul>
+<li>事件发布&#x2F;订阅模式</li>
+<li>Promise&#x2F;Deferred模式</li>
+<li>流程控制库</li>
+</ul>
+<h1 id="事件发布-x2F-订阅模式"><a href="#事件发布-x2F-订阅模式" class="headerlink" title="事件发布&#x2F;订阅模式"></a>事件发布&#x2F;订阅模式</h1><blockquote>
+<p>常常用来解耦业务逻辑</p>
+</blockquote>
+<h2 id="Node-js内的实现"><a href="#Node-js内的实现" class="headerlink" title="Node.js内的实现"></a>Node.js内的实现</h2><p>Node自身提供的events模块，是事件发布&#x2F;订阅模式的简单实现。<br>通过模块提供的监听、触发等方法实现。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//订阅</span></span><br><span class="line">emitter.<span class="title function_">on</span>(<span class="string">&quot;event1&quot;</span>, <span class="keyword">function</span> (<span class="params">message</span>) &#123;</span><br><span class="line">    <span class="comment">//TODO</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//发布</span></span><br><span class="line">emitter.<span class="title function_">emit</span>(<span class="string">&quot;event&quot;</span>, <span class="string">&quot;message&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>事件发布&#x2F;订阅模式 可以将一个事件与多个回调关联起来。一个事件的发布，可以传递给所以正在侦听此事件的监听器(<em>数量设限，过多可能会导致内存泄漏</em>)执行。</p>
+<span id="more"></span>
+
+<h2 id="多异步依赖"><a href="#多异步依赖" class="headerlink" title="多异步依赖"></a>多异步依赖</h2><p>通过添加<strong>哨兵变量</strong>和<strong>偏函数</strong>的方式，来解决多异步协作的问题。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//只有在times个异步都处理完后才能调用callback</span></span><br><span class="line"><span class="keyword">var</span> allDone = <span class="keyword">function</span> (<span class="params">times, callback</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span>,</span><br><span class="line">        results = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params">key, value</span>) &#123;</span><br><span class="line">        results[key] = value;</span><br><span class="line">        ++count;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (count === times) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(results);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> done = <span class="title function_">allDone</span>(times, callback);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可使用第三方模块 <code>EventProxy</code> 来解决事件订阅&#x2F;发布模式的一些问题。<br><a href="https://github.com/JacksonTian/eventproxy">github</a> or  <a href="https://www.npmjs.com/package/eventproxy">npm</a></p>
+</blockquote>
+<h1 id="Promise-x2F-Deferred-模式"><a href="#Promise-x2F-Deferred-模式" class="headerlink" title="Promise&#x2F;Deferred 模式"></a>Promise&#x2F;Deferred 模式</h1><blockquote>
+<p>Promise 是一种规范，Promise 都拥有一个叫做 then 的唯一接口，当 Promise 失败或成功时，它就会进行回调。<br>它代表了一种可能会长时间运行而且不一定必须完成的操作结果。这种模式不会阻塞和等待长时间的操作完成，而是返回一个代表了承诺的（promised）结果的对象。<br>Defferred 就是之后来处理回调的对象。二者紧密不可分割。</p>
+</blockquote>
+<p>Promise对象只要具备then()方法即可，对于then()方法，有以下几点要求：</p>
+<ul>
+<li>接受完成态、错误态的回调方法。</li>
+<li>可选的支持progress事件回调作为第三个方法。</li>
+<li>then()方法只接受function对象，其余对象直接被忽略。</li>
+<li>then()方法须继续返回Promise对象，以实现链式调用。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//then()方法的定义</span></span><br><span class="line"><span class="title function_">then</span>(fulfilledHandler, errorHandler, progressHandler)</span><br></pre></td></tr></table></figure>
+
+<p>Deferred对象（延迟对象）以用来实现触发执行被Promise.then()保存起来的回调函数的地方。</p>
+<p><img src="/img/Promise_Deferred_1.png" alt="Promise/Deferred模式 对象关系示意图"></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">start</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Deffered</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title function_">offWork</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        d.<span class="title function_">resolve</span>(<span class="string">&#x27;done----offWork&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> d.<span class="property">promise</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">start</span>().<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Deffered</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title function_">backHome</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        d.<span class="title function_">resolve</span>(<span class="string">&#x27;done----backhome&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> d.<span class="property">promise</span>;</span><br><span class="line"></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Deffered</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title function_">eatFood</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        d.<span class="title function_">resolve</span>(<span class="string">&#x27;done----eatFood&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> d.<span class="property">promise</span>;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;eating&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="流程控制库"><a href="#流程控制库" class="headerlink" title="流程控制库"></a>流程控制库</h1><h2 id="尾触发与Next"><a href="#尾触发与Next" class="headerlink" title="尾触发与Next"></a>尾触发与Next</h2><blockquote>
+<p>除了事件和Promise外，还有一类方法需要手工调用才能持续执行的后续调用的，我们将此方法叫做尾触发。<br>常见的关键词是Next。</p>
+</blockquote>
+<p>这种方法常用在Connect中间件中使用。<br>通过对代码改造，在每个方法后面增加next参数，以连续调用下一个中间件，行成处理流。</p>
+<p>中间件机制使得在处理网络请求时，对请求进行过虑、验证、记录日志等功能，与具体业务代码解耦。</p>
+<p><em>使用尾触发会导致任务串行执行，将串行的逻辑扁平化，由此不能很好的发挥出异步的优势。</em></p>
+<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><h3 id="异步的串行执行"><a href="#异步的串行执行" class="headerlink" title="异步的串行执行"></a>异步的串行执行</h3><p>Sample：通过series()方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span>.<span class="title function_">series</span>([</span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file2.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file3.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;</span><br><span class="line">], <span class="keyword">function</span> (<span class="params">err, results</span>) &#123;</span><br><span class="line">    <span class="comment">//results =&gt; [file1, file2, file3]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>每个callback会在执行时将结果保存起来，然后执行下一个调用，当全部的调用结束，最后将全部的结果以数组的形式传递给最后的调用。过程中，有任何一个调用出现异常，就直接结束所有调用。</p>
+<h3 id="异步的并行执行"><a href="#异步的并行执行" class="headerlink" title="异步的并行执行"></a>异步的并行执行</h3><p>Sample：parallel()方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span>.<span class="title function_">parallel</span>([</span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file2.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file3.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, callback);</span><br><span class="line">    &#125;</span><br><span class="line">], <span class="keyword">function</span> (<span class="params">err, results</span>) &#123;</span><br><span class="line">    <span class="comment">//results =&gt; [file1, file2, file3]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>与series()类似，只是parallel()以并行方式执行。</p>
+<h3 id="异步调用的依赖处理"><a href="#异步调用的依赖处理" class="headerlink" title="异步调用的依赖处理"></a>异步调用的依赖处理</h3><p>Sample：waterfall()方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span>.<span class="title function_">parallel</span>([</span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1.txt&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, content</span>) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(err, content);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">         fs.<span class="title function_">readFile</span>(args, <span class="string">&#x27;UTF-8&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, content</span>) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(err, content);</span><br><span class="line">         &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">         fs.<span class="title function_">readFile</span>(args, <span class="string">&#x27;UTF-8&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, content</span>) &#123;</span><br><span class="line">            <span class="title function_">callback</span>(err, content);</span><br><span class="line">         &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">], <span class="keyword">function</span> (<span class="params">err, results</span>) &#123;</span><br><span class="line">    <span class="comment">//results =&gt; results4</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>通过这种方法实现异步的依赖处理。异步函数依次执行，将异步方法得出的结果作为参数传递给下一个调用。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>详情用法见<a href="http://caolan.github.io/async/">官方文档</a></p>
+<h2 id="step"><a href="#step" class="headerlink" title="step"></a>step</h2><h3 id="串行执行"><a href="#串行执行" class="headerlink" title="串行执行"></a>串行执行</h3><p>只有一个接口step，step接受任意数量的任务，所有任务一次串行执行。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Step</span>(</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">readFile1</span>(<span class="params"></span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">readFile2</span>(<span class="params">err, content</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file2&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">readFile3</span>(<span class="params">err, content</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file3&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">done</span>(<span class="params">err, results</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(results);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>在Step中用到了关键字this，他是Step内部的next()方法，将异步调用的结果传递给下一个任务作为参数并执行。</p>
+<h3 id="并行执行"><a href="#并行执行" class="headerlink" title="并行执行"></a>并行执行</h3><p>使用step中的parallel()方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Step</span>(</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">readFiles</span>(<span class="params"></span>) &#123;</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file1&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>.<span class="title function_">parallel</span>());</span><br><span class="line">        fs.<span class="title function_">readFile</span>(<span class="string">&#x27;file2&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="variable language_">this</span>.<span class="title function_">parallel</span>());</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">done</span>(<span class="params">err, res1, res2</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>并行执行，按异步调用结束的顺序，一次返回调用的结果。</p>
+<p><strong>值得注意的是，如果异步方法的结果传回的是多个参数，Step()将只会取前两个参数</strong></p>
+<h2 id="wind"><a href="#wind" class="headerlink" title="wind"></a>wind</h2><p>看了几个博客，都是一样的内容，目前还不太理解，暂时直接摘录的别人的博客内容。</p>
+<p>摘自：<a href="http://purplebamboo.github.io/2014/04/08/nodejs-async/#wind-js">purplebamboo’s blog</a></p>
+<p>还有种比较知名的方式，是国内的程序员老赵的 wind.js, 它使用了一种完全不同的异步实现方式。前面的所有方式都要改变我们正常的编程习惯，但是 wind.js 不用。它提供了一些服务函数使得我们可以按照正常的思维去编程。</p>
+<p>下面是一个简单的冒泡排序的算法：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> compare = <span class="keyword">function</span> (<span class="params">x, y</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x - y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> swap = <span class="keyword">function</span> (<span class="params">a, i, j</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> t = a[i]; a[i] = a[j]; a[j] = t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bubbleSort = <span class="keyword">function</span> (<span class="params">array</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; array.<span class="property">length</span> - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_">compare</span>(array[j], array[j + <span class="number">1</span>]) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="title function_">swap</span>(array, j, j + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>很简单就不讲解了，现在的问题是我们如果要做一个动画，一点点的展示这个过程呢。<br>于是我们需要给 compare 加个延时，并且 swap 后重绘数字展现。<br>可 javascript 是不支持 sleep 这样的休眠方法的。如果我们用 setTimeout 模拟，又不能保证比较的顺序的正确执行。</p>
+<p>可是有了 windjs 后我们就可以这么写：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> compareAsync = <span class="built_in">eval</span>(<span class="title class_">Wind</span>.<span class="title function_">compile</span>(<span class="string">&quot;async&quot;</span>, <span class="keyword">function</span> (<span class="params">x, y</span>) &#123;</span><br><span class="line">    $await(<span class="title class_">Wind</span>.<span class="property">Async</span>.<span class="title function_">sleep</span>(<span class="number">10</span>)); <span class="comment">// 暂停10毫秒</span></span><br><span class="line">    <span class="keyword">return</span> x - y;</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> swapAsync = <span class="built_in">eval</span>(<span class="title class_">Wind</span>.<span class="title function_">compile</span>(<span class="string">&quot;async&quot;</span>, <span class="keyword">function</span> (<span class="params">a, i, j</span>) &#123;</span><br><span class="line">    $await(<span class="title class_">Wind</span>.<span class="property">Async</span>.<span class="title function_">sleep</span>(<span class="number">20</span>)); <span class="comment">// 暂停20毫秒</span></span><br><span class="line">    <span class="keyword">var</span> t = a[i]; a[i] = a[j]; a[j] = t;</span><br><span class="line">    <span class="title function_">paint</span>(a); <span class="comment">// 重绘数组</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bubbleSortAsync = <span class="built_in">eval</span>(<span class="title class_">Wind</span>.<span class="title function_">compile</span>(<span class="string">&quot;async&quot;</span>, <span class="keyword">function</span> (<span class="params">array</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; array.<span class="property">length</span> - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="comment">// 异步比较元素</span></span><br><span class="line">            <span class="keyword">var</span> r = $await(<span class="title function_">compareAsync</span>(array[j], array[j + <span class="number">1</span>]));</span><br><span class="line">            <span class="comment">// 异步交换元素</span></span><br><span class="line">            <span class="keyword">if</span> (r &gt; <span class="number">0</span>) $await(<span class="title function_">swapAsync</span>(array, j, j + <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+<p>注意其中最终要的几个辅助函数：</p>
+<ol>
+<li>eval(Wind.compile(“async”, func) 这个函数用来定义一个 “异步函数”。这样的函数定义方式是 “模板代码”，没有任何变化，可以认做是 “异步函数” 与 “普通函数” 的区别。</li>
+<li>Wind.Async.sleep() 这是 windjs 对于 settimeout 的一个封装，就是用上面的 eval(Wind.compile 来定义的。</li>
+<li>$await() 所有经过定义的异步函数，都可以使用这个方法 来等待异步函数的执行完毕。</li>
+</ol>
+<p>这样上面的代码就可以很容易的理解了。compare，swap 都被弄成了异步函数，然后使用 $await 等待他们的执行完毕。可以看到跟我们之前的写法比起来，实现思路几乎一样，只是多了些辅助函数。相当的创新。</p>
+<blockquote>
+<p>windjs 的实现原理，暂时没怎么看，这是一种预编译的思路。之后有空看看也来实现一个简单的 demo。</p>
+</blockquote>
+<br/>
+
+<p><strong>无聊小记</strong></p>
+<p>想起来以前看到别人写过的一个排序算法 —— sleepSort 挺搞笑的。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">13</span>, <span class="number">12</span>, <span class="number">34</span>, <span class="number">11</span>, <span class="number">42</span>, <span class="number">23</span>, <span class="number">6</span>, <span class="number">32</span>, <span class="number">23</span>];</span><br><span class="line"></span><br><span class="line">arr.<span class="title function_">map</span>(<span class="function"><span class="params">num</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(num), num);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="generator"><a href="#generator" class="headerlink" title="generator"></a>generator</h2><p>直接看代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">fib</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">yield</span> a;</span><br><span class="line">        [a, b] = [b, a + b];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//one method</span></span><br><span class="line"><span class="keyword">let</span> [first, second, third, fourth, fifth, sixth] = <span class="title function_">fib</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(third); <span class="comment">//1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sixth); <span class="comment">//5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//the onther</span></span><br><span class="line"><span class="keyword">let</span> it = <span class="title function_">fib</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;0&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;1&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;1&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;2&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;3&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;5&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it.<span class="title function_">next</span>()); <span class="comment">//object &#123;value: &#x27;8&#x27;, done: false&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>function* funcName(...params)&#123;...&#125;</code>    生成器函数 function generator</p>
+<p>不多说，详见<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Generator">MDN官方文档</a></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><blockquote>
+<p>异步编程，在性能问题上尤其是 io 处理上是它的优势，但是同时也是它的劣势，大部分人都无法很好的组织异步代码。于是就出现了一大堆的库，来给它擦屁股。</p>
+</blockquote>
+<br>
+
+<blockquote>
+<p>世界上本没有嵌套回调，写的人多了，也便有了。</p>
+</blockquote>
+<p></br></br></p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>Nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>学习ES6：数组扩展</title>
     <url>/2017/07/31/node/%E6%95%B0%E7%BB%84%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<blockquote>
@@ -1920,6 +1833,48 @@ call/apply/bind 总体上都是改变调用对象的this指向。
       </tags>
   </entry>
   <entry>
+    <title>git常用命令</title>
+    <url>/2017/05/29/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="什么是-git"><a href="#什么是-git" class="headerlink" title="什么是 git"></a>什么是 git</h2><blockquote>
+<p>Git 是目前世界上最先进的分布式版本控制系统</p>
+</blockquote>
+<h2 id="git-安装"><a href="#git-安装" class="headerlink" title="git 安装"></a>git 安装</h2><h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><p><a href="https://git-scm.com/downloads">官网</a>直接下载安装包</p>
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>bash 下:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">&quot;bitzo&quot;</span></span><br><span class="line">$ git config --global user.email <span class="string">&quot;bitzo@qq.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<p>生成的密钥会保存在 ~&#x2F;.ssh&#x2F; 下.</p>
+<h2 id="git-常用命令"><a href="#git-常用命令" class="headerlink" title="git 常用命令"></a>git 常用命令</h2><h3 id="建立-git-仓库"><a href="#建立-git-仓库" class="headerlink" title="建立 git 仓库"></a>建立 git 仓库</h3><h4 id="本地创建"><a href="#本地创建" class="headerlink" title="本地创建"></a>本地创建</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ./myGitRepo</span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+<h4 id="本地-clone-远程"><a href="#本地-clone-远程" class="headerlink" title="本地 clone 远程"></a>本地 clone 远程</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git[http]://xxxx.xxxx.xx:xxx/xxx.git</span><br></pre></td></tr></table></figure>
+<h3 id="添加更改"><a href="#添加更改" class="headerlink" title="添加更改"></a>添加更改</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add fileName</span><br></pre></td></tr></table></figure>
+<h3 id="查看git仓库状态"><a href="#查看git仓库状态" class="headerlink" title="查看git仓库状态"></a>查看git仓库状态</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- fileName</span><br></pre></td></tr></table></figure>
+<h3 id="提交更改"><a href="#提交更改" class="headerlink" title="提交更改"></a>提交更改</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git commit -m<span class="string">&quot;edit you message&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="向远程仓库推送更改"><a href="#向远程仓库推送更改" class="headerlink" title="向远程仓库推送更改"></a>向远程仓库推送更改</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<h3 id="将本地仓库与远程连接"><a href="#将本地仓库与远程连接" class="headerlink" title="将本地仓库与远程连接"></a>将本地仓库与远程连接</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin &lt;server&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="创建分支并切换"><a href="#创建分支并切换" class="headerlink" title="创建分支并切换"></a>创建分支并切换</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b branchName</span><br></pre></td></tr></table></figure>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout branchName</span><br></pre></td></tr></table></figure>
+<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git branch -d branchName</span><br></pre></td></tr></table></figure>
+<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin --delete &lt;branchName&gt; <span class="comment"># git &gt;v1.7.0</span></span><br><span class="line"><span class="comment"># 否则</span></span><br><span class="line">git push origin :&lt;branchName&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="从远程版本库拉取最新版本"><a href="#从远程版本库拉取最新版本" class="headerlink" title="从远程版本库拉取最新版本"></a>从远程版本库拉取最新版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull origin master</span><br></pre></td></tr></table></figure>
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git merge branchName</span><br></pre></td></tr></table></figure>
+<h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff sourceBranch targetBranch</span><br></pre></td></tr></table></figure>
+<h3 id="查看历史记录"><a href="#查看历史记录" class="headerlink" title="查看历史记录"></a>查看历史记录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard XXXXX <span class="comment"># 直接丢弃更改</span></span><br><span class="line">$ git reset --soft XXXXX <span class="comment"># 保留更改于缓存区</span></span><br><span class="line"></span><br><span class="line">$ git reflog <span class="comment"># 打印记录你的每一次操作记录, 便于后悔回退</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># git revert 命令意思是撤销某次提交。</span></span><br><span class="line"><span class="comment"># 它会产生一个新的提交，虽然代码回退了，但是版本依然是向前的</span></span><br><span class="line"><span class="comment"># 所以，当你用revert回退之后，所有人pull之后，他们的代码也自动的回退了。</span></span><br><span class="line">$ git revert XXXXXXX <span class="comment"># revert 是撤销一次提交，所以后面的commit id是你需要回滚到的版本的前一次提交</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>BiliBili 深入 PHP 内核源码学习笔记</title>
     <url>/2022/09/27/php/bilibili-php-kernal/</url>
     <content><![CDATA[<p>BiliBili 深入 PHP 内核源码学习笔记 </p>
@@ -1984,7 +1939,7 @@ call/apply/bind 总体上都是改变调用对象的this指向。
 <h1 id="PHP-生命周期"><a href="#PHP-生命周期" class="headerlink" title="PHP 生命周期"></a>PHP 生命周期</h1><p>取决于具体的 SAPI 的实现: PHP-CLI 或 PHP-FPM<br>共同点: 都经历5个主要阶段<br>区别: 部分阶段执行次数不同</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">main()</span><br><span class="line">  -&gt; php_module_startup() </span><br><span class="line">  -&gt; php_request_startup() &lt;──┐</span><br><span class="line">  -&gt; php_execute_script()     │ fpm 多次循环 </span><br><span class="line">  -&gt; php_request_shutdown() ──┘ </span><br><span class="line">  -&gt; php_module_shutdown() </span><br></pre></td></tr></table></figure>
 
-<h2 id="编写个扩展感受生命周期-x70-x68-x70-64-55-46-49-php-cli"><a href="#编写个扩展感受生命周期-x70-x68-x70-64-55-46-49-php-cli" class="headerlink" title="编写个扩展感受生命周期 (&#x70;&#x68;&#x70;&#64;&#55;&#46;&#49; php-cli)"></a>编写个扩展感受生命周期 (<a href="mailto:&#x70;&#x68;&#x70;&#64;&#55;&#46;&#49;">&#x70;&#x68;&#x70;&#64;&#55;&#46;&#49;</a> php-cli)</h2><p><code>/path/to/php/ext</code> 源码的扩展目录: <code>ext_skel</code> 脚本, 可以初始化一个自定义扩展脚手架</p>
+<h2 id="编写个扩展感受生命周期-112-x68-x70-x40-55-x2e-x31-php-cli"><a href="#编写个扩展感受生命周期-112-x68-x70-x40-55-x2e-x31-php-cli" class="headerlink" title="编写个扩展感受生命周期 (&#112;&#x68;&#x70;&#x40;&#55;&#x2e;&#x31; php-cli)"></a>编写个扩展感受生命周期 (<a href="mailto:&#112;&#x68;&#x70;&#x40;&#55;&#x2e;&#x31;">&#112;&#x68;&#x70;&#x40;&#55;&#x2e;&#x31;</a> php-cli)</h2><p><code>/path/to/php/ext</code> 源码的扩展目录: <code>ext_skel</code> 脚本, 可以初始化一个自定义扩展脚手架</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./ext_skel --extname=EXT_NAME </span><br><span class="line"></span><br><span class="line">Creating directory EXT_NAME</span><br><span class="line">Creating basic files: config.m4 config.w32 .gitignore demo.c php_demo.h CREDITS EXPERIMENTAL tests/001.phpt demo.php [<span class="keyword">done</span>].</span><br><span class="line"></span><br><span class="line">To use your new extension, you will have to execute the following steps:</span><br><span class="line"></span><br><span class="line">1.  $ <span class="built_in">cd</span> ..</span><br><span class="line">2.  $ vi ext/demo/config.m4</span><br><span class="line">3.  $ ./buildconf</span><br><span class="line">4.  $ ./configure --[with|<span class="built_in">enable</span>]-demo</span><br><span class="line">5.  $ make</span><br><span class="line">6.  $ ./sapi/cli/php -f ext/demo/demo.php</span><br><span class="line">7.  $ vi ext/demo/demo.c</span><br><span class="line">8.  $ make</span><br><span class="line"></span><br><span class="line">Repeat steps 3-6 until you are satisfied with ext/demo/config.m4 and</span><br><span class="line">step 6 confirms that your module is compiled into PHP. Then, start writing</span><br><span class="line">code and repeat the last two steps as often as necessary.</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">PHP_MINIT(demo),</span><br><span class="line">PHP_MSHUTDOWN(demo),</span><br><span class="line">PHP_RINIT(demo),    <span class="comment">/* Replace with NULL if there&#x27;s nothing to do at request start */</span></span><br><span class="line">PHP_RSHUTDOWN(demo),    <span class="comment">/* Replace with NULL if there&#x27;s nothing to do at request end */</span></span><br></pre></td></tr></table></figure>
@@ -2000,6 +1955,51 @@ call/apply/bind 总体上都是改变调用对象的this指向。
       <tags>
         <tag>笔记</tag>
         <tag>PHP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx反向代理（端口转发）</title>
+    <url>/2017/07/28/server/nginx/</url>
+    <content><![CDATA[<p>nginx配合nodejs做代理，进行端口转发。</p>
+<span id="more"></span>
+
+<h1 id="安装-nginx"><a href="#安装-nginx" class="headerlink" title="安装 nginx"></a>安装 nginx</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br></pre></td></tr></table></figure>
+
+<h2 id="nginx-文件结构"><a href="#nginx-文件结构" class="headerlink" title="nginx 文件结构"></a>nginx 文件结构</h2><ul>
+<li>所有的配置文件都在 &#x2F;etc&#x2F;nginx 下，并且每个虚拟主机已经安排在了 &#x2F;etc&#x2F;nginx&#x2F;sites-available 下</li>
+<li>程序文件在 &#x2F;usr&#x2F;sbin&#x2F;nginx</li>
+<li>日志放在了 &#x2F;var&#x2F;log&#x2F;nginx 中</li>
+<li>并已经在 &#x2F;etc&#x2F;init.d&#x2F; 下创建了启动脚本 nginx</li>
+<li>默认的虚拟主机的目录设置在了 &#x2F;var&#x2F;www&#x2F;nginx-default (有的版本 默认的虚拟主机的目录设置在了 &#x2F;var&#x2F;www, 请参考 &#x2F; etc&#x2F;nginx&#x2F;sites-available 里的配置)</li>
+</ul>
+<h1 id="启动-nginx"><a href="#启动-nginx" class="headerlink" title="启动 nginx"></a>启动 nginx</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo /etc/init.d/nginx start</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置-Nginx"><a href="#配置-Nginx" class="headerlink" title="配置 Nginx"></a>配置 Nginx</h1><h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><ul>
+<li><code>/etc/nginx/sites-available</code> 记录代理配置</li>
+<li><code>/etc/nginx/sites-enabled</code> 启动已配置好的代理</li>
+<li>先在 <code>/etc/nginx/sites-available</code> 配置代理</li>
+<li>在 <code>/etc/nginx/sites-enabled</code> 下创建symbol link链接available下的配置文件以启用代理配置</li>
+</ul>
+<h2 id="主要配置"><a href="#主要配置" class="headerlink" title="主要配置"></a>主要配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    # 监听的端口号</span><br><span class="line">    listen 80;</span><br><span class="line">    </span><br><span class="line">    # 监听的域名</span><br><span class="line">    server_name: a.b.com;</span><br><span class="line">    </span><br><span class="line">    # 转发规则</span><br><span class="line">    localtion / &#123;</span><br><span class="line">        proxy_pass http://a.b.com:port;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="转发规则"><a href="#转发规则" class="headerlink" title="转发规则"></a>转发规则</h3><p>我用的是<code>nodejs</code>+<code>express</code>，内部已经定义了静态资源服务，所以可以直接将所有的请求直接转发给node服务，以作出相应。若非上游服务做静态资源服务，可以在<code>location</code>模块定义资源目录。</p>
+<ul>
+<li>location后的地址（rul匹配）十分灵活，接受正则。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location = / &#123;</span><br><span class="line">    # 完全匹配  =</span><br><span class="line">    # 大小写敏感 ~</span><br><span class="line">    # 忽略大小写 ~*</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ^~ /images/ &#123;</span><br><span class="line">    # 前半部分匹配 ^~</span><br><span class="line">    # 可以使用正则，如：</span><br><span class="line">    # location ~* \.(gif|jpg|png)$ &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">    # 如果以上都未匹配，会进入这里</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>root  定义该匹配后的处理路径根目录</li>
+<li>index 定义首页（按顺序，以此尝试访问） <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    root /home/wwwroot/bitzo/;</span><br><span class="line">    index index.html index.htm</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>反向代理：proxy_pass</li>
+<li>还有其他相关的代理配置，等了解了再慢慢加在这。。。</li>
+</ul>
+<h2 id="一个坑"><a href="#一个坑" class="headerlink" title="一个坑"></a>一个坑</h2><p>在配置的时候我没注意，location里一直加着 <code>try_files $uri $uri/ =404</code>, 导致除了主页面，访问其他一切资源全部都404。之后将这条语句注释掉即可成功。目前还不太清楚为什么。惨惨惨。</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>linux</tag>
+        <tag>ubuntu</tag>
+        <tag>nginx</tag>
       </tags>
   </entry>
 </search>
