@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.png">
@@ -338,13 +338,16 @@
 <h1 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h1><p>解构赋值允许使用默认值</p>
 <h1 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h1><ol>
 <li><p>交换变量值</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[x, y] = [y, x];</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[x, y] = [y, x];</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>从函数中返回多个值</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">func</span>(<span class="params">[x = <span class="number">1</span>, y = <span class="number">2</span>, z = <span class="number">3</span>]</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> [a, b, c] = [x, y, z];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a, b, c] = <span class="title function_">func</span>([<span class="number">2</span>, <span class="number">3</span>]);</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">func</span>(<span class="params">[x = <span class="number">1</span>, y = <span class="number">2</span>, z = <span class="number">3</span>]</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> [a, b, c] = [x, y, z];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a, b, c] = <span class="title function_">func</span>([<span class="number">2</span>, <span class="number">3</span>]);</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>函数的参数定义（<em>有序数组，无序对象</em>）</p>
 <p> 数组：见上方例子</p>
 <p> 对象：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">func</span>(<span class="params">&#123;x = <span class="number">1</span>, y = <span class="number">2</span>, z = <span class="number">3</span>&#125;</span>) &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">func</span>(&#123;<span class="attr">x</span>:<span class="number">3</span>, <span class="attr">y</span>:<span class="number">1</span>, <span class="attr">z</span>:<span class="number">0</span>&#125;);</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">func</span>(<span class="params">&#123;x = <span class="number">1</span>, y = <span class="number">2</span>, z = <span class="number">3</span>&#125;</span>) &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">func</span>(&#123;<span class="attr">x</span>:<span class="number">3</span>, <span class="attr">y</span>:<span class="number">1</span>, <span class="attr">z</span>:<span class="number">0</span>&#125;);</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>提取JSON数据</p>
 </li>
 <li><p>设置函数参数默认值</p>

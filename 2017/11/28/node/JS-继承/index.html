@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.png">
@@ -384,7 +384,7 @@
 <p>这时候你可能会问：“唔，是那么回事。可是这里头怎么没提到原型啊？”</p>
 <p>客官莫急，且听我一步步道来~首先你要知道，基于原型的面向对象设计方法总共有三种。</p>
 <ol>
-<li><p><strong>拼接继承：</strong> 是直接从一个对象拷贝属性到另一个对象的模式。被拷贝的原型通常被称为<strong>mixins</strong>。ES6为这个模式提供了一个方便的工具_<code>Object.assign()</code><em>。在ES6之前，一般使用Underscore/Lodash提供的</em><code>.extend()</code>，或者_ jQuery <em>中的<code>$.extend()</code>,</em> 来实现。上面那个对象组合的例子，采用的就是拼接继承的方式。</p>
+<li><p><strong>拼接继承：</strong> 是直接从一个对象拷贝属性到另一个对象的模式。被拷贝的原型通常被称为<strong>mixins</strong>。ES6为这个模式提供了一个方便的工具_<code>Object.assign()</code><em>。在ES6之前，一般使用Underscore&#x2F;Lodash提供的</em><code>.extend()</code>，或者_ jQuery <em>中的<code>$.extend()</code>,</em> 来实现。上面那个对象组合的例子，采用的就是拼接继承的方式。</p>
 </li>
 <li><p><strong>原型代理：</strong>JavaScript中，一个对象可能包含一个指向原型的引用，该原型被称为<strong>代理</strong>。如果某个属性不存在于当前对象中，就会查找其代理原型。代理原型本身也会有自己的代理原型。这样就形成了一条原型链，沿着代理链向上查找，直到找到该属性，或者找到根代理_<code>Object.prototype</code><em>为止。原型就是这样，通过使用</em><code>new</code><em>关键字来创建实例以及</em><code>Constructor.prototype</code><em>前后勾连成一条继承链。当然，也可以使用</em><code>Object.create()</code>_来达到同样的目的，或者把它和拼接继承混用，从而可以把多个原型精简为单一代理，也可以做到在对象实例创建后继续扩展。</p>
 </li>
@@ -432,10 +432,10 @@
 <p><em>（译者注：感觉原文表达有些不尽兴。于是我自作主张地画了2个图便于读者理解。不足之处还请谅解和指正）</em><br><img src="http://p0.qhimg.com/t0178c2bc72eeecf1c2.png"><br>图：类继承</p>
 </blockquote>
 <blockquote>
-<p><em>说明：从图上可以直接看出单一继承关系、紧耦合以及层级分类的问题；其中，类8，只想继承五边形的属性，却得到了继承链上其它并不需要的属性——大猩猩/香蕉问题；类9只需要把五角星属性修改成四角形，导致需要修改基类1，从而影响整个继承树——脆弱基类/层级僵化问题；否则就需要为9新建基类——必然重复性问题。</em><br><img src="http://p0.qhimg.com/t0115714d671a900a07.gif"><br>图：原型继承/对象组合</p>
+<p><em>说明：从图上可以直接看出单一继承关系、紧耦合以及层级分类的问题；其中，类8，只想继承五边形的属性，却得到了继承链上其它并不需要的属性——大猩猩&#x2F;香蕉问题；类9只需要把五角星属性修改成四角形，导致需要修改基类1，从而影响整个继承树——脆弱基类&#x2F;层级僵化问题；否则就需要为9新建基类——必然重复性问题。</em><br><img src="http://p0.qhimg.com/t0115714d671a900a07.gif"><br>图：原型继承&#x2F;对象组合</p>
 </blockquote>
 <blockquote>
-<p><em>说明：采用原型继承/对象组合，可以避免复杂纵深的层级关系。当1需要四角星特性的时候，只需要组合新的特性即可，不会影响到其他实例。</em></p>
+<p><em>说明：采用原型继承&#x2F;对象组合，可以避免复杂纵深的层级关系。当1需要四角星特性的时候，只需要组合新的特性即可，不会影响到其他实例。</em></p>
 </blockquote>
 
     </div>

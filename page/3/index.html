@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.png">
@@ -966,7 +966,7 @@
           <blockquote>
 <p>笔记部分内容摘自 《深入浅出 Node.JS》 —— 朴灵</p>
 </blockquote>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>与前端不同，前端常常只需要处理简单字符串操作及DOM操作，而后端需要处理相对复杂的文件、网络I/O等，JS自由的字符串无法满足需求，于是有了buffer以满足后端的需求。</p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>与前端不同，前端常常只需要处理简单字符串操作及DOM操作，而后端需要处理相对复杂的文件、网络I&#x2F;O等，JS自由的字符串无法满足需求，于是有了buffer以满足后端的需求。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/07/04/node/buffer/#more" rel="contents">
@@ -1188,17 +1188,17 @@
 <p>笔记部分内容摘自 《深入浅出Node.JS》 —— 朴灵</p>
 </blockquote>
 <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ul>
-<li>事件发布/订阅模式</li>
-<li>Promise/Deferred模式</li>
+<li>事件发布&#x2F;订阅模式</li>
+<li>Promise&#x2F;Deferred模式</li>
 <li>流程控制库</li>
 </ul>
-<h1 id="事件发布-订阅模式"><a href="#事件发布-订阅模式" class="headerlink" title="事件发布/订阅模式"></a>事件发布/订阅模式</h1><blockquote>
+<h1 id="事件发布-x2F-订阅模式"><a href="#事件发布-x2F-订阅模式" class="headerlink" title="事件发布&#x2F;订阅模式"></a>事件发布&#x2F;订阅模式</h1><blockquote>
 <p>常常用来解耦业务逻辑</p>
 </blockquote>
-<h2 id="Node-js内的实现"><a href="#Node-js内的实现" class="headerlink" title="Node.js内的实现"></a>Node.js内的实现</h2><p>Node自身提供的events模块，是事件发布/订阅模式的简单实现。<br>通过模块提供的监听、触发等方法实现。</p>
+<h2 id="Node-js内的实现"><a href="#Node-js内的实现" class="headerlink" title="Node.js内的实现"></a>Node.js内的实现</h2><p>Node自身提供的events模块，是事件发布&#x2F;订阅模式的简单实现。<br>通过模块提供的监听、触发等方法实现。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//订阅</span></span><br><span class="line">emitter.<span class="title function_">on</span>(<span class="string">&quot;event1&quot;</span>, <span class="keyword">function</span> (<span class="params">message</span>) &#123;</span><br><span class="line">    <span class="comment">//TODO</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//发布</span></span><br><span class="line">emitter.<span class="title function_">emit</span>(<span class="string">&quot;event&quot;</span>, <span class="string">&quot;message&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p>事件发布/订阅模式 可以将一个事件与多个回调关联起来。一个事件的发布，可以传递给所以正在侦听此事件的监听器(<em>数量设限，过多可能会导致内存泄漏</em>)执行。</p>
+<p>事件发布&#x2F;订阅模式 可以将一个事件与多个回调关联起来。一个事件的发布，可以传递给所以正在侦听此事件的监听器(<em>数量设限，过多可能会导致内存泄漏</em>)执行。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/06/06/node/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/#more" rel="contents">
@@ -1312,9 +1312,9 @@
 <li>函数嵌套</li>
 <li>阻塞代码</li>
 <li>多线程</li>
-<li>异步转同步 </li>
+<li>异步转同步</li>
 </ul>
-<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h2 id="传统-try-catch-方法，只能捕获当次事件循环内的异常，-对callback执行时，无法再进行捕获。"><a href="#传统-try-catch-方法，只能捕获当次事件循环内的异常，-对callback执行时，无法再进行捕获。" class="headerlink" title="传统 try/catch 方法，只能捕获当次事件循环内的异常， 对callback执行时，无法再进行捕获。"></a>传统 try/catch 方法，只能捕获当次事件循环内的异常， 对callback执行时，无法再进行捕获。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line"><span class="title function_">async</span>(callback);</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="comment">//TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h2 id="传统-try-x2F-catch-方法，只能捕获当次事件循环内的异常，-对callback执行时，无法再进行捕获。"><a href="#传统-try-x2F-catch-方法，只能捕获当次事件循环内的异常，-对callback执行时，无法再进行捕获。" class="headerlink" title="传统 try&#x2F;catch 方法，只能捕获当次事件循环内的异常， 对callback执行时，无法再进行捕获。"></a>传统 try&#x2F;catch 方法，只能捕获当次事件循环内的异常， 对callback执行时，无法再进行捕获。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line"><span class="title function_">async</span>(callback);</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="comment">//TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/06/05/node/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/#more" rel="contents">

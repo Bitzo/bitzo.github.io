@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.png">
@@ -319,11 +319,11 @@
 <h1 id="安装-nginx"><a href="#安装-nginx" class="headerlink" title="安装 nginx"></a>安装 nginx</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br></pre></td></tr></table></figure>
 
 <h2 id="nginx-文件结构"><a href="#nginx-文件结构" class="headerlink" title="nginx 文件结构"></a>nginx 文件结构</h2><ul>
-<li>所有的配置文件都在 /etc/nginx 下，并且每个虚拟主机已经安排在了 /etc/nginx/sites-available 下</li>
-<li>程序文件在 /usr/sbin/nginx</li>
-<li>日志放在了 /var/log/nginx 中</li>
-<li>并已经在 /etc/init.d/ 下创建了启动脚本 nginx</li>
-<li>默认的虚拟主机的目录设置在了 /var/www/nginx-default (有的版本 默认的虚拟主机的目录设置在了 /var/www, 请参考 / etc/nginx/sites-available 里的配置)</li>
+<li>所有的配置文件都在 &#x2F;etc&#x2F;nginx 下，并且每个虚拟主机已经安排在了 &#x2F;etc&#x2F;nginx&#x2F;sites-available 下</li>
+<li>程序文件在 &#x2F;usr&#x2F;sbin&#x2F;nginx</li>
+<li>日志放在了 &#x2F;var&#x2F;log&#x2F;nginx 中</li>
+<li>并已经在 &#x2F;etc&#x2F;init.d&#x2F; 下创建了启动脚本 nginx</li>
+<li>默认的虚拟主机的目录设置在了 &#x2F;var&#x2F;www&#x2F;nginx-default (有的版本 默认的虚拟主机的目录设置在了 &#x2F;var&#x2F;www, 请参考 &#x2F; etc&#x2F;nginx&#x2F;sites-available 里的配置)</li>
 </ul>
 <h1 id="启动-nginx"><a href="#启动-nginx" class="headerlink" title="启动 nginx"></a>启动 nginx</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/nginx start</span><br></pre></td></tr></table></figure>
 
